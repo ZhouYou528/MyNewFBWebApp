@@ -5,12 +5,13 @@ import { HttpModule } from '@angular/http';
 
 //material
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio'
 
 //components
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -33,8 +34,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatIconModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatInputModule,
     MatToolbarModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatMenuModule,
     BrowserModule,

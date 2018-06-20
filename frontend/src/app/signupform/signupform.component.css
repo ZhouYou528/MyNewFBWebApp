@@ -1,0 +1,38 @@
+:host {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.example-full-width {
+    width: 100%;
+}
+.regis-title {
+    font-weight:bold;
+    font-size: 40px;
+    margin:1.5em 0;
+    display:block;
+}
+.button-style {
+    margin:2.5em 0;
+}
+.gender-style {
+    margin:1.5em 0;
+}
+.left-gender {
+    display: inline-block; 
+}
+.right-gender {
+    display: inline-block;
+    padding-left: 30px;
+}
+.left-component {
+    display: inline-block; 
+    margin-top: 15px;
+}
+.right-component {
+    display: inline-block;
+    padding-left: 10px;
+    margin-top: 15px;
+}

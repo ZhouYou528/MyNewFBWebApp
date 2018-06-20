@@ -31,7 +31,7 @@ router.post('/register', (req, res, next) =>{
                 });
                 user.save().then(result => {
                     console.log(result);
-                    res.json({ message: 'Register Success!' });
+                    res.json({ success: true, message: 'Register Success!' });
                 }).catch(err => console.log(err));
             }
         }
