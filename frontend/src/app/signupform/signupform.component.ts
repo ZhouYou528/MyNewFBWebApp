@@ -20,16 +20,19 @@ export class SignupformComponent implements OnInit {
 
   signupUser() {
     console.log(this.newUser);
-    this.userService.create(this.newUser)         
-    .then(res => {
-      console.log(res);
-      if(res.success) {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['dashboard']);
-      } else {
-        
-      }
-    }).catch(err => console.log(err));
+    this.userService.create(this.newUser)  
+    .subscribe(
+      res => {
+        console.log(res);
+        if(res.success) {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['dashboard'])
+        } else {
+          // TO_DO
+        }
+      },
+      err => console.log(err)
+    )      
   }
 
 }

@@ -25,15 +25,18 @@ export class SigninformComponent implements OnInit {
     // TO-DO: validate input
 
     this.userService.loginUser(this.signinUser.username, this.signinUser.password)
-    .then(res => {
-      console.log(res);
-      if(res.success) {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['dashboard']);
-      } else {
-        
-      }
-    }).catch(err => console.log(err));
+    .subscribe(
+      res => {
+        console.log(res)
+        if(res.success) {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['dashboard']);
+        } else {
+
+        }
+      },
+      err => console.log(err)
+    )
   }
 
 }

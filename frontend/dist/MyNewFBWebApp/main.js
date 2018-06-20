@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm5/form-field.es5.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
@@ -174,6 +174,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
+/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -204,6 +205,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 //service
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -231,12 +233,17 @@ var AppModule = /** @class */ (function () {
                 _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__["MatMenuModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"]
             ],
             providers: [
                 _service_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
-                _service_auth_guard__WEBPACK_IMPORTED_MODULE_20__["AuthGuard"]
+                _service_auth_guard__WEBPACK_IMPORTED_MODULE_20__["AuthGuard"],
+                {
+                    provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
+                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_21__["TokenInterceptorService"],
+                    multi: true
+                }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"]]
         })
@@ -527,6 +534,52 @@ var AuthGuard = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/service/token-interceptor.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/service/token-interceptor.service.ts ***!
+  \******************************************************/
+/*! exports provided: TokenInterceptorService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TokenInterceptorService", function() { return TokenInterceptorService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TokenInterceptorService = /** @class */ (function () {
+    function TokenInterceptorService() {
+    }
+    TokenInterceptorService.prototype.intercept = function (req, next) {
+        var tokenizedReq = req.clone({
+            setHeaders: {
+                //Bearer + token
+                Authorization: 'Bearer xx.yy.zz'
+            }
+        });
+        return next.handle(tokenizedReq);
+    };
+    TokenInterceptorService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], TokenInterceptorService);
+    return TokenInterceptorService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/service/user.service.ts":
 /*!*****************************************!*\
   !*** ./src/app/service/user.service.ts ***!
@@ -538,7 +591,7 @@ var AuthGuard = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -557,12 +610,10 @@ var UserService = /** @class */ (function () {
         this.http = http;
     }
     UserService.prototype.loginUser = function (username, password) {
-        return this.http.post('/users/login', { username: username, password: password })
-            .map(function (data) { return data.json(); }).toPromise();
+        return this.http.post('/users/login', { username: username, password: password });
     };
     UserService.prototype.create = function (user) {
-        return this.http.post('/users/register', user)
-            .map(function (data) { return data.json(); }).toPromise();
+        return this.http.post('/users/register', user);
     };
     UserService.prototype.loggedIn = function () {
         return !!localStorage.getItem('token');
@@ -571,7 +622,7 @@ var UserService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], UserService);
     return UserService;
 }());
@@ -645,7 +696,7 @@ var SigninformComponent = /** @class */ (function () {
         this.signinUser.password = e.target.elements[1].value;
         // TO-DO: validate input
         this.userService.loginUser(this.signinUser.username, this.signinUser.password)
-            .then(function (res) {
+            .subscribe(function (res) {
             console.log(res);
             if (res.success) {
                 localStorage.setItem('token', res.token);
@@ -653,7 +704,7 @@ var SigninformComponent = /** @class */ (function () {
             }
             else {
             }
-        }).catch(function (err) { return console.log(err); });
+        }, function (err) { return console.log(err); });
     };
     SigninformComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -731,15 +782,16 @@ var SignupformComponent = /** @class */ (function () {
         var _this = this;
         console.log(this.newUser);
         this.userService.create(this.newUser)
-            .then(function (res) {
+            .subscribe(function (res) {
             console.log(res);
             if (res.success) {
                 localStorage.setItem('token', res.token);
                 _this.router.navigate(['dashboard']);
             }
             else {
+                // TO_DO
             }
-        }).catch(function (err) { return console.log(err); });
+        }, function (err) { return console.log(err); });
     };
     SignupformComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
