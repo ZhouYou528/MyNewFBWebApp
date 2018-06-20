@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 //components
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -20,6 +21,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupformComponent } from './signupform/signupform.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+//service
+import { UserService } from './service/user.service';
+import { AuthGuard } from './service/auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatButtonModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatNativeDateModule,
     MatInputModule,
     MatToolbarModule,
@@ -46,7 +52,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    UserService, 
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

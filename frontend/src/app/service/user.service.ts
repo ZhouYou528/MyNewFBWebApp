@@ -20,4 +20,7 @@ export class UserService {
     .map(data => data.json()).toPromise();
   }
 
+  loggedIn() {
+    return !!localStorage.getItem('token')
+  }
 }

@@ -24,6 +24,7 @@ export class SignupformComponent implements OnInit {
     .then(res => {
       console.log(res);
       if(res.success) {
+        localStorage.setItem('token', res.token);
         this.router.navigate(['dashboard']);
       } else {
         
