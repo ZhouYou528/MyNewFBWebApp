@@ -1,5 +1,5 @@
 <body>
-  <form>
+  <form (submit)="loginUser($event)">
     <div>
       <img width="500" src="../assets/GatorBook.jpg">
     </div>
@@ -7,17 +7,17 @@
       <img width="500" src="../assets/gator.png">
     </div>
     <mat-form-field class="login-input-form">
-      <input matInput placeholder="Enter your username">
+      <input matInput placeholder="Enter your username" name="username" [(ngModel)]="signinUser.username">
     </mat-form-field>
     <mat-form-field class="login-input-form">
-      <input type="password" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <input type="password" matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="signinUser.password">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
     <div class="sign-in-button">
-      <button color="primary" type="submit" mat-raised-button>Sign In</button>   
+      <button color="primary" id="signinbtn" type="submit" mat-raised-button>Sign In</button>   
     </div>
     <div class="sign-up-button">
-      <button color="primary" routerLink="/signup" mat-raised-button>Sign Up</button>
+      <button color="primary" id="signupbtn" routerLink="/signup" mat-raised-button>Sign Up</button>
     </div>
   </form>
 </body>

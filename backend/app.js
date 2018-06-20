@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 const usersRoutes = require('./routes/users');
 
-// mongoose.connect('mongodb+srv://zhouyou0528:zhouyou0528@my-fb-web-app-nki7b.mongodb.net/test');
+//set up password in nodemon.json
 mongoose.connect('mongodb+srv://zhouyou0528:' + process.env.MONGO_ATLAS_PW + '@my-fb-web-app-nki7b.mongodb.net/test');
 
 

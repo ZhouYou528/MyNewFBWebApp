@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-signinform',
@@ -8,10 +11,24 @@ import { Component, OnInit } from '@angular/core';
 export class SigninformComponent implements OnInit {
 
   hide = true;
-  
-  constructor() { }
+  signinUser = new User();
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  loginUser(e) {
+    e.preventDefault();
+    this.signinUser.username = e.target.elements[0].value;
+    this.signinUser.password = e.target.elements[1].value;
+
+    // TO-DO: validate input
+
+    this.userService.loginUser(this.signinUser.username, this.signinUser.password)
+    .subscribe(
+       res => console.log(res),
+       err => console.log(err)
+    )
   }
 
 }

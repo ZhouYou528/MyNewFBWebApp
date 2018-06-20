@@ -111,6 +111,10 @@ MIT
 MIT
 MIT
 
+@angular/http@6.0.3
+MIT
+MIT
+
 @angular/material@6.2.1
 MIT
 The MIT License
