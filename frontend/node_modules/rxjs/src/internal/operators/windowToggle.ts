@@ -26,13 +26,17 @@ import { OperatorFunction } from '../types';
  * Observable emits an item and when the Observable returned by
  * `closingSelector` emits an item.
  *
- * @example <caption>Every other second, emit the click events from the next 500ms</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var openings = Rx.Observable.interval(1000);
- * var result = clicks.windowToggle(openings, i =>
- *   i % 2 ? Rx.Observable.interval(500) : Rx.Observable.empty()
- * ).mergeAll();
+ * ## Example
+ * Every other second, emit the click events from the next 500ms
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const openings = interval(1000);
+ * const result = clicks.pipe(
+ *   windowToggle(openings, i => i % 2 ? interval(500) : empty()),
+ *   mergeAll(),
+ * );
  * result.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link window}
  * @see {@link windowCount}

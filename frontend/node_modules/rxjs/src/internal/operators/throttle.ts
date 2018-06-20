@@ -38,10 +38,13 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * value or completes, the timer is disabled, and this process repeats for the
  * next source value.
  *
- * @example <caption>Emit clicks at a rate of at most one click per second</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.throttle(ev => Rx.Observable.interval(1000));
+ * ## Example
+ * Emit clicks at a rate of at most one click per second
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(throttle(ev => interval(1000)));
  * result.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link audit}
  * @see {@link debounce}

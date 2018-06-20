@@ -5,23 +5,30 @@ import { MonoTypeOperatorFunction } from '../types';
  *
  * <img src="./img/min.png" width="100%">
  *
- * @example <caption>Get the minimal value of a series of numbers</caption>
- * Rx.Observable.of(5, 4, 7, 2, 8)
- *   .min()
- *   .subscribe(x => console.log(x)); // -> 2
+ * ## Examples
+ * Get the minimal value of a series of numbers
+ * ```javascript
+ * of(5, 4, 7, 2, 8).pipe(
+ *   min(),
+ * )
+ * .subscribe(x => console.log(x)); // -> 2
+ * ```
  *
- * @example <caption>Use a comparer function to get the minimal item</caption>
+ * Use a comparer function to get the minimal item
+ * ```typescript
  * interface Person {
  *   age: number,
  *   name: string
  * }
- * Observable.of<Person>({age: 7, name: 'Foo'},
- *                       {age: 5, name: 'Bar'},
- *                       {age: 9, name: 'Beer'})
- *           .min<Person>( (a: Person, b: Person) => a.age < b.age ? -1 : 1)
- *           .subscribe((x: Person) => console.log(x.name)); // -> 'Bar'
- * }
- *
+ * of<Person>(
+ *   {age: 7, name: 'Foo'},
+ *   {age: 5, name: 'Bar'},
+ *   {age: 9, name: 'Beer'},
+ * ).pipe(
+ *   min<Person>( (a: Person, b: Person) => a.age < b.age ? -1 : 1),
+ * )
+ * .subscribe((x: Person) => console.log(x.name)); // -> 'Bar'
+ * ```
  * @see {@link max}
  *
  * @param {Function} [comparer] - Optional comparer function that it will use instead of its default to compare the

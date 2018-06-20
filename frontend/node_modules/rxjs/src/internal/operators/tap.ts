@@ -29,16 +29,20 @@ export function tap<T>(observer: PartialObserver<T>): MonoTypeOperatorFunction<T
  * or performing other side effects.
  *
  * Note: this is different to a `subscribe` on the Observable. If the Observable
- * returned by `do` is not subscribed, the side effects specified by the
- * Observer will never happen. `do` therefore simply spies on existing
+ * returned by `tap` is not subscribed, the side effects specified by the
+ * Observer will never happen. `tap` therefore simply spies on existing
  * execution, it does not trigger an execution to happen like `subscribe` does.
  *
- * @example <caption>Map every click to the clientX position of that click, while also logging the click event</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var positions = clicks
- *   .do(ev => console.log(ev))
- *   .map(ev => ev.clientX);
+ * ## Example
+ * Map every click to the clientX position of that click, while also logging the click event
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const positions = clicks.pipe(
+ *   tap(ev => console.log(ev)),
+ *   map(ev => ev.clientX),
+ * );
  * positions.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link map}
  * @see {@link subscribe}

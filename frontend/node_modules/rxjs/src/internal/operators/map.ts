@@ -17,10 +17,13 @@ import { OperatorFunction } from '../types';
  * applies a projection to each value and emits that projection in the output
  * Observable.
  *
- * @example <caption>Map every click to the clientX position of that click</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var positions = clicks.map(ev => ev.clientX);
+ * ## Example
+ * Map every click to the clientX position of that click
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const positions = clicks.pipe(map(ev => ev.clientX));
  * positions.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link mapTo}
  * @see {@link pluck}

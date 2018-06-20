@@ -20,11 +20,14 @@ import { MonoTypeOperatorFunction, SubscribableOrPromise } from '../types';
  * recent source value is emitted on the output Observable, and this process
  * repeats for the next source value.
  *
- * @example <caption>Emit clicks at a rate of at most one click per second</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.audit(ev => Rx.Observable.interval(1000));
- * result.subscribe(x => console.log(x));
+ * ## Example
  *
+ * Emit clicks at a rate of at most one click per second
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(audit(ev => Rx.Observable.interval(1000)));
+ * result.subscribe(x => console.log(x));
+ * ```
  * @see {@link auditTime}
  * @see {@link debounce}
  * @see {@link delayWhen}

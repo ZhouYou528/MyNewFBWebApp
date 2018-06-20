@@ -72,7 +72,6 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
         this.schedule(function () {
             subscription = observable.subscribe(function (x) {
                 var value = x;
-                // Support Observable-of-Observables
                 if (x instanceof Observable) {
                     value = _this.materializeInnerObservable(value, _this.frame);
                 }
@@ -120,13 +119,11 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
         for (var i = 0, l = flushTests.length; i < l; i++) {
             var test_1 = flushTestsCopy[i];
             if (test_1.ready) {
-                // remove it from the original array, not our copy
                 flushTests.splice(i, 1);
                 this.assertDeepEqual(test_1.actual, test_1.expected);
             }
         }
     };
-    /** @nocollapse */
     TestScheduler.parseMarblesAsSubscriptions = function (marbles, runMode) {
         var _this = this;
         if (runMode === void 0) {
@@ -148,7 +145,6 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
             var c = marbles[i];
             switch (c) {
                 case ' ':
-                    // Whitespace no longer advances time
                     if (!runMode) {
                         advanceFrameBy(1);
                     }
@@ -180,10 +176,7 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
                     unsubscriptionFrame = groupStart > -1 ? groupStart : frame;
                     break;
                 default:
-                    // time progression syntax
                     if (runMode && c.match(/^[0-9]$/)) {
-                        // Time progression must be preceeded by at least one space
-                        // if it's not at the beginning of the diagram
                         if (i === 0 || marbles[i - 1] === ' ') {
                             var buffer = marbles.slice(i);
                             var match = buffer.match(/^([0-9]+(?:\.[0-9]+)?)(ms|s|m) /);
@@ -228,7 +221,6 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
             return new SubscriptionLog(subscriptionFrame, unsubscriptionFrame);
         }
     };
-    /** @nocollapse */
     TestScheduler.parseMarbles = function (marbles, values, errorValue, materializeInnerObservables, runMode) {
         var _this = this;
         if (materializeInnerObservables === void 0) {
@@ -248,7 +240,6 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
         var getValue = typeof values !== 'object' ?
             function (x) { return x; } :
             function (x) {
-                // Support Observable-of-Observables
                 if (materializeInnerObservables && values[x] instanceof ColdObservable) {
                     return values[x].messages;
                 }
@@ -264,7 +255,6 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
             var c = marbles[i];
             switch (c) {
                 case ' ':
-                    // Whitespace no longer advances time
                     if (!runMode) {
                         advanceFrameBy(1);
                     }
@@ -292,10 +282,7 @@ var TestScheduler = /*@__PURE__*/ (function (_super) {
                     advanceFrameBy(1);
                     break;
                 default:
-                    // Might be time progression syntax, or a value literal
                     if (runMode && c.match(/^[0-9]$/)) {
-                        // Time progression must be preceeded by at least one space
-                        // if it's not at the beginning of the diagram
                         if (i === 0 || marbles[i - 1] === ' ') {
                             var buffer = marbles.slice(i);
                             var match = buffer.match(/^([0-9]+(?:\.[0-9]+)?)(ms|s|m) /);

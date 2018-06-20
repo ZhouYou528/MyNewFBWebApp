@@ -38,10 +38,10 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
  * <img src="./img/generate.png" width="100%">
  *
  * @example <caption>Produces sequence of 0, 1, 2, ... 9, then completes.</caption>
- * var res = Rx.Observable.generate(0, x => x < 10, x => x + 1, x => x);
+ * const res = generate(0, x => x < 10, x => x + 1, x => x);
  *
  * @example <caption>Using asap scheduler, produces sequence of 2, 3, 5, then completes.</caption>
- * var res = Rx.Observable.generate(1, x => x < 5, x =>  * 2, x => x + 1, Rx.Scheduler.asap);
+ * const res = generate(1, x => x < 5, x =>  * 2, x => x + 1, Rx.Scheduler.asap);
  *
  * @see {@link from}
  * @see {@link create}
@@ -63,10 +63,10 @@ export declare function generate<T, S>(initialState: S, condition: ConditionFunc
  * <img src="./img/generate.png" width="100%">
  *
  * @example <caption>Produces sequence of 0, 1, 2, ... 9, then completes.</caption>
- * var res = Rx.Observable.generate(0, x => x < 10, x => x + 1);
+ * const res = generate(0, x => x < 10, x => x + 1);
  *
  * @example <caption>Using asap scheduler, produces sequence of 1, 2, 4, then completes.</caption>
- * var res = Rx.Observable.generate(1, x => x < 5, x => x  * 2, Rx.Scheduler.asap);
+ * const res = generate(1, x => x < 5, x => x  * 2, Rx.Scheduler.asap);
  *
  * @see {@link from}
  * @see {@link create}
@@ -88,10 +88,10 @@ export declare function generate<S>(initialState: S, condition: ConditionFunc<S>
  * <img src="./img/generate.png" width="100%">
  *
  * @example <caption>Produces sequence of 0, 1, 2, ... 9, then completes.</caption>
- * var res = Rx.Observable.generate({
+ * const res = generate({
  *   initialState: 0,
  *   condition: x => x < 10,
- *   iterate: x => x + 1
+ *   iterate: x => x + 1,
  * });
  *
  * @see {@link from}
@@ -111,11 +111,11 @@ export declare function generate<S>(options: GenerateBaseOptions<S>): Observable
  * <img src="./img/generate.png" width="100%">
  *
  * @example <caption>Produces sequence of 0, 1, 2, ... 9, then completes.</caption>
- * var res = Rx.Observable.generate({
+ * const res = generate({
  *   initialState: 0,
  *   condition: x => x < 10,
  *   iterate: x => x + 1,
- *   resultSelector: x => x
+ *   resultSelector: x => x,
  * });
  *
  * @see {@link from}

@@ -23,14 +23,18 @@ import { Subscriber } from '../Subscriber';
  * Observable emits only one value, `0`. Otherwise, it emits an infinite
  * sequence.
  *
- * @example <caption>Emits ascending numbers, one every second (1000ms), starting after 3 seconds</caption>
- * var numbers = Rx.Observable.timer(3000, 1000);
+ * ## Examples
+ * ### Emits ascending numbers, one every second (1000ms), starting after 3 seconds
+ * ```javascript
+ * const numbers = timer(3000, 1000);
  * numbers.subscribe(x => console.log(x));
+ * ```
  *
- * @example <caption>Emits one number after five seconds</caption>
- * var numbers = Rx.Observable.timer(5000);
+ * ### Emits one number after five seconds
+ * ```javascript
+ * const numbers = timer(5000);
  * numbers.subscribe(x => console.log(x));
- *
+ * ```
  * @see {@link interval}
  * @see {@link delay}
  *

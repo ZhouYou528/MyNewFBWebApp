@@ -15,10 +15,13 @@ import { MonoTypeOperatorFunction, SchedulerLike } from '../types';
  * defined by the optional `scheduler` argument). The sampling starts as soon as
  * the output Observable is subscribed.
  *
- * @example <caption>Every second, emit the most recent click at most once</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.sampleTime(1000);
+ * ## Example
+ * Every second, emit the most recent click at most once
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(sampleTime(1000));
  * result.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link auditTime}
  * @see {@link debounceTime}

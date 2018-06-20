@@ -56,7 +56,7 @@ router.post('/login', (req, res) => {
                         if (!validPassword) {
                             res.json({success: false, message: 'Invalid password.'});
                         } else {
-                            res.json({ message: 'Success!' });
+                            res.json({ success: true, message: 'Success!' });
                         }
                     }
                 }

@@ -12,10 +12,13 @@ import { MonoTypeOperatorFunction } from '../types';
  * all of its values are emitted. After that, it completes, regardless if the
  * source completes.
  *
- * @example <caption>Take the first 5 seconds of an infinite 1-second interval Observable</caption>
- * var interval = Rx.Observable.interval(1000);
- * var five = interval.take(5);
+ * ## Example
+ * Take the first 5 seconds of an infinite 1-second interval Observable
+ * ```javascript
+ * const interval = interval(1000);
+ * const five = interval.pipe(take(5));
  * five.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link takeLast}
  * @see {@link takeUntil}

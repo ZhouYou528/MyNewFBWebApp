@@ -39,6 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _signinform_signinform_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./signinform/signinform.component */ "./src/app/signinform/signinform.component.ts");
 /* harmony import */ var _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./signupform/signupform.component */ "./src/app/signupform/signupform.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49,14 +50,21 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var appRoutes = [{
+
+var appRoutes = [
+    {
         path: '',
         component: _signinform_signinform_component__WEBPACK_IMPORTED_MODULE_2__["SigninformComponent"]
     },
     {
         path: 'signup',
         component: _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_3__["SignupformComponent"]
-    }];
+    },
+    {
+        path: 'dashboard',
+        component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"]
+    }
+];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
@@ -454,6 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -465,12 +474,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
     }
     UserService.prototype.loginUser = function (username, password) {
-        return this.http.post('/users/login', { username: username, password: password });
+        return this.http.post('/users/login', { username: username, password: password })
+            .map(function (data) { return data.json(); }).toPromise();
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -544,12 +555,20 @@ var SigninformComponent = /** @class */ (function () {
     SigninformComponent.prototype.ngOnInit = function () {
     };
     SigninformComponent.prototype.loginUser = function (e) {
+        var _this = this;
         e.preventDefault();
         this.signinUser.username = e.target.elements[0].value;
         this.signinUser.password = e.target.elements[1].value;
         // TO-DO: validate input
         this.userService.loginUser(this.signinUser.username, this.signinUser.password)
-            .subscribe(function (res) { return console.log(res); }, function (err) { return console.log(err); });
+            .then(function (res) {
+            console.log(res);
+            if (res.success) {
+                _this.router.navigate(['dashboard']);
+            }
+            else {
+            }
+        }).catch(function (err) { return console.log(err); });
     };
     SigninformComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

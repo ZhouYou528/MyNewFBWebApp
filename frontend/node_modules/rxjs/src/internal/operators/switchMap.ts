@@ -35,10 +35,13 @@ export function switchMap<T, I, R>(project: (value: T, index: number) => Observa
  * emitting items from the new one. It continues to behave like this for
  * subsequent inner Observables.
  *
- * @example <caption>Rerun an interval Observable on every click event</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.switchMap((ev) => Rx.Observable.interval(1000));
+ * ## Example
+ * Rerun an interval Observable on every click event
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(switchMap((ev) => interval(1000)));
  * result.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link concatMap}
  * @see {@link exhaustMap}

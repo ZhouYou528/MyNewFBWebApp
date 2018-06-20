@@ -19,11 +19,16 @@ import { OperatorFunction } from '../types';
  * Observable and starts a new buffer internally, awaiting the next time
  * `closingNotifier` emits.
  *
- * @example <caption>On every click, emit array of most recent interval events</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var interval = Rx.Observable.interval(1000);
- * var buffered = interval.buffer(clicks);
+ * ## Example
+ *
+ * On every click, emit array of most recent interval events
+ *
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const interval = interval(1000);
+ * const buffered = interval.pipe(buffer(clicks));
  * buffered.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link bufferCount}
  * @see {@link bufferTime}

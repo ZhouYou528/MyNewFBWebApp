@@ -22,16 +22,21 @@ import { MonoTypeOperatorFunction, PartialObserver, SchedulerAction, SchedulerLi
  * If the delay argument is a Date, this operator time shifts the start of the
  * Observable execution until the given date occurs.
  *
- * @example <caption>Delay each click by one second</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var delayedClicks = clicks.delay(1000); // each click emitted after 1 second
+ * ## Examples
+ * Delay each click by one second
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const delayedClicks = clicks.pipe(delay(1000)); // each click emitted after 1 second
  * delayedClicks.subscribe(x => console.log(x));
+ * ```
  *
- * @example <caption>Delay all clicks until a future date happens</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var date = new Date('March 15, 2050 12:00:00'); // in the future
- * var delayedClicks = clicks.delay(date); // click emitted only after that date
+ * Delay all clicks until a future date happens
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const date = new Date('March 15, 2050 12:00:00'); // in the future
+ * const delayedClicks = clicks.pipe(delay(date)); // click emitted only after that date
  * delayedClicks.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link debounceTime}
  * @see {@link delayWhen}

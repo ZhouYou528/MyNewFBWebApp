@@ -8,8 +8,8 @@ import { OperatorFunction, SchedulerAction, SchedulerLike } from '../types';
 
 /* tslint:disable:max-line-length */
 export function bufferTime<T>(bufferTimeSpan: number, scheduler?: SchedulerLike): OperatorFunction<T, T[]>;
-export function bufferTime<T>(bufferTimeSpan: number, bufferCreationInterval: number, scheduler?: SchedulerLike): OperatorFunction<T, T[]>;
-export function bufferTime<T>(bufferTimeSpan: number, bufferCreationInterval: number, maxBufferSize: number, scheduler?: SchedulerLike): OperatorFunction<T, T[]>;
+export function bufferTime<T>(bufferTimeSpan: number, bufferCreationInterval: number | null | undefined, scheduler?: SchedulerLike): OperatorFunction<T, T[]>;
+export function bufferTime<T>(bufferTimeSpan: number, bufferCreationInterval: number | null | undefined, maxBufferSize: number, scheduler?: SchedulerLike): OperatorFunction<T, T[]>;
 /* tslint:enable:max-line-length */
 
 /**
@@ -29,15 +29,23 @@ export function bufferTime<T>(bufferTimeSpan: number, bufferCreationInterval: nu
  * `maxBufferSize` is specified, the buffer will be closed either after
  * `bufferTimeSpan` milliseconds or when it contains `maxBufferSize` elements.
  *
- * @example <caption>Every second, emit an array of the recent click events</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var buffered = clicks.bufferTime(1000);
- * buffered.subscribe(x => console.log(x));
+ * ## Examples
  *
- * @example <caption>Every 5 seconds, emit the click events from the next 2 seconds</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var buffered = clicks.bufferTime(2000, 5000);
+ * Every second, emit an array of the recent click events
+ *
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const buffered = clicks.pipe(bufferTime(1000));
  * buffered.subscribe(x => console.log(x));
+ * ```
+ *
+ * Every 5 seconds, emit the click events from the next 2 seconds
+ *
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const buffered = clicks.pipe(bufferTime(2000, 5000));
+ * buffered.subscribe(x => console.log(x));
+ * ```
  *
  * @see {@link buffer}
  * @see {@link bufferCount}

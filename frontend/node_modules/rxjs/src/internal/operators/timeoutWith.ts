@@ -37,17 +37,20 @@ export function timeoutWith<T, R>(due: number | Date, withObservable: Observable
  * as a consequence - when second Observable will be subscribed, since subscription happens
  * immediately after failing check.
  *
- * @example <caption>Add fallback observable</caption>
- * const seconds = Rx.Observable.interval(1000);
- * const minutes = Rx.Observable.interval(60 * 1000);
+ * ## Example
+ * Add fallback observable
+ * ```javascript
+ * const seconds = interval(1000);
+ * const minutes = interval(60 * 1000);
  *
- * seconds.timeoutWith(900, minutes)
- *     .subscribe(
- *         value => console.log(value), // After 900ms, will start emitting `minutes`,
- *                                      // since first value of `seconds` will not arrive fast enough.
- *         err => console.log(err) // Would be called after 900ms in case of `timeout`,
- *                                 // but here will never be called.
- *     );
+ * seconds.pipe(timeoutWith(900, minutes))
+ *   .subscribe(
+ *     value => console.log(value), // After 900ms, will start emitting `minutes`,
+ *                                  // since first value of `seconds` will not arrive fast enough.
+ *     err => console.log(err),     // Would be called after 900ms in case of `timeout`,
+ *                                  // but here will never be called.
+ *   );
+ * ```
  *
  * @param {number|Date} due Number specifying period within which Observable must emit values
  *                          or Date specifying before when Observable should complete

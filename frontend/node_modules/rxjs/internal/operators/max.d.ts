@@ -5,22 +5,30 @@ import { MonoTypeOperatorFunction } from '../types';
  *
  * <img src="./img/max.png" width="100%">
  *
- * @example <caption>Get the maximal value of a series of numbers</caption>
- * Rx.Observable.of(5, 4, 7, 2, 8)
- *   .max()
- *   .subscribe(x => console.log(x)); // -> 8
+ * ## Examples
+ * Get the maximal value of a series of numbers
+ * ```javascript
+ * of(5, 4, 7, 2, 8).pipe(
+ *   max(),
+ * )
+ * .subscribe(x => console.log(x)); // -> 8
+ * ```
  *
- * @example <caption>Use a comparer function to get the maximal item</caption>
+ * Use a comparer function to get the maximal item
+ * ```typescript
  * interface Person {
  *   age: number,
  *   name: string
  * }
- * Observable.of<Person>({age: 7, name: 'Foo'},
- *                       {age: 5, name: 'Bar'},
- *                       {age: 9, name: 'Beer'})
- *           .max<Person>((a: Person, b: Person) => a.age < b.age ? -1 : 1)
- *           .subscribe((x: Person) => console.log(x.name)); // -> 'Beer'
- * }
+ * of<Person>(
+ *   {age: 7, name: 'Foo'},
+ *   {age: 5, name: 'Bar'},
+ *   {age: 9, name: 'Beer'},
+ * ).pipe(
+ *   max<Person>((a: Person, b: Person) => a.age < b.age ? -1 : 1),
+ * )
+ * .subscribe((x: Person) => console.log(x.name)); // -> 'Beer'
+ * ```
  *
  * @see {@link min}
  *

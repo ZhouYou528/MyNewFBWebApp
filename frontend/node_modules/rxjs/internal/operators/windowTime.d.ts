@@ -22,26 +22,39 @@ import { OperatorFunction, SchedulerLike } from '../types';
  * after emitting last value and next one still will open as specified by
  * `windowTimeSpan` and `windowCreationInterval` arguments.
  *
- * @example <caption>In every window of 1 second each, emit at most 2 click events</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.windowTime(1000)
- *   .map(win => win.take(2)) // each window has at most 2 emissions
- *   .mergeAll(); // flatten the Observable-of-Observables
+ * ## Examples
+ * In every window of 1 second each, emit at most 2 click events
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(
+ *   windowTime(1000),
+ *   map(win => win.take(2)),   // each window has at most 2 emissions
+ *   mergeAll(),                // flatten the Observable-of-Observables
+ * );
  * result.subscribe(x => console.log(x));
+ * ```
  *
- * @example <caption>Every 5 seconds start a window 1 second long, and emit at most 2 click events per window</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.windowTime(1000, 5000)
- *   .map(win => win.take(2)) // each window has at most 2 emissions
- *   .mergeAll(); // flatten the Observable-of-Observables
+ * Every 5 seconds start a window 1 second long, and emit at most 2 click events per window
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(
+ *   windowTime(1000, 5000),
+ *   map(win => win.take(2)),   // each window has at most 2 emissions
+ *   mergeAll(),                // flatten the Observable-of-Observables
+ * );
  * result.subscribe(x => console.log(x));
+ * ```
  *
- * @example <caption>Same as example above but with maxWindowCount instead of take</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var result = clicks.windowTime(1000, 5000, 2) // each window has still at most 2 emissions
- *   .mergeAll(); // flatten the Observable-of-Observables
+ * Same as example above but with maxWindowCount instead of take
+ * ```javascript
+ * const clicks = fromEvent(document, 'click');
+ * const result = clicks.pipe(
+ *   windowTime(1000, 5000, 2), // each window has still at most 2 emissions
+ *   mergeAll(),                // flatten the Observable-of-Observables
+ * );
  * result.subscribe(x => console.log(x));
-
+ * ```
+ *
  * @see {@link window}
  * @see {@link windowCount}
  * @see {@link windowToggle}

@@ -25,10 +25,14 @@ export class SigninformComponent implements OnInit {
     // TO-DO: validate input
 
     this.userService.loginUser(this.signinUser.username, this.signinUser.password)
-    .subscribe(
-       res => console.log(res),
-       err => console.log(err)
-    )
+    .then(res => {
+      console.log(res);
+      if(res.success) {
+        this.router.navigate(['dashboard']);
+      } else {
+        
+      }
+    }).catch(err => console.log(err));
   }
 
 }
