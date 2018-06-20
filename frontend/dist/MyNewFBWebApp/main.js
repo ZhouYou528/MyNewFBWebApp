@@ -159,12 +159,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./signupform/signupform.component */ "./src/app/signupform/signupform.component.ts");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/toolbar */ "./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/menu */ "./node_modules/@angular/material/esm5/menu.es5.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./signupform/signupform.component */ "./src/app/signupform/signupform.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -176,6 +178,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //material
+
+
 
 
 
@@ -194,26 +198,28 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["routingComponents"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_11__["HeaderComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_12__["FooterComponent"],
-                _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_13__["SignupformComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__["DashboardComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["routingComponents"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_13__["HeaderComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_14__["FooterComponent"],
+                _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_15__["SignupformComponent"],
+                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_16__["DashboardComponent"]
             ],
             imports: [
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
+                _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_9__["MatToolbarModule"],
                 _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
+                _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__["MatMenuModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -356,7 +362,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 
 /***/ }),
 
@@ -367,7 +373,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  header works!\n</p>\n"
+module.exports = "<header>\n  <mat-toolbar color=\"primary\">\n      <span style=\"text-align:center;\">GatorBook</span>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n          <i class=\"material-icons\">account_circle</i>  \n      </button>\n      <mat-menu #menu=\"matMenu\">\n          <button mat-menu-item>\n              <mat-icon>lightbulb_outline</mat-icon>\n              <span>Notifications</span>\n          </button>\n          <button mat-menu-item id=\"userprofilebtn\">\n              <mat-icon>person_outline</mat-icon>\n              <span>Profile</span>\n          </button>\n          <button mat-menu-item>\n              <mat-icon>settings</mat-icon>\n              <span>Setting</span>\n          </button>\n          <button mat-menu-item id=\"logout_header\" >\n              <mat-icon>power_settings_new</mat-icon>\n              <span>Log Out</span>\n          </button>\n      </mat-menu>\n  </mat-toolbar>\n</header>\n"
 
 /***/ }),
 

@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 //components
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -32,7 +34,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatButtonModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatToolbarModule,
     MatFormFieldModule,
+    MatMenuModule,
     BrowserModule,
     FormsModule,
     HttpModule,
