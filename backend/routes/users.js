@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 
@@ -29,10 +29,23 @@ router.post('/register', (req, res, next) =>{
                     friends: req.body.friends,
                     avatar: req.body.avatar
                 });
-                user.save().then(result => {
-                    console.log(result);
-                    res.json({ success: true, message: 'Register Success!' });
-                }).catch(err => console.log(err));
+                user.save((err, registeredUser) => {
+                    if(err) {
+                        if(err.code == 11000) {
+                            res.json({success: false, message: 'Username or e-mail already exists'});
+                        } else {
+                            res.json({success: false, message: err});
+                        }
+                    } else {
+                        console.log(registeredUser);
+                        let payload = { subject: registeredUser._id }
+                        console.log(process.env.JWT_KEY);
+                        let token = jwt.sign(payload, process.env.JWT_KEY ,{
+                            expiresIn: 3600
+                        })
+                        res.json({ success: true, message: 'Register Success!', token: 'JWT ' + token });
+                    }
+                });
             }
         }
     }
@@ -56,7 +69,11 @@ router.post('/login', (req, res) => {
                         if (!validPassword) {
                             res.json({success: false, message: 'Invalid password.'});
                         } else {
-                            res.json({ success: true, message: 'Success!' });
+                            let payload = { subject: user._id }
+                            let token = jwt.sign(payload, process.env.JWT_KEY ,{
+                                expiresIn: 3600
+                            })
+                            res.json({ success: true, message: 'Success!', token: 'JWT ' + token });
                         }
                     }
                 }
