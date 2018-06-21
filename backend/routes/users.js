@@ -43,7 +43,7 @@ router.post('/register', (req, res, next) =>{
                         let token = jwt.sign(payload, process.env.JWT_KEY ,{
                             expiresIn: 3600
                         })
-                        res.json({ success: true, message: 'Register Success!', token: 'JWT ' + token });
+                        res.json({ success: true, message: 'Register Success!', token: token });
                     }
                 });
             }
@@ -73,7 +73,7 @@ router.post('/login', (req, res) => {
                             let token = jwt.sign(payload, process.env.JWT_KEY ,{
                                 expiresIn: 3600
                             })
-                            res.json({ success: true, message: 'Success!', token: 'JWT ' + token });
+                            res.json({ success: true, message: 'Success!', token: token });
                         }
                     }
                 }
@@ -81,5 +81,33 @@ router.post('/login', (req, res) => {
         }
     }
 });
+
+router.get('/getCurrentUser', verifyToken, (req, res, next) => {
+    User.findById(req.userId, (err, user) =>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success: false, msg:'User not found'});
+        }
+        return res.json(user);
+    })
+});
+
+function verifyToken(req, res, next) {
+    if(!req.headers.authorization) {
+        return res.status(401).send('Unauthorized request!')
+    } 
+    let token = req.headers.authorization.split(' ')[1]
+    if(token === 'null' || token === null) {
+        return res.status(401).send('Unauthorized request!')
+        // res.json({message: 'failed'})
+    }
+    let payload = jwt.verify(token, process.env.JWT_KEY)
+    if(!payload) {
+        return res.status(401).send('Unauthorized request!')
+    }
+    req.userId = payload.subject
+    next()
+}
+
 
 module.exports = router;

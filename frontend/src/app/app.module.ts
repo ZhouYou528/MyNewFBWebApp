@@ -26,7 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserService } from './service/user.service';
 import { AuthGuard } from './service/auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
-import { Token } from '@angular/compiler';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { Token } from '@angular/compiler';
     HeaderComponent,
     FooterComponent,
     SignupformComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserProfileComponent
   ],
   imports: [
     MatIconModule,

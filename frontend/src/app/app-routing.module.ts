@@ -4,6 +4,7 @@ import { SigninformComponent } from './signinform/signinform.component';
 import { SignupformComponent } from './signupform/signupform.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './service/auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 export const appRoutes: Routes = [
   {
@@ -17,6 +18,11 @@ export const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
     canActivate: [AuthGuard]
   }
 ];

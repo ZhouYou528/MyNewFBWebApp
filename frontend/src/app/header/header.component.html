@@ -14,7 +14,7 @@
                 <mat-icon>lightbulb_outline</mat-icon>
                 <span>Notifications</span>
             </button>
-            <button mat-menu-item id="userprofilebtn">
+            <button mat-menu-item id="userprofilebtn" (click)="setUserProfile()">
                 <mat-icon>person_outline</mat-icon>
                 <span>Profile</span>
             </button>
@@ -22,7 +22,7 @@
                 <mat-icon>settings</mat-icon>
                 <span>Setting</span>
             </button>
-            <button mat-menu-item id="logout_header">
+            <button mat-menu-item id="logout_header" (click)="logoutUser()">
                 <mat-icon>power_settings_new</mat-icon>
                 <span>Log Out</span>
             </button>
