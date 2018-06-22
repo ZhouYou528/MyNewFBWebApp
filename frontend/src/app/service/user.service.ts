@@ -43,8 +43,8 @@ export class UserService {
     return this.http.put<User>('users/update-password/' + user._id, user)
   }
 
-  // updateAvatar(user: User) {
-  //   return this.http.put<User>('users/update-avatar/' + user._id, user)
-  // }
+  updateAvatar(user: User, fd: FormData) {
+    return this.http.put<User>('users/update-avatar/' + user._id, fd)
+  }
 
 }

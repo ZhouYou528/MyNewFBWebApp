@@ -684,6 +684,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.updatePassword = function (user) {
         return this.http.put('users/update-password/' + user._id, user);
     };
+    UserService.prototype.updateAvatar = function (user, fd) {
+        return this.http.put('users/update-avatar/' + user._id, fd);
+    };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -881,7 +884,7 @@ var SignupformComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change your Avatar</h1>\n    </div>\n    <div>\n        <img class=\"uploadImg\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}\">\n    </div>\n\n    <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" mat-raised-button>\n            <Label for=\"input-file-id\">\n                <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n                Photo\n            </Label>\n        </button>\n        <button class=\"button-spacer\" color=\"warn\" id=\"sendpost\" (click)=\"updateAvatar()\" mat-raised-button>Confirm</button>\n    </div>\n</div>"
+module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change your Avatar</h1>\n    </div>\n    <div>\n        <img class=\"uploadImg\" src=\"{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}\">\n    </div>\n\n    <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" mat-raised-button>\n            <Label for=\"input-file-id\">\n                <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n                Photo\n            </Label>\n        </button>\n        <button class=\"button-spacer\" color=\"warn\" id=\"sendpost\" (click)=\"updateAvatar()\" mat-raised-button>Confirm</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1008,16 +1011,39 @@ var AvatarPreviewComponent = /** @class */ (function () {
         this.data = data;
         this.userService = userService;
         this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
+        this.selectedFile = null;
+        this.avatar = '';
     }
     AvatarPreviewComponent.prototype.ngOnInit = function () {
         this.currentUser = this.data.currentUser;
+        this.avatar = this.data.currentUser.avatar;
     };
     AvatarPreviewComponent.prototype.onNoClick = function () {
         this.dialogRef.close();
     };
-    AvatarPreviewComponent.prototype.fileChangeEvent = function (fileInput) {
+    AvatarPreviewComponent.prototype.fileChangeEvent = function (event) {
+        var _this = this;
+        this.selectedFile = event.target.files[0];
+        if (this.selectedFile) {
+            var reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = function (x) {
+                _this.avatar = x.target.result;
+            };
+        }
     };
     AvatarPreviewComponent.prototype.updateAvatar = function () {
+        var fd = new FormData();
+        fd.append('avatar', this.selectedFile, this.selectedFile.name);
+        this.userService.updateAvatar(this.currentUser, fd).subscribe(function (res) {
+            if (res) {
+                console.log('Avatar modify success!');
+            }
+            else {
+                console.log('Update avatar error!');
+            }
+        }, function (err) { return console.log(err); });
+        this.dialogRef.close();
     };
     AvatarPreviewComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

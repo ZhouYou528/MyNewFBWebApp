@@ -76,7 +76,8 @@ export class UserProfileComponent implements OnInit {
 export class AvatarPreviewComponent implements OnInit {
   
   currentUser: User = new User();
-  
+  selectedFile: File = null;
+  avatar = '';
 
   constructor(
     public dialogRef: MatDialogRef<AvatarPreviewComponent>,
@@ -84,15 +85,35 @@ export class AvatarPreviewComponent implements OnInit {
 
   ngOnInit() { 
     this.currentUser = this.data.currentUser
+    this.avatar = this.data.currentUser.avatar
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  fileChangeEvent(fileInput: any) {
-    
+  fileChangeEvent(event) {
+    this.selectedFile = event.target.files[0];
+    if(this.selectedFile) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (x: any) => {
+        this.avatar = x.target.result;
+      }
+    }
   }
   updateAvatar() {
-    
+    const fd = new FormData();
+    fd.append('avatar', this.selectedFile, this.selectedFile.name);
+    this.userService.updateAvatar(this.currentUser, fd).subscribe(
+      res => {
+        if(res) {
+          console.log('Avatar modify success!')
+        } else {
+          console.log('Update avatar error!')
+        }
+      },
+      err => console.log(err)
+    );
+    this.dialogRef.close();
   }
 }
