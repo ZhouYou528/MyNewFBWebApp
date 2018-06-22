@@ -42,4 +42,9 @@ export class UserService {
   updatePassword(user: User) {
     return this.http.put<User>('users/update-password/' + user._id, user)
   }
+
+  // updateAvatar(user: User) {
+  //   return this.http.put<User>('users/update-avatar/' + user._id, user)
+  // }
+
 }

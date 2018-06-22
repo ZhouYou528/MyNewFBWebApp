@@ -14,12 +14,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 //components
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AvatarPreviewComponent } from'./user-profile/user-profile.component';
 
 //service
 import { UserService } from './service/user.service';
@@ -32,12 +35,14 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     routingComponents,
     HeaderComponent,
     FooterComponent,
+    AvatarPreviewComponent
   ],
   imports: [
     MatIconModule,
     MatButtonModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
     MatCardModule,
@@ -50,6 +55,9 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     FormsModule,
     HttpClientModule,
     AppRoutingModule
+  ],
+  entryComponents: [
+    AvatarPreviewComponent
   ],
   providers: [
     UserService, 

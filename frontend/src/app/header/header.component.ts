@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   setUserProfile() {
     this.userService.getCurrentUser().subscribe(
       res => {
-        console.log(res)
+        // console.log(res)
         if(res) {
           this.router.navigate(['/profile']);
         }

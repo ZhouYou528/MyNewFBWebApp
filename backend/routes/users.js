@@ -4,6 +4,17 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const bcrypt = require('bcrypt-nodejs');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads');
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+});
+const upload = multer({storage: storage})
 
 //https://www.youtube.com/watch?v=CMDsTMV2AgI ==> For Improvement
 
@@ -116,6 +127,20 @@ router.put('/update-password/:id', verifyToken, (req, res, next) => {
                     res.json(updatedUser);
                 }
             })
+        }
+    });
+});
+
+router.put('/update-avatar/:id', verifyToken, upload.single('avatar'), (req, res, next) => {
+    User.findByIdAndUpdate(req.userId,
+    {
+        $set:{ avatar: req.file.path }
+    },
+    function(err, updatedUser) {
+        if(err) {
+            res.send("Failed updating the friend")
+        }else{
+            res.json(updatedUser);
         }
     });
 });

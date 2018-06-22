@@ -15,6 +15,8 @@ mongoose.connect('mongodb+srv://zhouyou0528:' + process.env.MONGO_ATLAS_PW + '@m
 // generate log
 app.use(morgan('dev'));
 
+app.use('/uploads', express.static('uploads'));
+
 //Body Parser Middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
