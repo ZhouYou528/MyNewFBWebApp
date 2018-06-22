@@ -34,8 +34,12 @@ export class UserService {
   getCurrentUser() {
     return this.http.get<User>('/users/getCurrentUser')
   }
+
   updateEmail(user: User) {
     return this.http.put<User>('/users/update-email/' + user._id, user)
   }
 
+  updatePassword(user: User) {
+    return this.http.put<User>('users/update-password/' + user._id, user)
+  }
 }

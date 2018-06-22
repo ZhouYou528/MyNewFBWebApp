@@ -672,6 +672,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.updateEmail = function (user) {
         return this.http.put('/users/update-email/' + user._id, user);
     };
+    UserService.prototype.updatePassword = function (user) {
+        return this.http.put('users/update-password/' + user._id, user);
+    };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -880,7 +883,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email(); emaileditable=!emaileditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=...............................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"password\" matInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"currentUser.password\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password()\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
+module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email(); emaileditable=!emaileditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=....................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button> \n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n              <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
 
 /***/ }),
 
@@ -913,6 +916,7 @@ var UserProfileComponent = /** @class */ (function () {
     function UserProfileComponent(userService) {
         this.userService = userService;
         this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
+        this.hide = true;
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -922,7 +926,7 @@ var UserProfileComponent = /** @class */ (function () {
                 _this.currentUser = res;
             }
             else {
-                console.log('Get Current User Error!');
+                console.log('Get current user error!');
             }
         }, function (err) { return console.log(err); });
     };
@@ -934,7 +938,19 @@ var UserProfileComponent = /** @class */ (function () {
                 _this.ngOnInit();
             }
             else {
-                console.log('Update Email Error!');
+                console.log('Update email error!');
+            }
+        }, function (err) { return console.log(err); });
+    };
+    UserProfileComponent.prototype.update_password = function () {
+        var _this = this;
+        this.userService.updatePassword(this.currentUser).subscribe(function (res) {
+            if (res) {
+                console.log('Password modify success!');
+                _this.ngOnInit();
+            }
+            else {
+                console.log('Update password error!');
             }
         }, function (err) { return console.log(err); });
     };

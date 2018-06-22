@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-
+const bcrypt = require('bcrypt-nodejs');
 
 //https://www.youtube.com/watch?v=CMDsTMV2AgI ==> For Improvement
 
@@ -101,6 +101,23 @@ router.put('/update-email/:id', verifyToken, (req, res, next) => {
             res.json(updatedUser);
         }
     })
+});
+
+router.put('/update-password/:id', verifyToken, (req, res, next) => {
+    bcrypt.hash(req.body.password, null, null, (err, hash) => {
+        if (err) {
+            return res.json({ success: false, msg: 'Failed to hash password' });
+        } else {
+            let query = { $set: { password: hash } };
+            User.findByIdAndUpdate(req.userId, query, function (err, updatedUser) {
+                if (err) {
+                    return res.json({ success: false, msg: 'Failed to update password' });
+                } else {
+                    res.json(updatedUser);
+                }
+            })
+        }
+    });
 });
 
 function verifyToken(req, res, next) {
