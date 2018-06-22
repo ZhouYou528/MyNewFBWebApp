@@ -1,5 +1,10 @@
 .footer {
-    align-self: flex-end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
     text-align: center;
-    width: 100%;
+    margin-bottom: 0;
 }

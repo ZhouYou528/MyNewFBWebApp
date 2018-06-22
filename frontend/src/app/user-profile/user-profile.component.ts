@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  currentUser = new User();
+
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe(
+      res => {
+        if(res) {
+          console.log(res)
+          this.currentUser = res
+        } else {
+          console.log('Get Current User Error!')
+        }
+      },
+      err => console.log(err)
+    )
   }
-
+  update_email() {
+    this.userService.updateEmail(this.currentUser).subscribe(
+      res => {
+        if(res) {
+          console.log('Email modify success!')
+          this.ngOnInit()
+        } else {
+          console.log('Update Email Error!')
+        }
+      },
+      err => console.log(err)
+    )
+  }
+  
 }

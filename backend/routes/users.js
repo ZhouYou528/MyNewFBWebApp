@@ -92,6 +92,17 @@ router.get('/getCurrentUser', verifyToken, (req, res, next) => {
     })
 });
 
+router.put('/update-email/:id', verifyToken, (req, res, next) => {
+    let query = { $set: { email: req.body.email } }
+    User.findByIdAndUpdate(req.userId, query, function (err, updatedUser) {
+        if (err) {
+            return res.json({ success: false, msg: 'Failed to update email' });
+        } else {
+            res.json(updatedUser);
+        }
+    })
+});
+
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {
         return res.status(401).send('Unauthorized request!')

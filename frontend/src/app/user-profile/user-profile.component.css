@@ -1,0 +1,70 @@
+:host {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color:#EEEEEE; */
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .example-button-color {
+      color: #80CBC4
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 600px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .post-image {
+    /* background-image: url('../../../assets/headerimage/head6.jpg'); */
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 100px;
+  }
+  .example-card {
+    width: 800px;
+    padding:0 0 50px 0;
+    margin-bottom: 50px;
+  }
+  .card-header {
+    background-size: cover;
+    background-image: url('../../assets/mojave-day.jpg');
+    margin-bottom: 50px;
+  }
+  .back-button {
+    margin-left: 100px;
+  }
+  .uploadImg{
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    padding:0 0 20px 0;
+  }
+  .icon-align{
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  
+  .input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button-spacer{
+    margin-left: 10px;
+  }
+  .avatar-header{
+    align-items: center;
+    justify-content: center;
+    font: bold;
+  }

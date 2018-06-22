@@ -13,20 +13,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 //components
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { SignupformComponent } from './signupform/signupform.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 //service
 import { UserService } from './service/user.service';
 import { AuthGuard } from './service/auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +32,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     routingComponents,
     HeaderComponent,
     FooterComponent,
-    SignupformComponent,
-    DashboardComponent,
-    UserProfileComponent
   ],
   imports: [
     MatIconModule,
@@ -45,6 +40,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
+    MatCardModule,
     MatInputModule,
     MatToolbarModule,
     MatRadioModule,

@@ -28,6 +28,9 @@ app.use(express.static(path.join(__dirname, '../frontend/dist/MyNewFBWebApp')));
 
 
 app.use('/users', usersRoutes);
+app.all("*",(req,res,next) => {
+    res.sendFile(path.resolve('../frontend/dist/MyNewFBWebApp/index.html'))
+});
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

@@ -87,7 +87,12 @@ var AppRoutingModule = /** @class */ (function () {
     return AppRoutingModule;
 }());
 
-var routingComponents = [_signinform_signinform_component__WEBPACK_IMPORTED_MODULE_2__["SigninformComponent"]];
+var routingComponents = [
+    _signinform_signinform_component__WEBPACK_IMPORTED_MODULE_2__["SigninformComponent"],
+    _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_3__["SignupformComponent"],
+    _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"],
+    _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__["UserProfileComponent"]
+];
 
 
 /***/ }),
@@ -99,7 +104,7 @@ var routingComponents = [_signinform_signinform_component__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 100vh;\n}"
+module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 99vh;\n    position: relative;\n}\n\n\n"
 
 /***/ }),
 
@@ -173,16 +178,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/menu */ "./node_modules/@angular/material/esm5/menu.es5.js");
 /* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/radio */ "./node_modules/@angular/material/esm5/radio.es5.js");
 /* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/esm5/progress-spinner.es5.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./signupform/signupform.component */ "./src/app/signupform/signupform.component.ts");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
-/* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
-/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
-/* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
+/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -203,15 +206,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 //components
 
 
 
 
-
-
 //service
-
 
 
 
@@ -221,13 +222,10 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["routingComponents"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_15__["HeaderComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_16__["FooterComponent"],
-                _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_17__["SignupformComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_18__["DashboardComponent"],
-                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_22__["UserProfileComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_14__["routingComponents"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_16__["HeaderComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
             ],
             imports: [
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
@@ -236,6 +234,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDatepickerModule"],
                 _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_12__["MatProgressSpinnerModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatNativeDateModule"],
+                _angular_material_card__WEBPACK_IMPORTED_MODULE_13__["MatCardModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
                 _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_9__["MatToolbarModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_11__["MatRadioModule"],
@@ -244,18 +243,18 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_14__["AppRoutingModule"]
             ],
             providers: [
-                _service_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
-                _service_auth_guard__WEBPACK_IMPORTED_MODULE_20__["AuthGuard"],
+                _service_user_service__WEBPACK_IMPORTED_MODULE_18__["UserService"],
+                _service_auth_guard__WEBPACK_IMPORTED_MODULE_19__["AuthGuard"],
                 {
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
-                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_21__["TokenInterceptorService"],
+                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_20__["TokenInterceptorService"],
                     multi: true
                 }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -335,7 +334,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".footer {\n    align-self: flex-end;\n    text-align: center;\n    width: 100%;\n}"
+module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 1rem;\n    background-color: #efefef;\n    text-align: center;\n    margin-bottom: 0;\n}"
 
 /***/ }),
 
@@ -409,7 +408,7 @@ module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <mat-toolbar color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>\n        <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button>\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
+module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>\n        <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button>\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
 
 /***/ }),
 
@@ -670,6 +669,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getCurrentUser = function () {
         return this.http.get('/users/getCurrentUser');
     };
+    UserService.prototype.updateEmail = function (user) {
+        return this.http.put('/users/update-email/' + user._id, user);
+    };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -867,7 +869,7 @@ var SignupformComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* background-color:#EEEEEE; */\n  }\n  \n  .example-full-width {\n    width: 100%;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    /* background-image: url('../../../assets/headerimage/head6.jpg'); */\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-bottom: 50px;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('mojave-day.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
 
 /***/ }),
 
@@ -878,7 +880,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  user-profile works!\n</p>\n"
+module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email(); emaileditable=!emaileditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=...............................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"password\" matInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"currentUser.password\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password()\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
 
 /***/ }),
 
@@ -893,6 +895,8 @@ module.exports = "<p>\n  user-profile works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserProfileComponent", function() { return UserProfileComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -903,10 +907,36 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var UserProfileComponent = /** @class */ (function () {
-    function UserProfileComponent() {
+    function UserProfileComponent(userService) {
+        this.userService = userService;
+        this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
     }
     UserProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getCurrentUser().subscribe(function (res) {
+            if (res) {
+                console.log(res);
+                _this.currentUser = res;
+            }
+            else {
+                console.log('Get Current User Error!');
+            }
+        }, function (err) { return console.log(err); });
+    };
+    UserProfileComponent.prototype.update_email = function () {
+        var _this = this;
+        this.userService.updateEmail(this.currentUser).subscribe(function (res) {
+            if (res) {
+                console.log('Email modify success!');
+                _this.ngOnInit();
+            }
+            else {
+                console.log('Update Email Error!');
+            }
+        }, function (err) { return console.log(err); });
     };
     UserProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -914,7 +944,7 @@ var UserProfileComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./user-profile.component.html */ "./src/app/user-profile/user-profile.component.html"),
             styles: [__webpack_require__(/*! ./user-profile.component.css */ "./src/app/user-profile/user-profile.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], UserProfileComponent);
     return UserProfileComponent;
 }());

@@ -33,4 +33,10 @@ export const appRoutes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [SigninformComponent]
+export const routingComponents = 
+[
+  SigninformComponent, 
+  SignupformComponent,
+  DashboardComponent,
+  UserProfileComponent
+]
