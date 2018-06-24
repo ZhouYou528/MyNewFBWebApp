@@ -22,7 +22,6 @@
     margin-right: auto;
   }
   .post-image {
-    /* background-image: url('../../../assets/headerimage/head6.jpg'); */
     background-size: cover;
     width: 150px;
     height: 150px;
@@ -38,7 +37,7 @@
   }
   .card-header {
     background-size: cover;
-    background-image: url('../../assets/mojave-day.jpg');
+    background-image: url('../../assets/afternoon.jpg');
     margin-bottom: 50px;
   }
   .back-button {

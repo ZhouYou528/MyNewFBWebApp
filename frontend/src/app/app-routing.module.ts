@@ -5,10 +5,15 @@ import { SignupformComponent } from './signupform/signupform.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './service/auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HomeComponent } from './home/home.component';
 
 export const appRoutes: Routes = [
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'signin',
     component: SigninformComponent
   },
   {
@@ -38,5 +43,6 @@ export const routingComponents =
   SigninformComponent, 
   SignupformComponent,
   DashboardComponent,
-  UserProfileComponent
+  UserProfileComponent,
+  HomeComponent
 ]

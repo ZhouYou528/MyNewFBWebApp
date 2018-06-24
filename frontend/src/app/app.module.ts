@@ -35,7 +35,7 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     routingComponents,
     HeaderComponent,
     FooterComponent,
-    AvatarPreviewComponent
+    AvatarPreviewComponent,
   ],
   imports: [
     MatIconModule,

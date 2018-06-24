@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
 /* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55,9 +56,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var appRoutes = [
     {
         path: '',
+        component: _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"]
+    },
+    {
+        path: 'signin',
         component: _signinform_signinform_component__WEBPACK_IMPORTED_MODULE_2__["SigninformComponent"]
     },
     {
@@ -91,7 +97,8 @@ var routingComponents = [
     _signinform_signinform_component__WEBPACK_IMPORTED_MODULE_2__["SigninformComponent"],
     _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_3__["SignupformComponent"],
     _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"],
-    _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__["UserProfileComponent"]
+    _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__["UserProfileComponent"],
+    _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"]
 ];
 
 
@@ -230,7 +237,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["routingComponents"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
-                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_19__["AvatarPreviewComponent"]
+                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_19__["AvatarPreviewComponent"],
             ],
             imports: [
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
@@ -354,7 +361,7 @@ module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"footer\">\n    Copyright 2017&copy; You Zhou\n</p>\n"
+module.exports = "<p class=\"footer\">\n    Copyright 2018&copy; You Zhou\n</p>\n"
 
 /***/ }),
 
@@ -417,7 +424,7 @@ module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>\n        <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button>\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
+module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button>\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
 
 /***/ }),
 
@@ -482,6 +489,69 @@ var HeaderComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], HeaderComponent);
     return HeaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/home/home.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.html":
+/*!******************************************!*\
+  !*** ./src/app/home/home.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<body>\n    <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div>\n    <div>\n      <img width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div class=\"sign-in-button\">\n      <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n</body>"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/home/home.component.ts ***!
+  \****************************************/
+/*! exports provided: HomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-home',
+            template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
+            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
 }());
 
 
@@ -718,7 +788,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div>\n    <div>\n      <img width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <mat-form-field class=\"login-input-form\">\n      <input matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"login-input-form\">\n      <input type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"signinUser.password\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <div class=\"sign-in-button\">\n      <button color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button color=\"primary\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n  </form>\n</body>"
+module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div>\n    <div>\n      <img width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <mat-form-field class=\"login-input-form\">\n      <input matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"login-input-form\">\n      <input type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"signinUser.password\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <div class=\"sign-in-button\">\n      <button color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n    </div>\n  </form>\n</body>"
 
 /***/ }),
 
@@ -895,7 +965,7 @@ module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change y
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* background-color:#EEEEEE; */\n  }\n  \n  .example-full-width {\n    width: 100%;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    /* background-image: url('../../../assets/headerimage/head6.jpg'); */\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-bottom: 50px;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('mojave-day.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* background-color:#EEEEEE; */\n  }\n  \n  .example-full-width {\n    width: 100%;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-bottom: 50px;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
 
 /***/ }),
 

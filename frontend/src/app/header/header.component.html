@@ -1,8 +1,8 @@
 <header>
     <mat-toolbar class="mat-elevation-z5" color="primary">
         <span style="text-align:center;">GatorBook</span>
-        <span class="spacer"></span>
-        <button mat-icon-button [matMenuTriggerFor]="menu" id="menubtn">
+        <span class="spacer"></span>   
+        <button *ngIf="userService.loggedIn()" mat-icon-button [matMenuTriggerFor]="menu" id="menubtn">
             <i class="material-icons">account_circle</i>
         </button>
         <mat-menu #menu="matMenu">
