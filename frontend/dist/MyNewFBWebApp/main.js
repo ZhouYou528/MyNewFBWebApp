@@ -1100,7 +1100,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email(); emaileditable=!emaileditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=....................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button> \n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n              <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
+module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=....................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button> \n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n              <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
 
 /***/ }),
 
@@ -1119,6 +1119,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _service_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/validate.service */ "./src/app/service/validate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1135,12 +1136,17 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
+
 var UserProfileComponent = /** @class */ (function () {
-    function UserProfileComponent(userService, dialog) {
+    function UserProfileComponent(snackBar, validateService, userService, dialog) {
+        this.snackBar = snackBar;
+        this.validateService = validateService;
         this.userService = userService;
         this.dialog = dialog;
         this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
         this.hide = true;
+        this.emaileditable = false;
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1156,27 +1162,52 @@ var UserProfileComponent = /** @class */ (function () {
     };
     UserProfileComponent.prototype.update_email = function () {
         var _this = this;
-        this.userService.updateEmail(this.currentUser).subscribe(function (res) {
-            if (res) {
-                console.log('Email modify success!');
-                _this.ngOnInit();
-            }
-            else {
-                console.log('Update email error!');
-            }
-        }, function (err) { return console.log(err); });
+        if (this.validateService.validateEmail(this.currentUser.email)) {
+            this.userService.updateEmail(this.currentUser).subscribe(function (res) {
+                if (res) {
+                    console.log('Email modify success!');
+                    _this.emaileditable = false;
+                    _this.snackBar.open('Email update success!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'green-snackbar'
+                    });
+                    _this.ngOnInit();
+                }
+                else {
+                    console.log('Update email error!');
+                }
+            }, function (err) { return console.log(err); });
+        }
+        else {
+            this.snackBar.open('Email is not valid!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
     };
     UserProfileComponent.prototype.update_password = function () {
         var _this = this;
-        this.userService.updatePassword(this.currentUser).subscribe(function (res) {
-            if (res) {
-                console.log('Password modify success!');
-                _this.ngOnInit();
-            }
-            else {
-                console.log('Update password error!');
-            }
-        }, function (err) { return console.log(err); });
+        if (this.currentUser.password.length > 16) {
+            this.snackBar.open('Password too long!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
+        else {
+            this.userService.updatePassword(this.currentUser).subscribe(function (res) {
+                if (res) {
+                    console.log('Password modify success!');
+                    _this.snackBar.open('Password update success!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'green-snackbar'
+                    });
+                    _this.ngOnInit();
+                }
+                else {
+                    console.log('Update password error!');
+                }
+            }, function (err) { return console.log(err); });
+        }
     };
     UserProfileComponent.prototype.openDialog = function () {
         var _this = this;
@@ -1194,13 +1225,14 @@ var UserProfileComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./user-profile.component.html */ "./src/app/user-profile/user-profile.component.html"),
             styles: [__webpack_require__(/*! ./user-profile.component.css */ "./src/app/user-profile/user-profile.component.css")]
         }),
-        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _service_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"], _service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
     ], UserProfileComponent);
     return UserProfileComponent;
 }());
 
 var AvatarPreviewComponent = /** @class */ (function () {
-    function AvatarPreviewComponent(dialogRef, data, userService) {
+    function AvatarPreviewComponent(snackBar, dialogRef, data, userService) {
+        this.snackBar = snackBar;
         this.dialogRef = dialogRef;
         this.data = data;
         this.userService = userService;
@@ -1227,16 +1259,31 @@ var AvatarPreviewComponent = /** @class */ (function () {
         }
     };
     AvatarPreviewComponent.prototype.updateAvatar = function () {
+        var _this = this;
         var fd = new FormData();
         fd.append('avatar', this.selectedFile, this.selectedFile.name);
         this.userService.updateAvatar(this.currentUser, fd).subscribe(function (res) {
             if (res) {
                 console.log('Avatar modify success!');
+                _this.snackBar.open('Avatar update success!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'green-snackbar'
+                });
             }
             else {
                 console.log('Update avatar error!');
+                _this.snackBar.open('Failed to update avatar!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'red-snackbar'
+                });
             }
-        }, function (err) { return console.log(err); });
+        }, function (err) {
+            console.log(err);
+            _this.snackBar.open('Failed to update avatar!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        });
         this.dialogRef.close();
     };
     AvatarPreviewComponent = __decorate([
@@ -1245,8 +1292,9 @@ var AvatarPreviewComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./avatarPreview.html */ "./src/app/user-profile/avatarPreview.html"),
             styles: [__webpack_require__(/*! ./user-profile.component.css */ "./src/app/user-profile/user-profile.component.css")]
         }),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Object, _service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+        __param(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"], Object, _service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], AvatarPreviewComponent);
     return AvatarPreviewComponent;
 }());

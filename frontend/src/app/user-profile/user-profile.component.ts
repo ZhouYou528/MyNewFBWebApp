@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { User } from '../model/user';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ValidateService } from '../service/validate.service'
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,8 +14,9 @@ export class UserProfileComponent implements OnInit {
 
   currentUser = new User();
   hide = true;
+  emaileditable = false;
 
-  constructor(private userService: UserService, public dialog: MatDialog) { }
+  constructor(public snackBar: MatSnackBar, private validateService: ValidateService, private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(
@@ -30,31 +33,54 @@ export class UserProfileComponent implements OnInit {
   }
 
   update_email() {
-    this.userService.updateEmail(this.currentUser).subscribe(
-      res => {
-        if (res) {
-          console.log('Email modify success!')
-          this.ngOnInit()
-        } else {
-          console.log('Update email error!')
-        }
-      },
-      err => console.log(err)
-    )
+    if(this.validateService.validateEmail(this.currentUser.email)) {
+      this.userService.updateEmail(this.currentUser).subscribe(
+        res => {
+          if (res) {
+            console.log('Email modify success!')
+            this.emaileditable = false;
+            this.snackBar.open('Email update success!', 'Close', {
+              duration: 2000,
+              panelClass:'green-snackbar'
+            });
+            this.ngOnInit()
+          } else {
+            console.log('Update email error!')
+          }
+        },
+        err => console.log(err)
+      )
+    } else {
+      this.snackBar.open('Email is not valid!', 'Close', {
+        duration: 2000,
+        panelClass:'red-snackbar'
+      });
+    }
   }
 
   update_password() {
-    this.userService.updatePassword(this.currentUser).subscribe(
-      res => {
-        if(res) {
-          console.log('Password modify success!')
-          this.ngOnInit()
-        } else {
-          console.log('Update password error!')
-        }
-      },
-      err => console.log(err)
-    )
+    if(this.currentUser.password.length > 16) {
+      this.snackBar.open('Password too long!', 'Close', {
+        duration: 2000,
+        panelClass:'red-snackbar'
+      });
+    } else {
+      this.userService.updatePassword(this.currentUser).subscribe(
+        res => {
+          if(res) {
+            console.log('Password modify success!')
+            this.snackBar.open('Password update success!', 'Close', {
+              duration: 2000,
+              panelClass:'green-snackbar'
+            });
+            this.ngOnInit()
+          } else {
+            console.log('Update password error!')
+          }
+        },
+        err => console.log(err)
+      )
+    }
   }
 
    openDialog(): void {
@@ -79,7 +105,7 @@ export class AvatarPreviewComponent implements OnInit {
   selectedFile: File = null;
   avatar = '';
 
-  constructor(
+  constructor(public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<AvatarPreviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService) { }
 
@@ -108,11 +134,25 @@ export class AvatarPreviewComponent implements OnInit {
       res => {
         if(res) {
           console.log('Avatar modify success!')
+          this.snackBar.open('Avatar update success!', 'Close', {
+            duration: 2000,
+            panelClass:'green-snackbar'
+          });
         } else {
           console.log('Update avatar error!')
+          this.snackBar.open('Failed to update avatar!', 'Close', {
+            duration: 2000,
+            panelClass:'red-snackbar'
+          });
         }
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        this.snackBar.open('Failed to update avatar!', 'Close', {
+          duration: 2000,
+          panelClass:'red-snackbar'
+        });
+      }
     );
     this.dialogRef.close();
   }

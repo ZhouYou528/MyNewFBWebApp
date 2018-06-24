@@ -14,7 +14,9 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
-const upload = multer({storage: storage})
+const upload = multer({storage: storage, limits: {
+    fileSize: 1024 * 1024 * 2
+}});
 
 //https://www.youtube.com/watch?v=CMDsTMV2AgI ==> For Improvement
 
@@ -138,7 +140,7 @@ router.put('/update-avatar/:id', verifyToken, upload.single('avatar'), (req, res
     },
     function(err, updatedUser) {
         if(err) {
-            res.send("Failed updating the friend")
+            res.send("Failed updating the avatar")
         }else{
             res.json(updatedUser);
         }
