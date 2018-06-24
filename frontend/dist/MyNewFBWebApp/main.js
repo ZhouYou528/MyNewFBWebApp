@@ -798,32 +798,39 @@ var ValidateService = /** @class */ (function () {
     function ValidateService() {
     }
     ValidateService.prototype.validateLogin = function (user) {
-        if (user.username === undefined ||
-            user.username === '' ||
-            user.password === undefined ||
-            user.password === '') {
-            return false;
+        if (user.username === '' || user.username === undefined) {
+            return 'Please fill in the user name!';
+        }
+        else if (user.password === '' || user.password === undefined) {
+            return 'Please fill in the user password!';
         }
         else {
-            return true;
+            return 'Success!';
         }
     };
-    ValidateService.prototype.validateRegister = function (user) {
-        if (user.nickname === undefined ||
-            user.nickname === '' ||
-            user.email === undefined ||
-            user.email === '' ||
-            user.username === undefined ||
-            user.username === '' ||
-            user.password === undefined ||
-            user.password === '' ||
-            user.dob === undefined ||
-            user.dob === '') {
-            return false;
+    ValidateService.prototype.validateRegister = function (user, confirmedpassword) {
+        if (user.username === '' || user.username === undefined) {
+            return 'Please fill in the user name!';
+        }
+        else if (user.password === '' || user.password === undefined) {
+            return 'Please fill in the user password!';
+        }
+        else if (user.password !== confirmedpassword) {
+            return 'Password don\'t match!';
+        }
+        else if (user.email === '' || user.email === undefined) {
+            return 'Please fill in the user email!';
+        }
+        else if (!this.validateEmail(user.email)) {
+            return 'Email is not valid!';
         }
         else {
-            return true;
+            return 'Success!';
         }
+    };
+    ValidateService.prototype.validateEmail = function (email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
     };
     ValidateService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -907,7 +914,8 @@ var SigninformComponent = /** @class */ (function () {
         e.preventDefault();
         this.signinUser.username = e.target.elements[0].value;
         this.signinUser.password = e.target.elements[1].value;
-        if (this.validateService.validateLogin(this.signinUser)) {
+        this.msg = this.validateService.validateLogin(this.signinUser);
+        if (this.msg === 'Success!') {
             this.userService.loginUser(this.signinUser.username, this.signinUser.password)
                 .subscribe(function (res) {
                 console.log(res);
@@ -933,14 +941,8 @@ var SigninformComponent = /** @class */ (function () {
                 }
             }, function (err) { return console.log(err); });
         }
-        else if (this.signinUser.username === '' || this.signinUser.username === undefined) {
-            this.snackBar.open('Please fill in the user name!', 'Close', {
-                duration: 2000,
-                panelClass: 'red-snackbar'
-            });
-        }
-        else if (this.signinUser.password === '' || this.signinUser.password === undefined) {
-            this.snackBar.open('Please fill in the user password!', 'Close', {
+        else {
+            this.snackBar.open(this.msg, 'Close', {
                 duration: 2000,
                 panelClass: 'red-snackbar'
             });
@@ -997,6 +999,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _service_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/validate.service */ "./src/app/service/validate.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1010,8 +1014,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var SignupformComponent = /** @class */ (function () {
-    function SignupformComponent(router, userService) {
+    function SignupformComponent(snackBar, validateService, router, userService) {
+        this.snackBar = snackBar;
+        this.validateService = validateService;
         this.router = router;
         this.userService = userService;
         this.newUser = new _model_user__WEBPACK_IMPORTED_MODULE_1__["User"]();
@@ -1021,17 +1029,32 @@ var SignupformComponent = /** @class */ (function () {
     SignupformComponent.prototype.signupUser = function () {
         var _this = this;
         console.log(this.newUser);
-        this.userService.create(this.newUser)
-            .subscribe(function (res) {
-            console.log(res);
-            if (res.success) {
-                // localStorage.setItem('token', res.token);
-                _this.router.navigate(['signin']);
-            }
-            else {
-                // TO_DO
-            }
-        }, function (err) { return console.log(err); });
+        this.msg = this.validateService.validateRegister(this.newUser, this.confirmedpassword);
+        if (this.msg === 'Success!') {
+            this.userService.create(this.newUser)
+                .subscribe(function (res) {
+                console.log(res);
+                if (res.success) {
+                    _this.snackBar.open('Register Success! Please login.', 'Close', {
+                        duration: 2000,
+                        panelClass: 'green-snackbar'
+                    });
+                    _this.router.navigate(['signin']);
+                }
+                else if (res.message === 'Username already exists') {
+                    _this.snackBar.open('Username already exists!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'red-snackbar'
+                    });
+                }
+            }, function (err) { return console.log(err); });
+        }
+        else {
+            this.snackBar.open(this.msg, 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
     };
     SignupformComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1039,7 +1062,7 @@ var SignupformComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./signupform.component.html */ "./src/app/signupform/signupform.component.html"),
             styles: [__webpack_require__(/*! ./signupform.component.css */ "./src/app/signupform/signupform.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _service_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
     ], SignupformComponent);
     return SignupformComponent;
 }());

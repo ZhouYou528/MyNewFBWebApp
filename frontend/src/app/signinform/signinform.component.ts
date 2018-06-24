@@ -14,6 +14,8 @@ export class SigninformComponent implements OnInit {
 
   hide = true;
   signinUser = new User();
+  msg: string;
+
   constructor(public snackBar: MatSnackBar, private router: Router, private userService: UserService, private validateService: ValidateService) { }
 
   ngOnInit() {
@@ -23,8 +25,8 @@ export class SigninformComponent implements OnInit {
     e.preventDefault();
     this.signinUser.username = e.target.elements[0].value;
     this.signinUser.password = e.target.elements[1].value;
-
-    if (this.validateService.validateLogin(this.signinUser)) {
+    this.msg = this.validateService.validateLogin(this.signinUser);
+    if (this.msg === 'Success!') {
       this.userService.loginUser(this.signinUser.username, this.signinUser.password)
         .subscribe(
           res => {
@@ -50,13 +52,8 @@ export class SigninformComponent implements OnInit {
           },
           err => console.log(err)
         )
-    } else if(this.signinUser.username === '' || this.signinUser.username === undefined) {
-      this.snackBar.open('Please fill in the user name!', 'Close', {
-        duration: 2000,
-        panelClass:'red-snackbar'
-      });
-    } else if(this.signinUser.password === '' || this.signinUser.password === undefined) {
-      this.snackBar.open('Please fill in the user password!', 'Close', {
+    } else {
+      this.snackBar.open(this.msg, 'Close', {
         duration: 2000,
         panelClass:'red-snackbar'
       });

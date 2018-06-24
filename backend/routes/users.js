@@ -43,7 +43,7 @@ router.post('/register', (req, res, next) =>{
                 user.save((err, registeredUser) => {
                     if(err) {
                         if(err.code == 11000) {
-                            res.json({success: false, message: 'Username or e-mail already exists'});
+                            res.json({success: false, message: 'Username already exists'});
                         } else {
                             res.json({success: false, message: err});
                         }
