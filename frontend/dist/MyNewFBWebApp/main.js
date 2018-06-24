@@ -111,7 +111,7 @@ var routingComponents = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 99vh;\n    position: relative;\n}\n\n\n"
+module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 99vh;\n    position: relative;\n}\n"
 
 /***/ }),
 
@@ -195,6 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
 /* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -227,6 +228,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -251,6 +253,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
                 _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_9__["MatToolbarModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_11__["MatRadioModule"],
+                _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_23__["MatSnackBarModule"],
                 _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
                 _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__["MatMenuModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -424,7 +427,7 @@ module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button>\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
+module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button>\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button>\n            <button mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
 
 /***/ }),
 
@@ -502,7 +505,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n}"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n}\n"
 
 /***/ }),
 
@@ -770,6 +773,71 @@ var UserService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/service/validate.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/service/validate.service.ts ***!
+  \*********************************************/
+/*! exports provided: ValidateService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidateService", function() { return ValidateService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ValidateService = /** @class */ (function () {
+    function ValidateService() {
+    }
+    ValidateService.prototype.validateLogin = function (user) {
+        if (user.username === undefined ||
+            user.username === '' ||
+            user.password === undefined ||
+            user.password === '') {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ValidateService.prototype.validateRegister = function (user) {
+        if (user.nickname === undefined ||
+            user.nickname === '' ||
+            user.email === undefined ||
+            user.email === '' ||
+            user.username === undefined ||
+            user.username === '' ||
+            user.password === undefined ||
+            user.password === '' ||
+            user.dob === undefined ||
+            user.dob === '') {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ValidateService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], ValidateService);
+    return ValidateService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/signinform/signinform.component.css":
 /*!*****************************************************!*\
   !*** ./src/app/signinform/signinform.component.css ***!
@@ -777,7 +845,7 @@ var UserService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}"
 
 /***/ }),
 
@@ -806,6 +874,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _service_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/validate.service */ "./src/app/service/validate.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -819,10 +889,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var SigninformComponent = /** @class */ (function () {
-    function SigninformComponent(router, userService) {
+    function SigninformComponent(snackBar, router, userService, validateService) {
+        this.snackBar = snackBar;
         this.router = router;
         this.userService = userService;
+        this.validateService = validateService;
         this.hide = true;
         this.signinUser = new _model_user__WEBPACK_IMPORTED_MODULE_1__["User"]();
     }
@@ -833,17 +907,44 @@ var SigninformComponent = /** @class */ (function () {
         e.preventDefault();
         this.signinUser.username = e.target.elements[0].value;
         this.signinUser.password = e.target.elements[1].value;
-        // TO-DO: validate input
-        this.userService.loginUser(this.signinUser.username, this.signinUser.password)
-            .subscribe(function (res) {
-            console.log(res);
-            if (res.success) {
-                localStorage.setItem('token', res.token);
-                _this.router.navigate(['dashboard']);
-            }
-            else {
-            }
-        }, function (err) { return console.log(err); });
+        if (this.validateService.validateLogin(this.signinUser)) {
+            this.userService.loginUser(this.signinUser.username, this.signinUser.password)
+                .subscribe(function (res) {
+                console.log(res);
+                if (res.success) {
+                    _this.snackBar.open('Login Success!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'green-snackbar'
+                    });
+                    localStorage.setItem('token', res.token);
+                    _this.router.navigate(['dashboard']);
+                }
+                else if (res.message === 'Invalid password.') {
+                    _this.snackBar.open('Invalid Password!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'red-snackbar'
+                    });
+                }
+                else if (res.message === 'Username not found.') {
+                    _this.snackBar.open('No such user, please sign up!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'red-snackbar'
+                    });
+                }
+            }, function (err) { return console.log(err); });
+        }
+        else if (this.signinUser.username === '' || this.signinUser.username === undefined) {
+            this.snackBar.open('Please fill in the user name!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
+        else if (this.signinUser.password === '' || this.signinUser.password === undefined) {
+            this.snackBar.open('Please fill in the user password!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
     };
     SigninformComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -851,7 +952,7 @@ var SigninformComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./signinform.component.html */ "./src/app/signinform/signinform.component.html"),
             styles: [__webpack_require__(/*! ./signinform.component.css */ "./src/app/signinform/signinform.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _service_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"]])
     ], SigninformComponent);
     return SigninformComponent;
 }());
@@ -924,8 +1025,8 @@ var SignupformComponent = /** @class */ (function () {
             .subscribe(function (res) {
             console.log(res);
             if (res.success) {
-                localStorage.setItem('token', res.token);
-                _this.router.navigate(['dashboard']);
+                // localStorage.setItem('token', res.token);
+                _this.router.navigate(['signin']);
             }
             else {
                 // TO_DO

@@ -28,6 +28,7 @@ import { AvatarPreviewComponent } from'./user-profile/user-profile.component';
 import { UserService } from './service/user.service';
 import { AuthGuard } from './service/auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     MatInputModule,
     MatToolbarModule,
     MatRadioModule,
+    MatSnackBarModule,
     MatFormFieldModule,
     MatMenuModule,
     BrowserModule,

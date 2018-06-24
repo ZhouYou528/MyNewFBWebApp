@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
+import { ValidateService } from '../service/validate.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-signinform',
@@ -12,7 +14,7 @@ export class SigninformComponent implements OnInit {
 
   hide = true;
   signinUser = new User();
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(public snackBar: MatSnackBar, private router: Router, private userService: UserService, private validateService: ValidateService) { }
 
   ngOnInit() {
   }
@@ -22,21 +24,43 @@ export class SigninformComponent implements OnInit {
     this.signinUser.username = e.target.elements[0].value;
     this.signinUser.password = e.target.elements[1].value;
 
-    // TO-DO: validate input
-
-    this.userService.loginUser(this.signinUser.username, this.signinUser.password)
-    .subscribe(
-      res => {
-        console.log(res)
-        if(res.success) {
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['dashboard']);
-        } else {
-
-        }
-      },
-      err => console.log(err)
-    )
+    if (this.validateService.validateLogin(this.signinUser)) {
+      this.userService.loginUser(this.signinUser.username, this.signinUser.password)
+        .subscribe(
+          res => {
+            console.log(res)
+            if (res.success) {
+              this.snackBar.open('Login Success!', 'Close', {
+                duration: 2000,
+                panelClass:'green-snackbar'
+              });
+              localStorage.setItem('token', res.token);
+              this.router.navigate(['dashboard']);
+            } else if(res.message === 'Invalid password.'){
+              this.snackBar.open('Invalid Password!', 'Close', {
+                duration: 2000,
+                panelClass:'red-snackbar'
+              });
+            } else if(res.message === 'Username not found.') {
+              this.snackBar.open('No such user, please sign up!', 'Close', {
+                duration: 2000,
+                panelClass:'red-snackbar'
+              });
+            }
+          },
+          err => console.log(err)
+        )
+    } else if(this.signinUser.username === '' || this.signinUser.username === undefined) {
+      this.snackBar.open('Please fill in the user name!', 'Close', {
+        duration: 2000,
+        panelClass:'red-snackbar'
+      });
+    } else if(this.signinUser.password === '' || this.signinUser.password === undefined) {
+      this.snackBar.open('Please fill in the user password!', 'Close', {
+        duration: 2000,
+        panelClass:'red-snackbar'
+      });
+    } 
   }
 
 }
