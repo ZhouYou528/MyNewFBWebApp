@@ -1,0 +1,19 @@
+{
+  "name": "mynewfbwebapp",
+  "version": "1.0.0",
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.",
+  "main": "/backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhouYou528/MyNewFBWebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhouYou528/MyNewFBWebApp/issues"
+  },
+  "homepage": "https://github.com/ZhouYou528/MyNewFBWebApp#readme"
+}
