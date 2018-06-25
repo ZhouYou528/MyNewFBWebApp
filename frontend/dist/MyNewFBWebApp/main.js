@@ -111,7 +111,7 @@ var routingComponents = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 99vh;\n    position: relative;\n}\n"
+module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 100vh;\n    position: relative;\n}\n"
 
 /***/ }),
 
@@ -353,7 +353,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 1rem;\n    background-color: #efefef;\n    text-align: center;\n    margin-bottom: 0;\n}"
+module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 1rem;\n    background-color: #F2F2F2;\n    text-align: center;\n    margin-bottom: 0;\n}"
 
 /***/ }),
 
@@ -427,7 +427,7 @@ module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <!-- <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button> -->\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <!-- <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button> -->\n            <button mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
+module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center; font-family: 'Montserrat', sans-serif;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <!-- <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button> -->\n            <button mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <!-- <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button> -->\n            <button mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
 
 /***/ }),
 
@@ -505,7 +505,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n}\n"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n    font-family: 'Montserrat', sans-serif;\n}\n"
 
 /***/ }),
 
@@ -516,7 +516,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n    <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div>\n    <div>\n      <img width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div class=\"sign-in-button\">\n      <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n</body>"
+module.exports = "<body>\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> --> \n    <div>\n      <img style=\"margin-top: 150px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div class=\"sign-in-button\">\n      <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n</body>"
 
 /***/ }),
 
@@ -852,7 +852,7 @@ var ValidateService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.font {\n    font-family: 'Montserrat', sans-serif;\n}"
 
 /***/ }),
 
@@ -863,7 +863,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div>\n    <div>\n      <img width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <mat-form-field class=\"login-input-form\">\n      <input matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"login-input-form\">\n      <input type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"signinUser.password\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <div class=\"sign-in-button\">\n      <button color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n    </div>\n  </form>\n</body>"
+module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> -->\n    <div>\n      <img style=\"margin-top: 150px; margin-bottom: 80px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <mat-form-field class=\"login-input-form\">\n      <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"login-input-form\">\n      <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"signinUser.password\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <div class=\"sign-in-button\">\n      <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n    </div>\n  </form>\n</body>"
 
 /***/ }),
 
@@ -970,7 +970,7 @@ var SigninformComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n  \n.example-full-width {\n    width: 100%;\n}\n  \n.regis-title {\n    font-weight:bold;\n    font-size: 40px;\n    margin:1.5em 0;\n    display:block;\n}\n  \n.button-style {\n    margin:2.5em 0;\n}\n  \n.gender-style {\n    margin:1.5em 0;\n}\n  \n.left-gender {\n    display: inline-block; \n}\n  \n.right-gender {\n    display: inline-block;\n    padding-left: 30px;\n}\n  \n.left-component {\n    display: inline-block; \n    margin-top: 15px;\n}\n  \n.right-component {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 15px;\n}"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n  \n.example-full-width {\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n}\n  \n.regis-title {\n    font-weight:bold;\n    font-size: 40px;\n    margin:1.5em 0;\n    display:block;\n}\n  \n.button-style {\n    margin:2.5em 0;\n}\n  \n.gender-style {\n    margin:1.5em 0;\n}\n  \n.left-gender {\n    display: inline-block; \n}\n  \n.right-gender {\n    display: inline-block;\n    padding-left: 30px;\n}\n  \n.left-component {\n    display: inline-block; \n    margin-top: 15px;\n}\n  \n.right-component {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 15px;\n}"
 
 /***/ }),
 
@@ -981,7 +981,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <mat-form-field class=\"example-full-width\">\n      <input matInput placeholder=\"Username\" name=\"signupusername\" [(ngModel)]=\"newUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input matInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input type =\"password\" matInput placeholder=\"Password\" name=\"signuppassword\" [(ngModel)]=\"newUser.password\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input type =\"password\" matInput placeholder=\"Confirm Password\" name=\"confirmedpassword\" [(ngModel)]=\"confirmedpassword\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input type =\"text\" matInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </mat-form-field>\n    <mat-form-field>\n      <input matInput [matDatepicker]=\"picker\" placeholder=\"Birthdate\" name=\"dob\" [(ngModel)]=\"newUser.dob\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n      <mat-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></mat-datepicker>\n    </mat-form-field>\n    <div class=\"gender-style\">\n      <mat-radio-group name=\"gender\" [(ngModel)]=\"newUser.gender\">\n      <mat-radio-button class=\"left-gender\" value=\"Male\">Male</mat-radio-button>\n      <mat-radio-button class=\"right-gender\" value=\"Female\">Female</mat-radio-button>\n    </mat-radio-group>\n    </div>\n    <div class=\"left-component\">    \n      <button color =\"primary\" id=signupsubmitbtn type =\"submit\" mat-raised-button>Submit</button>\n    </div>\n    <div class=\"right-component\">\n        <button color =\"primary\" id=signupcancelbtn routerLink=\"/\" mat-raised-button>Cancel</button>\n    </div>\n  </form>\n"
+module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" matInput placeholder=\"Username\" name=\"signupusername\" [(ngModel)]=\"newUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" matInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"password\" matInput placeholder=\"Password\" name=\"signuppassword\" [(ngModel)]=\"newUser.password\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"password\" matInput placeholder=\"Confirm Password\" name=\"confirmedpassword\" [(ngModel)]=\"confirmedpassword\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"text\" matInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </mat-form-field>\n    <mat-form-field class=\"font\">\n      <input matInput [matDatepicker]=\"picker\" placeholder=\"Birthdate\" name=\"dob\" [(ngModel)]=\"newUser.dob\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n      <mat-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></mat-datepicker>\n    </mat-form-field>\n    <div class=\"gender-style\">\n      <mat-radio-group name=\"gender\" [(ngModel)]=\"newUser.gender\">\n      <mat-radio-button class=\"left-gender font\" value=\"Male\">Male</mat-radio-button>\n      <mat-radio-button class=\"right-gender font\" value=\"Female\">Female</mat-radio-button>\n    </mat-radio-group>\n    </div>\n    <div class=\"left-component\">    \n      <button class=\"font\" color =\"primary\" id=signupsubmitbtn type =\"submit\" mat-raised-button>Submit</button>\n    </div>\n    <div class=\"right-component\">\n        <button class=\"font\" color =\"primary\" id=signupcancelbtn routerLink=\"/\" mat-raised-button>Cancel</button>\n    </div>\n  </form>\n"
 
 /***/ }),
 
@@ -1078,7 +1078,7 @@ var SignupformComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change your Avatar</h1>\n    </div>\n    <div>\n        <img class=\"uploadImg\" src=\"{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}\">\n    </div>\n\n    <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" mat-raised-button>\n            <Label for=\"input-file-id\">\n                <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n                Photo\n            </Label>\n        </button>\n        <button class=\"button-spacer\" color=\"warn\" id=\"sendpost\" (click)=\"updateAvatar()\" mat-raised-button>Confirm</button>\n    </div>\n</div>"
+module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change your Avatar</h1>\n    </div>\n    <div>\n        <img class=\"uploadImg\" src=\"{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}\">\n    </div>\n\n    <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button class=\"font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n            <Label for=\"input-file-id\">\n                <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n                Photo\n            </Label>\n        </button>\n        <button class=\"button-spacer font\" color=\"warn\" id=\"sendpost\" (click)=\"updateAvatar()\" mat-raised-button>Confirm</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1089,7 +1089,7 @@ module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change y
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* background-color:#EEEEEE; */\n  }\n  \n  .example-full-width {\n    width: 100%;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-bottom: 50px;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* background-color:#EEEEEE; */\n  }\n  \n  .example-full-width {\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-bottom: 50px;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n    margin-left: 15px;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
 
 /***/ }),
 
@@ -1100,7 +1100,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=....................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button> \n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n              <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
+module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=....................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button> \n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n              <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
 
 /***/ }),
 
@@ -1261,30 +1261,34 @@ var AvatarPreviewComponent = /** @class */ (function () {
     AvatarPreviewComponent.prototype.updateAvatar = function () {
         var _this = this;
         var fd = new FormData();
-        fd.append('avatar', this.selectedFile, this.selectedFile.name);
-        this.userService.updateAvatar(this.currentUser, fd).subscribe(function (res) {
-            if (res) {
-                console.log('Avatar modify success!');
-                _this.snackBar.open('Avatar update success!', 'Close', {
-                    duration: 2000,
-                    panelClass: 'green-snackbar'
-                });
-            }
-            else {
-                console.log('Update avatar error!');
+        if (this.selectedFile == null)
+            this.dialogRef.close();
+        else {
+            fd.append('avatar', this.selectedFile, this.selectedFile.name);
+            this.userService.updateAvatar(this.currentUser, fd).subscribe(function (res) {
+                if (res) {
+                    console.log('Avatar modify success!');
+                    _this.snackBar.open('Avatar update success!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'green-snackbar'
+                    });
+                }
+                else {
+                    console.log('Update avatar error!');
+                    _this.snackBar.open('Failed to update avatar!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'red-snackbar'
+                    });
+                }
+            }, function (err) {
+                console.log(err);
                 _this.snackBar.open('Failed to update avatar!', 'Close', {
                     duration: 2000,
                     panelClass: 'red-snackbar'
                 });
-            }
-        }, function (err) {
-            console.log(err);
-            _this.snackBar.open('Failed to update avatar!', 'Close', {
-                duration: 2000,
-                panelClass: 'red-snackbar'
             });
-        });
-        this.dialogRef.close();
+            this.dialogRef.close();
+        }
     };
     AvatarPreviewComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

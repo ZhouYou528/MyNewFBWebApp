@@ -3,35 +3,35 @@
       <label class="regis-title">Sign Up</label>
     </div>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Username" name="signupusername" [(ngModel)]="newUser.username">
+      <input class="font" matInput placeholder="Username" name="signupusername" [(ngModel)]="newUser.username">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Nickname" name="nickname" [(ngModel)]="newUser.nickname">
+      <input class="font" matInput placeholder="Nickname" name="nickname" [(ngModel)]="newUser.nickname">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input type ="password" matInput placeholder="Password" name="signuppassword" [(ngModel)]="newUser.password">
+      <input class="font" type ="password" matInput placeholder="Password" name="signuppassword" [(ngModel)]="newUser.password">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input type ="password" matInput placeholder="Confirm Password" name="confirmedpassword" [(ngModel)]="confirmedpassword">
+      <input class="font" type ="password" matInput placeholder="Confirm Password" name="confirmedpassword" [(ngModel)]="confirmedpassword">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input type ="text" matInput placeholder="Email" name="email" [(ngModel)]="newUser.email">
+      <input class="font" type ="text" matInput placeholder="Email" name="email" [(ngModel)]="newUser.email">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="font">
       <input matInput [matDatepicker]="picker" placeholder="Birthdate" name="dob" [(ngModel)]="newUser.dob">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
     </mat-form-field>
     <div class="gender-style">
       <mat-radio-group name="gender" [(ngModel)]="newUser.gender">
-      <mat-radio-button class="left-gender" value="Male">Male</mat-radio-button>
-      <mat-radio-button class="right-gender" value="Female">Female</mat-radio-button>
+      <mat-radio-button class="left-gender font" value="Male">Male</mat-radio-button>
+      <mat-radio-button class="right-gender font" value="Female">Female</mat-radio-button>
     </mat-radio-group>
     </div>
     <div class="left-component">    
-      <button color ="primary" id=signupsubmitbtn type ="submit" mat-raised-button>Submit</button>
+      <button class="font" color ="primary" id=signupsubmitbtn type ="submit" mat-raised-button>Submit</button>
     </div>
     <div class="right-component">
-        <button color ="primary" id=signupcancelbtn routerLink="/" mat-raised-button>Cancel</button>
+        <button class="font" color ="primary" id=signupcancelbtn routerLink="/" mat-raised-button>Cancel</button>
     </div>
   </form>

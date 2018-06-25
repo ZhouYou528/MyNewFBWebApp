@@ -8,6 +8,7 @@
   
   .example-full-width {
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .example-button-color {
@@ -42,12 +43,14 @@
   }
   .back-button {
     margin-left: 100px;
+    font-family: 'Montserrat', sans-serif;
   }
   .uploadImg{
     width: 100%;
     height: 100%;
     max-width: 300px;
     padding:0 0 20px 0;
+    margin-left: 15px;
   }
   .icon-align{
     display: inline-flex;

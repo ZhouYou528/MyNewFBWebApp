@@ -1,23 +1,23 @@
 <body>
   <form (submit)="loginUser($event)">
-    <div>
+    <!-- <div>
       <img width="500" src="../assets/GatorBook.jpg">
-    </div>
+    </div> -->
     <div>
-      <img width="500" src="../assets/gator.png">
+      <img style="margin-top: 150px; margin-bottom: 80px;" width="500" src="../assets/gator.png">
     </div>
     <mat-form-field class="login-input-form">
-      <input matInput placeholder="Enter your username" name="username" [(ngModel)]="signinUser.username">
+      <input class="font" matInput placeholder="Enter your username" name="username" [(ngModel)]="signinUser.username">
     </mat-form-field>
     <mat-form-field class="login-input-form">
-      <input type="password" matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="signinUser.password">
+      <input class="font" type="password" matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="signinUser.password">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
     <div class="sign-in-button">
-      <button color="primary" id="signinbtn" type="submit" mat-raised-button>Sign In</button>   
+      <button class="font" color="primary" id="signinbtn" type="submit" mat-raised-button>Sign In</button>   
     </div>
     <div class="sign-up-button">
-      <button color="primary" id="backbtn" routerLink="/" mat-raised-button>Back</button>
+      <button class="font" color="primary" id="backbtn" routerLink="/" mat-raised-button>Back</button>
     </div>
   </form>
 </body>

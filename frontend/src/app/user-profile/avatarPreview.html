@@ -8,12 +8,12 @@
 
     <div class="input">
         <input class="ng-hide" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
-        <button color="primary" id="selectFile" mat-raised-button>
+        <button class="font" color="primary" id="selectFile" mat-raised-button>
             <Label for="input-file-id">
                 <i class="material-icons mat-18 icon-align">insert_photo</i>
                 Photo
             </Label>
         </button>
-        <button class="button-spacer" color="warn" id="sendpost" (click)="updateAvatar()" mat-raised-button>Confirm</button>
+        <button class="button-spacer font" color="warn" id="sendpost" (click)="updateAvatar()" mat-raised-button>Confirm</button>
     </div>
 </div>

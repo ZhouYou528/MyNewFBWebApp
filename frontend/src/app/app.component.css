@@ -1,6 +1,6 @@
 .fullPage {
     display: flex;
     flex-direction: column;
-    min-height: 99vh;
+    min-height: 100vh;
     position: relative;
 }

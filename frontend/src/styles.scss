@@ -18,3 +18,13 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 .red-snackbar {
     background: #b71c1c;
 }
+
+body {
+    margin: 0;
+    background: #F2F2F2;
+    font-family: 'Montserrat', sans-serif;
+    height: 90vh;
+}
+.font {
+    font-family: 'Montserrat', sans-serif;
+}

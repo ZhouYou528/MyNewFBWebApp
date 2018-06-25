@@ -7,6 +7,7 @@
 .login-input-form {
     display:block;
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 .sign-in-button {
     display: inline-block; 
@@ -16,4 +17,7 @@
     display: inline-block;
     padding-left: 10px;
     margin-top: 10px;
+}
+.font {
+    font-family: 'Montserrat', sans-serif;
 }
