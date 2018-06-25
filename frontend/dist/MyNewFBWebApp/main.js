@@ -516,7 +516,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direc
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> --> \n    <div>\n      <img style=\"margin-top: 150px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div class=\"sign-in-button\">\n      <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n</body>"
+module.exports = "<body>\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> --> \n    <div [@fallIn]=\"\">\n      <img style=\"margin-top: 150px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\" class=\"sign-in-button\">\n      <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>   \n    </div>\n    <div [@fallIn]=\"\" class=\"sign-up-button\">\n      <button class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n</body>"
 
 /***/ }),
 
@@ -531,6 +531,7 @@ module.exports = "<body>\n    <!-- <div>\n      <img width=\"500\" src=\"../asse
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -541,6 +542,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
     }
@@ -550,7 +552,8 @@ var HomeComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
-            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
+            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")],
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_1__["fallIn"])()]
         }),
         __metadata("design:paramtypes", [])
     ], HomeComponent);
@@ -595,6 +598,58 @@ var User = /** @class */ (function () {
     return User;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/router.animations.ts":
+/*!**************************************!*\
+  !*** ./src/app/router.animations.ts ***!
+  \**************************************/
+/*! exports provided: moveIn, fallIn, moveInLeft */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveIn", function() { return moveIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fallIn", function() { return fallIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveInLeft", function() { return moveInLeft; });
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+
+function moveIn() {
+    return Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('moveIn', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ position: 'fixed', width: '100%' })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('*', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ position: 'fixed', width: '100%' })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(':enter', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(100px)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.6s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }))
+        ]),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(':leave', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.3s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(-200px)' }))
+        ])
+    ]);
+}
+function fallIn() {
+    return Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('fallIn', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(':enter', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateY(40px)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.4s .2s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateY(0)' }))
+        ]),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(':leave', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.3s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(-200px)' }))
+        ])
+    ]);
+}
+function moveInLeft() {
+    return Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('moveInLeft', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(':enter', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(-100px)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.6s .2s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }))
+        ])
+    ]);
+}
 
 
 /***/ }),
@@ -863,7 +918,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> -->\n    <div>\n      <img style=\"margin-top: 150px; margin-bottom: 80px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <mat-form-field class=\"login-input-form\">\n      <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"login-input-form\">\n      <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"signinUser.password\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <div class=\"sign-in-button\">\n      <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>   \n    </div>\n    <div class=\"sign-up-button\">\n      <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n    </div>\n  </form>\n</body>"
+module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> -->\n    <div>\n      <img style=\"margin-top: 150px; margin-bottom: 80px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\">\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n      </mat-form-field>\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\"\n          [(ngModel)]=\"signinUser.password\">\n        <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n      </mat-form-field>\n      <div class=\"sign-in-button\">\n        <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>\n      </div>\n      <div class=\"sign-up-button\">\n        <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n      </div>\n    </div>\n\n  </form>\n</body>"
 
 /***/ }),
 
@@ -883,6 +938,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _service_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/validate.service */ "./src/app/service/validate.service.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -892,6 +948,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -952,7 +1009,8 @@ var SigninformComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-signinform',
             template: __webpack_require__(/*! ./signinform.component.html */ "./src/app/signinform/signinform.component.html"),
-            styles: [__webpack_require__(/*! ./signinform.component.css */ "./src/app/signinform/signinform.component.css")]
+            styles: [__webpack_require__(/*! ./signinform.component.css */ "./src/app/signinform/signinform.component.css")],
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_6__["fallIn"])()]
         }),
         __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _service_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"]])
     ], SigninformComponent);
@@ -981,7 +1039,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" matInput placeholder=\"Username\" name=\"signupusername\" [(ngModel)]=\"newUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" matInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"password\" matInput placeholder=\"Password\" name=\"signuppassword\" [(ngModel)]=\"newUser.password\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"password\" matInput placeholder=\"Confirm Password\" name=\"confirmedpassword\" [(ngModel)]=\"confirmedpassword\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"text\" matInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </mat-form-field>\n    <mat-form-field class=\"font\">\n      <input matInput [matDatepicker]=\"picker\" placeholder=\"Birthdate\" name=\"dob\" [(ngModel)]=\"newUser.dob\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n      <mat-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></mat-datepicker>\n    </mat-form-field>\n    <div class=\"gender-style\">\n      <mat-radio-group name=\"gender\" [(ngModel)]=\"newUser.gender\">\n      <mat-radio-button class=\"left-gender font\" value=\"Male\">Male</mat-radio-button>\n      <mat-radio-button class=\"right-gender font\" value=\"Female\">Female</mat-radio-button>\n    </mat-radio-group>\n    </div>\n    <div class=\"left-component\">    \n      <button class=\"font\" color =\"primary\" id=signupsubmitbtn type =\"submit\" mat-raised-button>Submit</button>\n    </div>\n    <div class=\"right-component\">\n        <button class=\"font\" color =\"primary\" id=signupcancelbtn routerLink=\"/\" mat-raised-button>Cancel</button>\n    </div>\n  </form>\n"
+module.exports = "<form [@fallIn]=\"\" (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" matInput placeholder=\"Username\" name=\"signupusername\" [(ngModel)]=\"newUser.username\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" matInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"password\" matInput placeholder=\"Password\" name=\"signuppassword\" [(ngModel)]=\"newUser.password\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"password\" matInput placeholder=\"Confirm Password\" name=\"confirmedpassword\" [(ngModel)]=\"confirmedpassword\">\n    </mat-form-field>\n    <mat-form-field class=\"example-full-width\">\n      <input class=\"font\" type =\"text\" matInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </mat-form-field>\n    <mat-form-field class=\"font\">\n      <input matInput [matDatepicker]=\"picker\" placeholder=\"Birthdate\" name=\"dob\" [(ngModel)]=\"newUser.dob\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n      <mat-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></mat-datepicker>\n    </mat-form-field>\n    <div class=\"gender-style\">\n      <mat-radio-group name=\"gender\" [(ngModel)]=\"newUser.gender\">\n      <mat-radio-button class=\"left-gender font\" value=\"Male\">Male</mat-radio-button>\n      <mat-radio-button class=\"right-gender font\" value=\"Female\">Female</mat-radio-button>\n    </mat-radio-group>\n    </div>\n    <div class=\"left-component\">    \n      <button class=\"font\" color =\"primary\" id=signupsubmitbtn type =\"submit\" mat-raised-button>Submit</button>\n    </div>\n    <div class=\"right-component\">\n        <button class=\"font\" color =\"primary\" id=signupcancelbtn routerLink=\"/\" mat-raised-button>Cancel</button>\n    </div>\n  </form>\n"
 
 /***/ }),
 
@@ -1001,6 +1059,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _service_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/validate.service */ "./src/app/service/validate.service.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1010,6 +1069,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1060,7 +1120,8 @@ var SignupformComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-signupform',
             template: __webpack_require__(/*! ./signupform.component.html */ "./src/app/signupform/signupform.component.html"),
-            styles: [__webpack_require__(/*! ./signupform.component.css */ "./src/app/signupform/signupform.component.css")]
+            styles: [__webpack_require__(/*! ./signupform.component.css */ "./src/app/signupform/signupform.component.css")],
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_6__["fallIn"])()]
         }),
         __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _service_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
     ], SignupformComponent);
@@ -1089,7 +1150,7 @@ module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change y
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* background-color:#EEEEEE; */\n  }\n  \n  .example-full-width {\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-bottom: 50px;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n    margin-left: 15px;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n  \n  .example-full-width {\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n    margin-left: 15px;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
 
 /***/ }),
 
@@ -1100,7 +1161,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"example-card mat-elevation-z8\">\n  <mat-card-header class=\"card-header\">\n    <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n      (click)=\"openDialog()\">\n  </mat-card-header>\n\n  <form class=\"example-form\">\n    <!-- User name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n    </mat-form-field>\n    <!-- Nick name -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n    </mat-form-field>\n    <!-- Birthday -->\n    <mat-form-field class=\"example-full-width\">\n      <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n    </mat-form-field>\n    <!-- Email -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n          </mat-form-field>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n    <!-- Password -->\n    <table class=\"example-full-width\" cellspacing=\"0\">\n      <tr>\n        <td>\n          <mat-form-field class=\"example-full-width\">\n            <input matInput placeholder=\"Password\" disabled value=....................>\n          </mat-form-field>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button> \n        </td>\n      </tr>\n    </table>\n    <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n      <tr>\n        <td>\n          <form class=\"example-form\">\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n              <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n            </mat-form-field>\n          </form>\n        </td>\n        <td>\n          <button class=\"font\" color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\" mat-raised-button>Confirm</button>\n        </td>\n      </tr>\n    </table>\n\n  </form>\n\n  <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n</mat-card>"
+module.exports = "<div [@fallIn]=\"\">\n  <mat-card class=\"example-card mat-elevation-z8\">\n    <mat-card-header class=\"card-header\">\n      <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n        (click)=\"openDialog()\">\n    </mat-card-header>\n\n    <form class=\"example-form\">\n      <!-- User name -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n      </mat-form-field>\n      <!-- Nick name -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n      </mat-form-field>\n      <!-- Birthday -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n      </mat-form-field>\n      <!-- Email -->\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n            </mat-form-field>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n          </td>\n        </tr>\n      </table>\n      <table [@fallIn]=\"\" class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n        <tr>\n          <td>\n            <form class=\"example-form\">\n              <mat-form-field class=\"example-full-width\">\n                <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n              </mat-form-field>\n            </form>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n          </td>\n        </tr>\n      </table>\n      <!-- Password -->\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" disabled value=....................>\n            </mat-form-field>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button>\n          </td>\n        </tr>\n      </table>\n      <table [@fallIn]=\"\" class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n        <tr>\n          <td>\n            <form class=\"example-form\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n                <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n              </mat-form-field>\n            </form>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\"\n              mat-raised-button>Confirm</button>\n          </td>\n        </tr>\n      </table>\n\n    </form>\n\n    <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n  </mat-card>\n</div>"
 
 /***/ }),
 
@@ -1120,6 +1181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _service_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/validate.service */ "./src/app/service/validate.service.ts");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1132,6 +1194,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+
 
 
 
@@ -1223,7 +1286,8 @@ var UserProfileComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-profile',
             template: __webpack_require__(/*! ./user-profile.component.html */ "./src/app/user-profile/user-profile.component.html"),
-            styles: [__webpack_require__(/*! ./user-profile.component.css */ "./src/app/user-profile/user-profile.component.css")]
+            styles: [__webpack_require__(/*! ./user-profile.component.css */ "./src/app/user-profile/user-profile.component.css")],
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_5__["fallIn"])(), Object(_router_animations__WEBPACK_IMPORTED_MODULE_5__["moveIn"])(), Object(_router_animations__WEBPACK_IMPORTED_MODULE_5__["moveInLeft"])()],
         }),
         __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"], _service_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"], _service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
     ], UserProfileComponent);

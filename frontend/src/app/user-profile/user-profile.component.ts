@@ -4,11 +4,13 @@ import { User } from '../model/user';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ValidateService } from '../service/validate.service'
 import { MatSnackBar } from '@angular/material';
+import { fallIn, moveIn, moveInLeft } from '../router.animations';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
+  animations:[fallIn(), moveIn(), moveInLeft()],
 })
 export class UserProfileComponent implements OnInit {
 

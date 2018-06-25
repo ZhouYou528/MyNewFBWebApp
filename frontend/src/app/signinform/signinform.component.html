@@ -6,18 +6,22 @@
     <div>
       <img style="margin-top: 150px; margin-bottom: 80px;" width="500" src="../assets/gator.png">
     </div>
-    <mat-form-field class="login-input-form">
-      <input class="font" matInput placeholder="Enter your username" name="username" [(ngModel)]="signinUser.username">
-    </mat-form-field>
-    <mat-form-field class="login-input-form">
-      <input class="font" type="password" matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="signinUser.password">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    </mat-form-field>
-    <div class="sign-in-button">
-      <button class="font" color="primary" id="signinbtn" type="submit" mat-raised-button>Sign In</button>   
+    <div [@fallIn]="">
+      <mat-form-field class="login-input-form">
+        <input class="font" matInput placeholder="Enter your username" name="username" [(ngModel)]="signinUser.username">
+      </mat-form-field>
+      <mat-form-field class="login-input-form">
+        <input class="font" type="password" matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'"
+          [(ngModel)]="signinUser.password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+      <div class="sign-in-button">
+        <button class="font" color="primary" id="signinbtn" type="submit" mat-raised-button>Sign In</button>
+      </div>
+      <div class="sign-up-button">
+        <button class="font" color="primary" id="backbtn" routerLink="/" mat-raised-button>Back</button>
+      </div>
     </div>
-    <div class="sign-up-button">
-      <button class="font" color="primary" id="backbtn" routerLink="/" mat-raised-button>Back</button>
-    </div>
+
   </form>
 </body>

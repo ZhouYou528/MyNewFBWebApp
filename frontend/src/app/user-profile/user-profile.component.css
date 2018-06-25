@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color:#EEEEEE; */
   }
   
   .example-full-width {
@@ -34,7 +33,6 @@
   .example-card {
     width: 800px;
     padding:0 0 50px 0;
-    margin-bottom: 50px;
   }
   .card-header {
     background-size: cover;

@@ -4,11 +4,13 @@ import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
 import { ValidateService } from '../service/validate.service';
 import { MatSnackBar } from '@angular/material';
+import { fallIn } from '../router.animations';
 
 @Component({
   selector: 'app-signupform',
   templateUrl: './signupform.component.html',
-  styleUrls: ['./signupform.component.css']
+  styleUrls: ['./signupform.component.css'],
+  animations: [fallIn()]
 })
 export class SignupformComponent implements OnInit {
 

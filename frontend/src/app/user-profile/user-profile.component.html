@@ -1,81 +1,84 @@
-<mat-card class="example-card mat-elevation-z8">
-  <mat-card-header class="card-header">
-    <img mat-card-avatar class="post-image" src="{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}"
-      (click)="openDialog()">
-  </mat-card-header>
+<div [@fallIn]="">
+  <mat-card class="example-card mat-elevation-z8">
+    <mat-card-header class="card-header">
+      <img mat-card-avatar class="post-image" src="{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}"
+        (click)="openDialog()">
+    </mat-card-header>
 
-  <form class="example-form">
-    <!-- User name -->
-    <mat-form-field class="example-full-width">
-      <input matInput id="prfusername" placeholder="Username" disabled value={{currentUser.username}}>
-    </mat-form-field>
-    <!-- Nick name -->
-    <mat-form-field class="example-full-width">
-      <input matInput id="prfnickname" placeholder="Nickname" disabled value={{currentUser.nickname}}>
-    </mat-form-field>
-    <!-- Birthday -->
-    <mat-form-field class="example-full-width">
-      <input matInput id="prfbirthday" placeholder="Birthday" disabled value={{currentUser.dob.toString().substring(0,10)}}>
-    </mat-form-field>
-    <!-- Email -->
-    <table class="example-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <input matInput id="prfemail" placeholder="Email" disabled value={{currentUser.email}}>
-          </mat-form-field>
-        </td>
-        <td>
-          <button class="font" color="primary" id="editemailbtn" (click)="emaileditable=!emaileditable" mat-raised-button>Edit</button>
-        </td>
-      </tr>
-    </table>
-    <table class="example-full-width" cellspacing="0" *ngIf="emaileditable">
-      <tr>
-        <td>
-          <form class="example-form">
+    <form class="example-form">
+      <!-- User name -->
+      <mat-form-field class="example-full-width">
+        <input matInput id="prfusername" placeholder="Username" disabled value={{currentUser.username}}>
+      </mat-form-field>
+      <!-- Nick name -->
+      <mat-form-field class="example-full-width">
+        <input matInput id="prfnickname" placeholder="Nickname" disabled value={{currentUser.nickname}}>
+      </mat-form-field>
+      <!-- Birthday -->
+      <mat-form-field class="example-full-width">
+        <input matInput id="prfbirthday" placeholder="Birthday" disabled value={{currentUser.dob.toString().substring(0,10)}}>
+      </mat-form-field>
+      <!-- Email -->
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
             <mat-form-field class="example-full-width">
-              <input type="text" matInput placeholder="New Email Address" name="email" [(ngModel)]="currentUser.email">
+              <input matInput id="prfemail" placeholder="Email" disabled value={{currentUser.email}}>
             </mat-form-field>
-          </form>
-        </td>
-        <td>
-          <button class="font" color="primary" id="confirmemailbtn" (click)="update_email();" mat-raised-button>Confirm</button>
-        </td>
-      </tr>
-    </table>
-    <!-- Password -->
-    <table class="example-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" disabled value=....................>
-          </mat-form-field>
-        </td>
-        <td>
-          <button class="font" color="primary" id="editpasswordbtn" (click)="passwordeditable=!passwordeditable" mat-raised-button>Edit</button> 
-        </td>
-      </tr>
-    </table>
-    <table class="example-full-width" cellspacing="0" *ngIf="passwordeditable">
-      <tr>
-        <td>
-          <form class="example-form">
+          </td>
+          <td>
+            <button class="font" color="primary" id="editemailbtn" (click)="emaileditable=!emaileditable" mat-raised-button>Edit</button>
+          </td>
+        </tr>
+      </table>
+      <table [@fallIn]="" class="example-full-width" cellspacing="0" *ngIf="emaileditable">
+        <tr>
+          <td>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="New Email Address" name="email" [(ngModel)]="currentUser.email">
+              </mat-form-field>
+            </form>
+          </td>
+          <td>
+            <button class="font" color="primary" id="confirmemailbtn" (click)="update_email();" mat-raised-button>Confirm</button>
+          </td>
+        </tr>
+      </table>
+      <!-- Password -->
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="New Password" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="currentUser.password">
-              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+              <input matInput placeholder="Password" disabled value=....................>
             </mat-form-field>
-          </form>
-        </td>
-        <td>
-          <button class="font" color="primary" id="confirmpasswordbtn" (click)="update_password(); passwordeditable=!passwordeditable;" mat-raised-button>Confirm</button>
-        </td>
-      </tr>
-    </table>
+          </td>
+          <td>
+            <button class="font" color="primary" id="editpasswordbtn" (click)="passwordeditable=!passwordeditable" mat-raised-button>Edit</button>
+          </td>
+        </tr>
+      </table>
+      <table [@fallIn]="" class="example-full-width" cellspacing="0" *ngIf="passwordeditable">
+        <tr>
+          <td>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="New Password" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="currentUser.password">
+                <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+              </mat-form-field>
+            </form>
+          </td>
+          <td>
+            <button class="font" color="primary" id="confirmpasswordbtn" (click)="update_password(); passwordeditable=!passwordeditable;"
+              mat-raised-button>Confirm</button>
+          </td>
+        </tr>
+      </table>
 
-  </form>
+    </form>
 
-  <button color="primary" class="back-button" routerLink="/dashboard" mat-raised-button>Back to Homepage</button>
+    <button color="primary" class="back-button" routerLink="/dashboard" mat-raised-button>Back to Homepage</button>
 
 
-</mat-card>
+  </mat-card>
+</div>

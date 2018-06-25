@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 import { ValidateService } from '../service/validate.service';
 import { MatSnackBar } from '@angular/material';
+import { fallIn } from '../router.animations';
 
 @Component({
   selector: 'app-signinform',
   templateUrl: './signinform.component.html',
-  styleUrls: ['./signinform.component.css']
+  styleUrls: ['./signinform.component.css'],
+  animations: [fallIn()]
 })
 export class SigninformComponent implements OnInit {
 
