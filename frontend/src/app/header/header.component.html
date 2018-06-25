@@ -6,7 +6,7 @@
             <i class="material-icons">account_circle</i>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/dashboard">
+            <button class="font" mat-menu-item routerLink="/dashboard">
                 <mat-icon>dashboard</mat-icon>
                 <span>Dashboard</span>
             </button>
@@ -14,7 +14,7 @@
                 <mat-icon>lightbulb_outline</mat-icon>
                 <span>Notifications</span>
             </button> -->
-            <button mat-menu-item id="userprofilebtn" (click)="setUserProfile()">
+            <button class="font" mat-menu-item id="userprofilebtn" (click)="setUserProfile()">
                 <mat-icon>person_outline</mat-icon>
                 <span>Profile</span>
             </button>
@@ -22,11 +22,11 @@
                 <mat-icon>settings</mat-icon>
                 <span>Setting</span>
             </button> -->
-            <button mat-menu-item routerLink="/">
+            <button class="font" mat-menu-item routerLink="/">
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
             </button>
-            <button mat-menu-item id="logout_header" (click)="logoutUser()">
+            <button class="font" mat-menu-item id="logout_header" (click)="logoutUser()">
                 <mat-icon>power_settings_new</mat-icon>
                 <span>Log Out</span>
             </button>
