@@ -1,6 +1,8 @@
 {
     "env": {
         "MONGO_ATLAS_PW": "zhouyou0528",
+        "MLAB_USERNAME": "zhouyou0528",
+        "MLAB_PW": "zhouyou0528",
         "JWT_KEY": "secret"
     }
 }
