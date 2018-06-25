@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 const usersRoutes = require('./routes/users');
 
 //set up password in nodemon.json
-mongoose.connect('mongodb+srv://zhouyou0528:' + process.env.MONGO_ATLAS_PW + '@my-fb-web-app-nki7b.mongodb.net/test');
-
+// mongoose.connect('mongodb+srv://zhouyou0528:' + process.env.MONGO_ATLAS_PW + '@my-fb-web-app-nki7b.mongodb.net/test');
+mongoose.connect('mongodb://zhouyou0528:zhouyou0528@ds217131.mlab.com:17131/mean-stack-web-app');
 
 // generate log
 app.use(morgan('dev'));
