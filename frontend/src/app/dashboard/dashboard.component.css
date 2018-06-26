@@ -1,0 +1,8 @@
+.mat-tab-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+.mat-tab-label.mat-tab-label-active {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}

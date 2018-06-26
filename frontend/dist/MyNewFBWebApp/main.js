@@ -187,15 +187,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/esm5/progress-spinner.es5.js");
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
-/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
-/* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
-/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
-/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
+/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/tabs */ "./node_modules/@angular/material/esm5/tabs.es5.js");
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
+/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
+/* harmony import */ var _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./friendlist/friendlist.component */ "./src/app/friendlist/friendlist.component.ts");
+/* harmony import */ var _message_message_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./message/message.component */ "./src/app/message/message.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -218,6 +222,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 //components
 
 
@@ -229,51 +235,59 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["routingComponents"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
-                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_19__["AvatarPreviewComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_17__["routingComponents"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_19__["HeaderComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_20__["FooterComponent"],
+                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__["AvatarPreviewComponent"],
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__["FriendlistComponent"],
+                _message_message_component__WEBPACK_IMPORTED_MODULE_27__["MessageComponent"],
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__["AddFriendComponent"]
             ],
             imports: [
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
+                _angular_material_tabs__WEBPACK_IMPORTED_MODULE_15__["MatTabsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDatepickerModule"],
                 _angular_material_dialog__WEBPACK_IMPORTED_MODULE_14__["MatDialogModule"],
                 _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_12__["MatProgressSpinnerModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatNativeDateModule"],
                 _angular_material_card__WEBPACK_IMPORTED_MODULE_13__["MatCardModule"],
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_16__["MatListModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
                 _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_9__["MatToolbarModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_11__["MatRadioModule"],
-                _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_23__["MatSnackBarModule"],
+                _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_25__["MatSnackBarModule"],
                 _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
                 _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__["MatMenuModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_17__["AppRoutingModule"]
             ],
             entryComponents: [
-                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_19__["AvatarPreviewComponent"]
+                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__["AvatarPreviewComponent"],
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__["AddFriendComponent"]
             ],
             providers: [
-                _service_user_service__WEBPACK_IMPORTED_MODULE_20__["UserService"],
-                _service_auth_guard__WEBPACK_IMPORTED_MODULE_21__["AuthGuard"],
+                _service_user_service__WEBPACK_IMPORTED_MODULE_22__["UserService"],
+                _service_auth_guard__WEBPACK_IMPORTED_MODULE_23__["AuthGuard"],
                 {
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
-                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_22__["TokenInterceptorService"],
+                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_24__["TokenInterceptorService"],
                     multi: true
                 }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -290,7 +304,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".mat-tab-label {\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n}\n.mat-tab-label.mat-tab-label-active {\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 700;\n}"
 
 /***/ }),
 
@@ -301,7 +315,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  dashboard works!\n</p>\n<mat-spinner></mat-spinner>\n"
+module.exports = "<div>\n  <mat-tab-group>\n    <mat-tab label=\"News Feed\">\n      <!-- <app-home></app-home> -->\n    </mat-tab>\n    <mat-tab label=\"Blog\">\n      <!-- <app-selfpost></app-selfpost> -->\n    </mat-tab>\n    <mat-tab label=\"Friends List\">\n      <app-friendlist></app-friendlist>\n    </mat-tab>\n    <mat-tab label=\"Message\">\n      <app-message></app-message>\n    </mat-tab>\n  </mat-tab-group>\n</div>"
 
 /***/ }),
 
@@ -335,7 +349,8 @@ var DashboardComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dashboard',
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
-            styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
+            styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")],
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
         }),
         __metadata("design:paramtypes", [])
     ], DashboardComponent);
@@ -403,6 +418,199 @@ var FooterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], FooterComponent);
     return FooterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/friendlist/addFriend.html":
+/*!*******************************************!*\
+  !*** ./src/app/friendlist/addFriend.html ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field>\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div class=\"d-content\" mat-dialog-content>\n        <img mat-card-avatar class=\"post-image\" src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        <p>User name: {{user.username}}</p>\n        <p>Email: {{user.email}}</p>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/friendlist/friendlist.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/friendlist/friendlist.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".outer-most-container {\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n}\n.search-button {\n    margin-left: 15px;\n}\n.add-button {\n    margin-left: 15px; \n}\n.d-content.mat-dialog-content {\n    justify-content: center\n}"
+
+/***/ }),
+
+/***/ "./src/app/friendlist/friendlist.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/friendlist/friendlist.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n  <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  <mat-list>\n    <mat-list-item *ngFor=\"let friend of filteredFriends\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p mat-line>{{friend.nickname}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/friendlist/friendlist.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/friendlist/friendlist.component.ts ***!
+  \****************************************************/
+/*! exports provided: FriendlistComponent, AddFriendComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendlistComponent", function() { return FriendlistComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddFriendComponent", function() { return AddFriendComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _model_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/message */ "./src/app/model/message.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+var FriendlistComponent = /** @class */ (function () {
+    function FriendlistComponent(dialog, userService) {
+        this.dialog = dialog;
+        this.userService = userService;
+        this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
+    }
+    FriendlistComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getCurrentUser().subscribe(function (res) {
+            if (res) {
+                console.log(res);
+                _this.currentUser = res;
+            }
+            else {
+                console.log('Get current user error!');
+            }
+        }, function (err) { return console.log(err); });
+    };
+    FriendlistComponent.prototype.openDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(AddFriendComponent, {
+            data: { name: this.name, currentUser: this.currentUser }
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            _this.ngOnInit();
+        });
+    };
+    FriendlistComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-friendlist',
+            template: __webpack_require__(/*! ./friendlist.component.html */ "./src/app/friendlist/friendlist.component.html"),
+            styles: [__webpack_require__(/*! ./friendlist.component.css */ "./src/app/friendlist/friendlist.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"], _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+    ], FriendlistComponent);
+    return FriendlistComponent;
+}());
+
+var AddFriendComponent = /** @class */ (function () {
+    function AddFriendComponent(userService, snackBar, dialogRef, data) {
+        this.userService = userService;
+        this.snackBar = snackBar;
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
+        this.message = new _model_message__WEBPACK_IMPORTED_MODULE_4__["Message"]();
+    }
+    AddFriendComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    AddFriendComponent.prototype.clearUser = function () {
+        this.user = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
+    };
+    AddFriendComponent.prototype.searchfriend = function () {
+        var _this = this;
+        if (this.username === undefined || this.username === '') {
+            this.snackBar.open('Please type in a name!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
+        else {
+            this.userService.getUserByUsername(this.username).subscribe(function (res) {
+                if (res.success) {
+                    console.log('Found!');
+                    _this.user = res.user;
+                }
+                else {
+                    _this.snackBar.open('User not found!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'red-snackbar'
+                    });
+                }
+            }, function (err) { return console.log(err); });
+        }
+    };
+    AddFriendComponent.prototype.sendMessage = function () {
+        var _this = this;
+        if (this.user.username === this.data.currentUser.username) {
+            this.snackBar.open('Can\'t add yourself!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
+        else if (this.data.currentUser.friend.indexOf(this.user.username) > -1) {
+            this.snackBar.open('Already in your friendlist!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        }
+        else {
+            this.message.fromUser = this.data.currentUser.username;
+            this.message.toUser = this.user.username;
+            this.message.category = 1;
+            this.message.status = 1;
+            this.userService.friendRequest(this.message).subscribe(function (res) {
+                if (res.success) {
+                    console.log('Friend request send success!');
+                    _this.snackBar.open('Friend request send success!', 'Close', {
+                        duration: 2000,
+                        panelClass: 'green-snackbar'
+                    });
+                }
+                else {
+                    console.log('Friend request send failed!');
+                }
+            }, function (err) { return console.log(err); });
+            this.dialogRef.close();
+        }
+    };
+    AddFriendComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-addfriend',
+            template: __webpack_require__(/*! ./addFriend.html */ "./src/app/friendlist/addFriend.html"),
+        }),
+        __param(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSnackBar"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], Object])
+    ], AddFriendComponent);
+    return AddFriendComponent;
 }());
 
 
@@ -558,6 +766,99 @@ var HomeComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], HomeComponent);
     return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/message/message.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.html":
+/*!************************************************!*\
+  !*** ./src/app/message/message.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  message works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/message/message.component.ts ***!
+  \**********************************************/
+/*! exports provided: MessageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageComponent", function() { return MessageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MessageComponent = /** @class */ (function () {
+    function MessageComponent() {
+    }
+    MessageComponent.prototype.ngOnInit = function () {
+    };
+    MessageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-message',
+            template: __webpack_require__(/*! ./message.component.html */ "./src/app/message/message.component.html"),
+            styles: [__webpack_require__(/*! ./message.component.css */ "./src/app/message/message.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], MessageComponent);
+    return MessageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/message.ts":
+/*!**********************************!*\
+  !*** ./src/app/model/message.ts ***!
+  \**********************************/
+/*! exports provided: Message */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Message", function() { return Message; });
+var Message = /** @class */ (function () {
+    function Message(_id, fromUser, toUser, category, status) {
+        if (_id === void 0) { _id = ''; }
+        if (fromUser === void 0) { fromUser = ''; }
+        if (toUser === void 0) { toUser = ''; }
+        if (category === void 0) { category = -1; }
+        if (status === void 0) { status = -1; }
+        this._id = _id;
+        this.fromUser = fromUser;
+        this.toUser = toUser;
+        this.category = category;
+        this.status = status;
+    }
+    return Message;
 }());
 
 
@@ -814,6 +1115,12 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.updateAvatar = function (user, fd) {
         return this.http.put('users/update-avatar/' + user._id, fd);
+    };
+    UserService.prototype.friendRequest = function (message) {
+        return this.http.post('messages/add', message);
+    };
+    UserService.prototype.getUserByUsername = function (username) {
+        return this.http.get('users/get-user-by-username/' + username);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

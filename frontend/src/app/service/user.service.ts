@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
 import { Router } from'@angular/router';
+import { Message } from '../model/message';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,14 @@ export class UserService {
 
   updateAvatar(user: User, fd: FormData) {
     return this.http.put<User>('users/update-avatar/' + user._id, fd)
+  }
+
+  friendRequest(message: Message) {
+    return this.http.post<any>('messages/add', message)
+  }
+
+  getUserByUsername(username: string) {
+    return this.http.get<any>('users/get-user-by-username/' + username)
   }
 
 }

@@ -1,0 +1,16 @@
+.outer-most-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.search-button {
+    margin-left: 15px;
+}
+
+.add-button {
+    margin-left: 15px; 
+}
+
+.d-content.mat-dialog-content {
+    justify-content: center
+}

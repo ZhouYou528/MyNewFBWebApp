@@ -147,6 +147,24 @@ router.put('/update-avatar/:id', verifyToken, upload.single('avatar'), (req, res
     });
 });
 
+router.get('/get-user-by-username/:username', verifyToken, (req, res) => {
+    if (!req.params.username) {
+        res.json({success: false, message: err});
+    } else {
+        User.findOne({username: req.params.username}, (err, userFound) => {
+            if (err) {
+                res.json({success: false, message: err});
+            } else {
+                if (userFound) {
+                    res.json({success: true, message: 'User found!', user: userFound});
+                } else {
+                    res.json({success: false, message: 'User not found!'});
+                }
+            }
+        });
+    }
+});
+
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {
         return res.status(401).send('Unauthorized request!')

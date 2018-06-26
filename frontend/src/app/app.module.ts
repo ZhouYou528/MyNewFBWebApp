@@ -15,6 +15,8 @@ import { MatRadioModule } from '@angular/material/radio'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
 
 
 //components
@@ -29,6 +31,8 @@ import { UserService } from './service/user.service';
 import { AuthGuard } from './service/auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FriendlistComponent, AddFriendComponent } from './friendlist/friendlist.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -37,16 +41,21 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderComponent,
     FooterComponent,
     AvatarPreviewComponent,
+    FriendlistComponent,
+    MessageComponent,
+    AddFriendComponent
   ],
   imports: [
     MatIconModule,
     MatButtonModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatDialogModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
     MatCardModule,
+    MatListModule,
     MatInputModule,
     MatToolbarModule,
     MatRadioModule,
@@ -59,7 +68,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppRoutingModule
   ],
   entryComponents: [
-    AvatarPreviewComponent
+    AvatarPreviewComponent,
+    AddFriendComponent
   ],
   providers: [
     UserService, 
