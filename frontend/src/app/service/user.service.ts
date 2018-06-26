@@ -56,4 +56,8 @@ export class UserService {
     return this.http.get<any>('users/get-user-by-username/' + username)
   }
 
+  getAllMessages() {
+    return this.http.get<any>('messages/get-all')
+  }
+
 }

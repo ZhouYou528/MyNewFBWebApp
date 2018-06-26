@@ -26,6 +26,27 @@ router.post('/add', verifyToken, (req, res) => {
     }
 });
 
+router.get('/get-all', verifyToken, (req, res) => {
+    User.findById(req.userId, (err, user) =>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success: false, msg:'User not found'});
+        } else {
+            let username = user.username;
+            Message.find({
+                toUser: username
+            }, (err, allMessages) => {
+                if(err) {
+                    res.json({success: false, message: err})
+                } else {
+                    
+                    res.json({success: true, message: allMessages})
+                }
+            });
+        }
+    })
+});
+
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {
         return res.status(401).send('Unauthorized request!')

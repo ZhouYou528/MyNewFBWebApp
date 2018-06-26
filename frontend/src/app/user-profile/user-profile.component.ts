@@ -17,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   currentUser = new User();
   hide = true;
   emaileditable = false;
+  passwordeditable = false;
 
   constructor(public snackBar: MatSnackBar, private validateService: ValidateService, private userService: UserService, public dialog: MatDialog) { }
 
@@ -71,6 +72,7 @@ export class UserProfileComponent implements OnInit {
         res => {
           if (res) {
             console.log('Password modify success!')
+            this.passwordeditable = false;
             this.snackBar.open('Password update success!', 'Close', {
               duration: 2000,
               panelClass: 'green-snackbar'

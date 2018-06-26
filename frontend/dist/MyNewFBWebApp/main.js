@@ -431,7 +431,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field>\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div class=\"d-content\" mat-dialog-content>\n        <img mat-card-avatar class=\"post-image\" src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        <p>User name: {{user.username}}</p>\n        <p>Email: {{user.email}}</p>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
+module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field>\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div mat-dialog-content>\n        <div id=\"left\">\n            <img style=\"width: 100%;\" mat-card-avatar src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        </div>\n        <div id=\"right\">\n            <p>User name: {{user.username}}</p>\n            <p>Email: {{user.email}}</p>\n        </div>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -442,7 +442,7 @@ module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".outer-most-container {\n    margin-left: auto;\n    margin-right: auto;\n    width: 50%;\n}\n.search-button {\n    margin-left: 15px;\n}\n.add-button {\n    margin-left: 15px; \n}\n.d-content.mat-dialog-content {\n    justify-content: center\n}"
+module.exports = ".outer-most-container {\n    margin-top: 10px;\n    margin-left: auto;\n    margin-right: auto;\n    width: 60%;\n}\n.search-button {\n    margin-left: 15px;\n}\n.add-button {\n    margin-left: 15px; \n}"
 
 /***/ }),
 
@@ -453,7 +453,7 @@ module.exports = ".outer-most-container {\n    margin-left: auto;\n    margin-ri
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n  <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  <mat-list>\n    <mat-list-item *ngFor=\"let friend of filteredFriends\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p mat-line>{{friend.nickname}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
+module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field style=\"width: 400px;\" class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <div style=\"display: inline-block;\">\n    <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n    <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  </div>\n  <mat-list>\n    <mat-list-item *ngFor=\"let friend of filteredFriends\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p mat-line>{{friend.nickname}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
 
 /***/ }),
 
@@ -772,17 +772,6 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/message/message.component.css":
-/*!***********************************************!*\
-  !*** ./src/app/message/message.component.css ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
 /***/ "./src/app/message/message.component.html":
 /*!************************************************!*\
   !*** ./src/app/message/message.component.html ***!
@@ -790,7 +779,18 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  message works!\n</p>\n"
+module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>Messages</h1>\n\n        <ul>\n            <li *ngFor=\"let message of messages\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                    <mat-card-title>{{message.fromUser}}</mat-card-title>\n                    <mat-card-content>\n\n                        <a>Friend Request</a>\n                        <mat-card-actions>\n                            <button color=\"primary\" class=\"font\" mat-button>ACCEPT</button>\n                            <button color=\"warn\" class=\"font\" mat-button>DECLINE</button>\n                        </mat-card-actions>\n                    </mat-card-content>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/message/message.component.scss":
+/*!************************************************!*\
+  !*** ./src/app/message/message.component.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid;\n  height: 100%; }\n  #container #content {\n    padding: 30px 50px; }\n  #container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n  #container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n  #container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n  #container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold;\n          color: #00a8ff; }\n  #container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n  .spacer {\n  flex: 1 1 auto; }\n"
 
 /***/ }),
 
@@ -805,6 +805,7 @@ module.exports = "<p>\n  message works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageComponent", function() { return MessageComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -815,18 +816,28 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var MessageComponent = /** @class */ (function () {
-    function MessageComponent() {
+    function MessageComponent(userService) {
+        this.userService = userService;
     }
     MessageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getAllMessages().subscribe(function (res) {
+            if (res)
+                _this.messages = res.message;
+            else {
+                console.log('error!');
+            }
+        }, function (err) { return console.log(err); });
     };
     MessageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-message',
             template: __webpack_require__(/*! ./message.component.html */ "./src/app/message/message.component.html"),
-            styles: [__webpack_require__(/*! ./message.component.css */ "./src/app/message/message.component.css")]
+            styles: [__webpack_require__(/*! ./message.component.scss */ "./src/app/message/message.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], MessageComponent);
     return MessageComponent;
 }());
@@ -1121,6 +1132,9 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.getUserByUsername = function (username) {
         return this.http.get('users/get-user-by-username/' + username);
+    };
+    UserService.prototype.getAllMessages = function () {
+        return this.http.get('messages/get-all');
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1468,7 +1482,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [@fallIn]=\"\">\n  <mat-card class=\"example-card mat-elevation-z8\">\n    <mat-card-header class=\"card-header\">\n      <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n        (click)=\"openDialog()\">\n    </mat-card-header>\n\n    <form class=\"example-form\">\n      <!-- User name -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n      </mat-form-field>\n      <!-- Nick name -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n      </mat-form-field>\n      <!-- Birthday -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n      </mat-form-field>\n      <!-- Email -->\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n            </mat-form-field>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n          </td>\n        </tr>\n      </table>\n      <table [@fallIn]=\"\" class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n        <tr>\n          <td>\n            <form class=\"example-form\">\n              <mat-form-field class=\"example-full-width\">\n                <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n              </mat-form-field>\n            </form>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n          </td>\n        </tr>\n      </table>\n      <!-- Password -->\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" disabled value=....................>\n            </mat-form-field>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button>\n          </td>\n        </tr>\n      </table>\n      <table [@fallIn]=\"\" class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n        <tr>\n          <td>\n            <form class=\"example-form\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n                <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n              </mat-form-field>\n            </form>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password(); passwordeditable=!passwordeditable;\"\n              mat-raised-button>Confirm</button>\n          </td>\n        </tr>\n      </table>\n\n    </form>\n\n    <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n  </mat-card>\n</div>"
+module.exports = "<div [@fallIn]=\"\">\n  <mat-card class=\"example-card mat-elevation-z8\">\n    <mat-card-header class=\"card-header\">\n      <img mat-card-avatar class=\"post-image\" src=\"{{ currentUser.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\"\n        (click)=\"openDialog()\">\n    </mat-card-header>\n\n    <form class=\"example-form\">\n      <!-- User name -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfusername\" placeholder=\"Username\" disabled value={{currentUser.username}}>\n      </mat-form-field>\n      <!-- Nick name -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{currentUser.nickname}}>\n      </mat-form-field>\n      <!-- Birthday -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{currentUser.dob.toString().substring(0,10)}}>\n      </mat-form-field>\n      <!-- Email -->\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput id=\"prfemail\" placeholder=\"Email\" disabled value={{currentUser.email}}>\n            </mat-form-field>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"editemailbtn\" (click)=\"emaileditable=!emaileditable\" mat-raised-button>Edit</button>\n          </td>\n        </tr>\n      </table>\n      <table [@fallIn]=\"\" class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"emaileditable\">\n        <tr>\n          <td>\n            <form class=\"example-form\">\n              <mat-form-field class=\"example-full-width\">\n                <input type=\"text\" matInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"currentUser.email\">\n              </mat-form-field>\n            </form>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email();\" mat-raised-button>Confirm</button>\n          </td>\n        </tr>\n      </table>\n      <!-- Password -->\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" disabled value=....................>\n            </mat-form-field>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"editpasswordbtn\" (click)=\"passwordeditable=!passwordeditable\" mat-raised-button>Edit</button>\n          </td>\n        </tr>\n      </table>\n      <table [@fallIn]=\"\" class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"passwordeditable\">\n        <tr>\n          <td>\n            <form class=\"example-form\">\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"New Password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\" [(ngModel)]=\"currentUser.password\">\n                <!-- <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->\n              </mat-form-field>\n            </form>\n          </td>\n          <td>\n            <button class=\"font\" color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password();\"\n              mat-raised-button>Confirm</button>\n          </td>\n        </tr>\n      </table>\n\n    </form>\n\n    <button color=\"primary\" class=\"back-button\" routerLink=\"/dashboard\" mat-raised-button>Back to Homepage</button>\n\n\n  </mat-card>\n</div>"
 
 /***/ }),
 
@@ -1517,6 +1531,7 @@ var UserProfileComponent = /** @class */ (function () {
         this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
         this.hide = true;
         this.emaileditable = false;
+        this.passwordeditable = false;
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1567,6 +1582,7 @@ var UserProfileComponent = /** @class */ (function () {
             this.userService.updatePassword(this.currentUser).subscribe(function (res) {
                 if (res) {
                     console.log('Password modify success!');
+                    _this.passwordeditable = false;
                     _this.snackBar.open('Password update success!', 'Close', {
                         duration: 2000,
                         panelClass: 'green-snackbar'

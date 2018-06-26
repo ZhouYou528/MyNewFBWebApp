@@ -1,9 +1,11 @@
 <div class="outer-most-container">
-  <mat-form-field class="font">
+  <mat-form-field style="width: 400px;" class="font">
     <input matInput [(ngModel)]="name" placeholder="Search friend">
   </mat-form-field>
-  <button class="search-button font" color="primary" (click)="filterFriends()" mat-raised-button>Search</button>
-  <button class="add-button font" mat-raised-button (click)="openDialog()" color="warn" id="addfriend">Add a new friend</button>
+  <div style="display: inline-block;">
+    <button class="search-button font" color="primary" (click)="filterFriends()" mat-raised-button>Search</button>
+    <button class="add-button font" mat-raised-button (click)="openDialog()" color="warn" id="addfriend">Add a new friend</button>
+  </div>
   <mat-list>
     <mat-list-item *ngFor="let friend of filteredFriends">
       <mat-icon mat-list-icon>face</mat-icon>
