@@ -42,7 +42,7 @@ router.get('/get-all', verifyToken, (req, res) => {
                     
                     res.json({success: true, message: allMessages})
                 }
-            });
+            }).sort({_id: -1, createdAt: 1});
         }
     })
 });

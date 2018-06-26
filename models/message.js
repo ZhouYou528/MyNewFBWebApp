@@ -17,6 +17,11 @@ const messageSchema = mongoose.Schema({
     status: {
         type: Number,
         required: true
+    },
+    createdAt: {
+        type: Date, 
+        default: Date.now(),
+        required: true
     }
 });
 

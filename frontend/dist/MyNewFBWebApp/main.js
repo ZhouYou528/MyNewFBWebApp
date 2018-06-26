@@ -387,7 +387,7 @@ module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"footer\">\n    Copyright 2018&copy; You Zhou\n</p>\n"
+module.exports = "<p class=\"footer\">\n    Copyright 2018 &copy; You Zhou\n</p>\n"
 
 /***/ }),
 
@@ -594,6 +594,7 @@ var AddFriendComponent = /** @class */ (function () {
             this.message.toUser = this.user.username;
             this.message.category = 1;
             this.message.status = 1;
+            this.message.createdAt = new Date();
             this.userService.friendRequest(this.message).subscribe(function (res) {
                 if (res.success) {
                     console.log('Friend request send success!');
@@ -868,17 +869,19 @@ var MessageComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Message", function() { return Message; });
 var Message = /** @class */ (function () {
-    function Message(_id, fromUser, toUser, category, status) {
+    function Message(_id, fromUser, toUser, category, status, createdAt) {
         if (_id === void 0) { _id = ''; }
         if (fromUser === void 0) { fromUser = ''; }
         if (toUser === void 0) { toUser = ''; }
         if (category === void 0) { category = -1; }
         if (status === void 0) { status = -1; }
+        if (createdAt === void 0) { createdAt = null; }
         this._id = _id;
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.category = category;
         this.status = status;
+        this.createdAt = createdAt;
     }
     return Message;
 }());

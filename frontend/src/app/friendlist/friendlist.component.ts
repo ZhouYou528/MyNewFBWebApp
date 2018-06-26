@@ -102,6 +102,7 @@ export class AddFriendComponent {
       this.message.toUser = this.user.username;
       this.message.category = 1;
       this.message.status = 1;
+      this.message.createdAt = new Date();
       this.userService.friendRequest(this.message).subscribe(
         res => {
           if(res.success) {
