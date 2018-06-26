@@ -10,18 +10,14 @@
                 <mat-icon>dashboard</mat-icon>
                 <span>Dashboard</span>
             </button>
-            <!-- <button mat-menu-item>
-                <mat-icon>lightbulb_outline</mat-icon>
-                <span>Notifications</span>
-            </button> -->
             <button class="font" mat-menu-item id="userprofilebtn" (click)="setUserProfile()">
                 <mat-icon>person_outline</mat-icon>
                 <span>Profile</span>
             </button>
-            <!-- <button mat-menu-item>
-                <mat-icon>settings</mat-icon>
-                <span>Setting</span>
-            </button> -->
+            <button class="font" mat-menu-item routerLink="/message">
+                <mat-icon>notifications</mat-icon>
+                <span>Messages</span>
+            </button>
             <button class="font" mat-menu-item routerLink="/">
                 <mat-icon>home</mat-icon>
                 <span>Home</span>

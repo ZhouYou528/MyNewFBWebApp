@@ -92,7 +92,7 @@ export class AddFriendComponent {
         duration: 2000,
         panelClass: 'red-snackbar'
       });
-    } else if(this.data.currentUser.friend.indexOf(this.user.username) > -1){
+    } else if(this.data.currentUser.friend !== undefined && this.data.currentUser.friend.indexOf(this.user.username) > -1){
       this.snackBar.open('Already in your friendlist!', 'Close', {
         duration: 2000,
         panelClass: 'red-snackbar'

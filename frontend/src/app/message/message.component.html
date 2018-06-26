@@ -2,12 +2,13 @@
     <div id="content">
         <h1>Messages</h1>
 
-        <ul>
+        <ul [@listStagger]="messages">
             <li *ngFor="let message of messages">
                 <mat-card id="card" class="mat-elevation-z5 font">
-                    <mat-card-title>{{message.fromUser}}</mat-card-title>
+                    <mat-card-title>
+                        {{message.fromUser}}
+                    </mat-card-title>
                     <mat-card-content>
-
                         <a>Friend Request</a>
                         <mat-card-actions>
                             <button color="primary" class="font" mat-button>ACCEPT</button>

@@ -43,12 +43,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
 /* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _message_message_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./message/message.component */ "./src/app/message/message.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -79,6 +81,11 @@ var appRoutes = [
         path: 'profile',
         component: _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__["UserProfileComponent"],
         canActivate: [_service_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
+    },
+    {
+        path: 'message',
+        component: _message_message_component__WEBPACK_IMPORTED_MODULE_8__["MessageComponent"],
+        canActivate: [_service_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -98,7 +105,8 @@ var routingComponents = [
     _signupform_signupform_component__WEBPACK_IMPORTED_MODULE_3__["SignupformComponent"],
     _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"],
     _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__["UserProfileComponent"],
-    _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"]
+    _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
+    _message_message_component__WEBPACK_IMPORTED_MODULE_8__["MessageComponent"]
 ];
 
 
@@ -431,7 +439,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field>\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div mat-dialog-content>\n        <div id=\"left\">\n            <img style=\"width: 100%;\" mat-card-avatar src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        </div>\n        <div id=\"right\">\n            <p>User name: {{user.username}}</p>\n            <p>Email: {{user.email}}</p>\n        </div>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
+module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field>\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div mat-dialog-content>\n        <div id=\"left\">\n            <img style=\"width: 400px;height: 400px;\" mat-card-avatar src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        </div>\n        <div id=\"right\">\n            <p>User name: {{user.username}}</p>\n            <p>Email: {{user.email}}</p>\n        </div>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -575,7 +583,7 @@ var AddFriendComponent = /** @class */ (function () {
                 panelClass: 'red-snackbar'
             });
         }
-        else if (this.data.currentUser.friend.indexOf(this.user.username) > -1) {
+        else if (this.data.currentUser.friend !== undefined && this.data.currentUser.friend.indexOf(this.user.username) > -1) {
             this.snackBar.open('Already in your friendlist!', 'Close', {
                 duration: 2000,
                 panelClass: 'red-snackbar'
@@ -635,7 +643,7 @@ module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center; font-family: 'Montserrat', sans-serif;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button class=\"font\" mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <!-- <button mat-menu-item>\n                <mat-icon>lightbulb_outline</mat-icon>\n                <span>Notifications</span>\n            </button> -->\n            <button class=\"font\" mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <!-- <button mat-menu-item>\n                <mat-icon>settings</mat-icon>\n                <span>Setting</span>\n            </button> -->\n            <button class=\"font\" mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
+module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center; font-family: 'Montserrat', sans-serif;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button class=\"font\" mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button class=\"font\" mat-menu-item routerLink=\"/message\">\n                <mat-icon>notifications</mat-icon>\n                <span>Messages</span>\n            </button>\n            <button class=\"font\" mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
 
 /***/ }),
 
@@ -779,7 +787,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>Messages</h1>\n\n        <ul>\n            <li *ngFor=\"let message of messages\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                    <mat-card-title>{{message.fromUser}}</mat-card-title>\n                    <mat-card-content>\n\n                        <a>Friend Request</a>\n                        <mat-card-actions>\n                            <button color=\"primary\" class=\"font\" mat-button>ACCEPT</button>\n                            <button color=\"warn\" class=\"font\" mat-button>DECLINE</button>\n                        </mat-card-actions>\n                    </mat-card-content>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
+module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>Messages</h1>\n\n        <ul [@listStagger]=\"messages\">\n            <li *ngFor=\"let message of messages\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                    <mat-card-title>\n                        {{message.fromUser}}\n                    </mat-card-title>\n                    <mat-card-content>\n                        <a>Friend Request</a>\n                        <mat-card-actions>\n                            <button color=\"primary\" class=\"font\" mat-button>ACCEPT</button>\n                            <button color=\"warn\" class=\"font\" mat-button>DECLINE</button>\n                        </mat-card-actions>\n                    </mat-card-content>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -790,7 +798,7 @@ module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid;\n  height: 100%; }\n  #container #content {\n    padding: 30px 50px; }\n  #container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n  #container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n  #container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n  #container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold;\n          color: #00a8ff; }\n  #container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n  .spacer {\n  flex: 1 1 auto; }\n"
+module.exports = "#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid;\n  height: 100%; }\n  #container #content {\n    padding: 30px 50px; }\n  #container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n  #container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n  #container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n  #container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n  #container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n  .spacer {\n  flex: 1 1 auto; }\n"
 
 /***/ }),
 
@@ -806,6 +814,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageComponent", function() { return MessageComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -815,6 +824,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var MessageComponent = /** @class */ (function () {
@@ -835,7 +845,8 @@ var MessageComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-message',
             template: __webpack_require__(/*! ./message.component.html */ "./src/app/message/message.component.html"),
-            styles: [__webpack_require__(/*! ./message.component.scss */ "./src/app/message/message.component.scss")]
+            styles: [__webpack_require__(/*! ./message.component.scss */ "./src/app/message/message.component.scss")],
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_2__["listStagger"])()]
         }),
         __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], MessageComponent);
@@ -918,7 +929,7 @@ var User = /** @class */ (function () {
 /*!**************************************!*\
   !*** ./src/app/router.animations.ts ***!
   \**************************************/
-/*! exports provided: moveIn, fallIn, moveInLeft */
+/*! exports provided: moveIn, fallIn, moveInLeft, listStagger */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -926,6 +937,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveIn", function() { return moveIn; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fallIn", function() { return fallIn; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveInLeft", function() { return moveInLeft; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listStagger", function() { return listStagger; });
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 
 function moveIn() {
@@ -959,6 +971,19 @@ function moveInLeft() {
         Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(':enter', [
             Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(-100px)' }),
             Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.6s .2s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }))
+        ])
+    ]);
+}
+function listStagger() {
+    return Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('listStagger', [
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('* <=> *', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(':enter', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 0, transform: 'translateY(-15px)' }),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["stagger"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('550ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 1, transform: 'translateY(0px)' })))
+            ], { optional: true }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 0 })), {
+                optional: true
+            })
         ])
     ]);
 }

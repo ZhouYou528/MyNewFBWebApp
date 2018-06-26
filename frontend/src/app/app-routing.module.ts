@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './service/auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
+import { MessageComponent } from './message/message.component';
 
 export const appRoutes: Routes = [
   {
@@ -29,6 +30,11 @@ export const appRoutes: Routes = [
     path: 'profile',
     component: UserProfileComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'message',
+    component: MessageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -44,5 +50,6 @@ export const routingComponents =
   SignupformComponent,
   DashboardComponent,
   UserProfileComponent,
-  HomeComponent
+  HomeComponent,
+  MessageComponent
 ]
