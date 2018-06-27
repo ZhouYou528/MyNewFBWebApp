@@ -1,18 +1,25 @@
 <div id="container">
     <div id="content">
         <h1>Messages</h1>
-
         <ul [@listStagger]="messages">
-            <li *ngFor="let message of messages">
+            <li *ngFor="let message of messages; let i = index;">
                 <mat-card id="card" class="mat-elevation-z5 font">
                     <mat-card-title>
                         {{message.fromUser}}
                     </mat-card-title>
                     <mat-card-content>
                         <a>Friend Request</a>
-                        <mat-card-actions>
-                            <button color="primary" class="font" mat-button>ACCEPT</button>
-                            <button color="warn" class="font" mat-button>DECLINE</button>
+                        <mat-card-actions *ngIf="message.status !== 0;">
+                            <button color="primary" class="font" (click)="accept(message, i)" mat-button>ACCEPT</button>
+                            <button color="warn" class="font" (click)="decline(message, i)" mat-button>DECLINE</button>
+                        </mat-card-actions>
+                        <mat-card-actions *ngIf="message.status === 0;">
+                            <button color="primary" class="font" (click)="decline(message, i)" mat-button>
+                                <!-- <Label for="input-file-id">
+                                    <i class="material-icons mat-18 icon-align">delete</i> -->
+                                    DELETE
+                                <!-- </Label> -->
+                            </button>
                         </mat-card-actions>
                     </mat-card-content>
                 </mat-card>

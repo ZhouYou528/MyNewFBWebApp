@@ -27,9 +27,6 @@ const userSchema = mongoose.Schema({
     dob: {
         type: Date
     },
-    friends: {
-        type: Array
-    },
     avatar: {
         type: String,
     }

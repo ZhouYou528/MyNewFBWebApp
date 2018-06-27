@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
 import { Router } from'@angular/router';
 import { Message } from '../model/message';
+import { Friendship } from '../model/friendship';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,10 @@ export class UserService {
 
   getAllMessages() {
     return this.http.get<any>('messages/get-all')
+  }
+
+  addFriend(friendship: Friendship) {
+    return this.http.post<any>('friendships/add', friendship)
   }
 
 }

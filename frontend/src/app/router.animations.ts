@@ -38,23 +38,26 @@ export function moveInLeft() {
 export function listStagger() {
     return trigger('listStagger', [
         transition('* <=> *', [
-          query(
-            ':enter',
-            [
-              style({ opacity: 0, transform: 'translateY(-15px)' }),
-              stagger(
-                '50ms',
-                animate(
-                  '550ms ease-out',
-                  style({ opacity: 1, transform: 'translateY(0px)' })
-                )
-              )
-            ],
-            { optional: true }
-          ),
-          query(':leave', animate('50ms', style({ opacity: 0 })), {
-            optional: true
-          })
+            query(
+                ':enter',
+                [
+                    style({ opacity: 0, transform: 'translateY(-15px)' }),
+                    stagger(
+                        '50ms',
+                        animate(
+                            '550ms ease-out',
+                            style({ opacity: 1, transform: 'translateY(0px)' })
+                        )
+                    )
+                ],
+                { optional: true }
+            ),
+            query(':leave',
+                [
+                    style({opacity:'1', transform:'translateX(0)'}),
+                    animate('.3s ease-in-out', style({opacity:'0', transform:'translateX(-200px)'}))
+                ],
+                { optional: true })
         ])
-      ])
+    ])
 } 

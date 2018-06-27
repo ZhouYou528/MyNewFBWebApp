@@ -14,7 +14,8 @@ router.post('/add', verifyToken, (req, res) => {
             fromUser: req.body.fromUser,
             toUser: req.body.toUser,
             category: req.body.category,
-            status: req.body.status
+            status: req.body.status,
+            createdAt: req.body.createdAt
         });
         message.save((err, newMessage) => {
             if (err) {
@@ -34,7 +35,8 @@ router.get('/get-all', verifyToken, (req, res) => {
         } else {
             let username = user.username;
             Message.find({
-                toUser: username
+                toUser: username,
+                status: { $in: [0, 1, 3] }
             }, (err, allMessages) => {
                 if(err) {
                     res.json({success: false, message: err})
@@ -46,6 +48,18 @@ router.get('/get-all', verifyToken, (req, res) => {
         }
     })
 });
+
+router.put('/update-message/:id', verifyToken, (req, res, next) => {
+    let query = { $set: { status: req.body.status } }
+    Message.findByIdAndUpdate(req.params.id, query, function (err, updatedMessage) {
+        if (err) {
+            return res.json({ success: false, msg: 'Failed to update status!' });
+        } else {
+            res.json(updatedMessage);
+        }
+    })
+});
+
 
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {

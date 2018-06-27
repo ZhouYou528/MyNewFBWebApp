@@ -7,7 +7,6 @@ export class User {
         public nickname: string = '',
         public gender  : string = '',
         public dob     : Date = new Date(),
-        public friend  : Array<string> = [],
         public avatar: string = ''
     ) {}
 }

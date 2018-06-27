@@ -439,7 +439,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field>\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div mat-dialog-content>\n        <div id=\"left\">\n            <img style=\"width: 400px;height: 400px;\" mat-card-avatar src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        </div>\n        <div id=\"right\">\n            <p>User name: {{user.username}}</p>\n            <p>Email: {{user.email}}</p>\n        </div>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
+module.exports = "<div *ngIf=\"user._id === '';\">\n    <h1 class=\"font\" style=\"font-weight: 700\" mat-dialog-title>New Friend Request</h1>\n    <div mat-dialog-content>\n        <p>Friend's name:</p>\n        <mat-form-field class=\"font\">\n            <input placeholder={{data.name}} matInput name=\"friendnametoadd\" [(ngModel)]=\"username\">\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"searchfriend\" (click)=\"searchfriend()\">Search</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" color=\"primary\" id=\"cancelbtnsearchfriend\">Cancel</button>\n    </div>\n</div>\n<div *ngIf=\"user._id !== '';\">\n    <div mat-dialog-content>\n        <div id=\"left\">\n            <img style=\"width: 400px;height: 400px;\" mat-card-avatar src=\"{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        </div>\n        <div id=\"right\">\n            <p>User name: {{user.username}}</p>\n            <p>Email: {{user.email}}</p>\n        </div>\n    </div>\n\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button color=\"alert\" id=\"andFriend\" (click)=\"sendMessage()\">Send</button>\n        <button class=\"font\" mat-button (click)=\"clearUser()\" color=\"primary\" id=\"cancelbtnaddfriend\">Back</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -788,7 +788,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>Messages</h1>\n\n        <ul [@listStagger]=\"messages\">\n            <li *ngFor=\"let message of messages\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                    <mat-card-title>\n                        {{message.fromUser}}\n                    </mat-card-title>\n                    <mat-card-content>\n                        <a>Friend Request</a>\n                        <mat-card-actions>\n                            <button color=\"primary\" class=\"font\" mat-button>ACCEPT</button>\n                            <button color=\"warn\" class=\"font\" mat-button>DECLINE</button>\n                        </mat-card-actions>\n                    </mat-card-content>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
+module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>Messages</h1>\n        <ul [@listStagger]=\"messages\">\n            <li *ngFor=\"let message of messages; let i = index;\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                    <mat-card-title>\n                        {{message.fromUser}}\n                    </mat-card-title>\n                    <mat-card-content>\n                        <a>Friend Request</a>\n                        <mat-card-actions *ngIf=\"message.status !== 0;\">\n                            <button color=\"primary\" class=\"font\" (click)=\"accept(message, i)\" mat-button>ACCEPT</button>\n                            <button color=\"warn\" class=\"font\" (click)=\"decline(message, i)\" mat-button>DECLINE</button>\n                        </mat-card-actions>\n                        <mat-card-actions *ngIf=\"message.status === 0;\">\n                            <button color=\"primary\" class=\"font\" (click)=\"decline(message, i)\" mat-button>\n                                <!-- <Label for=\"input-file-id\">\n                                    <i class=\"material-icons mat-18 icon-align\">delete</i> -->\n                                    DELETE\n                                <!-- </Label> -->\n                            </button>\n                        </mat-card-actions>\n                    </mat-card-content>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -799,7 +799,7 @@ module.exports = "<div id=\"container\">\n    <div id=\"content\">\n        <h1>
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid;\n  height: 100%; }\n  #container #content {\n    padding: 30px 50px; }\n  #container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n  #container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n  #container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n  #container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n  #container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n  .spacer {\n  flex: 1 1 auto; }\n"
+module.exports = "#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid;\n  height: 100%; }\n  #container #content {\n    padding: 30px 50px; }\n  #container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n  #container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n  #container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n  #container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n  #container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n  .spacer {\n  flex: 1 1 auto; }\n  .icon-align {\n  display: inline-flex;\n  vertical-align: middle; }\n"
 
 /***/ }),
 
@@ -816,6 +816,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
+/* harmony import */ var _service_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/message.service */ "./src/app/service/message.service.ts");
+/* harmony import */ var _model_friendship__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/friendship */ "./src/app/model/friendship.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -828,9 +830,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var MessageComponent = /** @class */ (function () {
-    function MessageComponent(userService) {
+    function MessageComponent(userService, messageService) {
         this.userService = userService;
+        this.messageService = messageService;
     }
     MessageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -842,16 +847,79 @@ var MessageComponent = /** @class */ (function () {
             }
         }, function (err) { return console.log(err); });
     };
+    MessageComponent.prototype.decline = function (message, i) {
+        var _this = this;
+        message.status = 2;
+        this.messageService.updateMessage(message).subscribe(function (res) {
+            if (res) {
+                _this.messages.splice(i, 1);
+            }
+            else {
+                console.log(res);
+            }
+        }, function (err) { return console.log(err); });
+    };
+    MessageComponent.prototype.accept = function (message, i) {
+        var _this = this;
+        var friendship = new _model_friendship__WEBPACK_IMPORTED_MODULE_4__["Friendship"]();
+        friendship.userTwo = message.fromUser;
+        friendship.createdAt = new Date();
+        console.log(friendship);
+        this.userService.addFriend(friendship).subscribe(function (res) {
+            if (res.success) {
+                console.log('Add friend success!');
+                message.status = 0;
+                _this.messageService.updateMessage(message).subscribe(function (res) {
+                    if (res) {
+                    }
+                    else {
+                        console.log(res);
+                    }
+                }, function (err) { return console.log(err); });
+            }
+            else {
+                console.log('Add friend failed!');
+            }
+        });
+    };
     MessageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-message',
             template: __webpack_require__(/*! ./message.component.html */ "./src/app/message/message.component.html"),
             styles: [__webpack_require__(/*! ./message.component.scss */ "./src/app/message/message.component.scss")],
-            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_2__["listStagger"])()]
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_2__["listStagger"])(), Object(_router_animations__WEBPACK_IMPORTED_MODULE_2__["fallIn"])()]
         }),
-        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _service_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
     ], MessageComponent);
     return MessageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/friendship.ts":
+/*!*************************************!*\
+  !*** ./src/app/model/friendship.ts ***!
+  \*************************************/
+/*! exports provided: Friendship */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Friendship", function() { return Friendship; });
+var Friendship = /** @class */ (function () {
+    function Friendship(_id, userOne, userTwo, createdAt) {
+        if (_id === void 0) { _id = ''; }
+        if (userOne === void 0) { userOne = ''; }
+        if (userTwo === void 0) { userTwo = ''; }
+        if (createdAt === void 0) { createdAt = null; }
+        this._id = _id;
+        this.userOne = userOne;
+        this.userTwo = userTwo;
+        this.createdAt = createdAt;
+    }
+    return Friendship;
 }());
 
 
@@ -901,7 +969,7 @@ var Message = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
 var User = /** @class */ (function () {
-    function User(_id, username, password, email, nickname, gender, dob, friend, avatar) {
+    function User(_id, username, password, email, nickname, gender, dob, avatar) {
         if (_id === void 0) { _id = ''; }
         if (username === void 0) { username = ''; }
         if (password === void 0) { password = ''; }
@@ -909,7 +977,6 @@ var User = /** @class */ (function () {
         if (nickname === void 0) { nickname = ''; }
         if (gender === void 0) { gender = ''; }
         if (dob === void 0) { dob = new Date(); }
-        if (friend === void 0) { friend = []; }
         if (avatar === void 0) { avatar = ''; }
         this._id = _id;
         this.username = username;
@@ -918,7 +985,6 @@ var User = /** @class */ (function () {
         this.nickname = nickname;
         this.gender = gender;
         this.dob = dob;
-        this.friend = friend;
         this.avatar = avatar;
     }
     return User;
@@ -984,9 +1050,10 @@ function listStagger() {
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 0, transform: 'translateY(-15px)' }),
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["stagger"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('550ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 1, transform: 'translateY(0px)' })))
             ], { optional: true }),
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 0 })), {
-                optional: true
-            })
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(':leave', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.3s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(-200px)' }))
+            ], { optional: true })
         ])
     ]);
 }
@@ -1040,6 +1107,52 @@ var AuthGuard = /** @class */ (function () {
         __metadata("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], AuthGuard);
     return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/service/message.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/service/message.service.ts ***!
+  \********************************************/
+/*! exports provided: MessageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MessageService = /** @class */ (function () {
+    function MessageService(http, router) {
+        this.http = http;
+        this.router = router;
+    }
+    MessageService.prototype.updateMessage = function (message) {
+        return this.http.put('/messages/update-message/' + message._id, message);
+    };
+    MessageService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], MessageService);
+    return MessageService;
 }());
 
 
@@ -1163,6 +1276,9 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.getAllMessages = function () {
         return this.http.get('messages/get-all');
+    };
+    UserService.prototype.addFriend = function (friendship) {
+        return this.http.post('friendships/add', friendship);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 const usersRoutes = require('./routes/users');
 const messageRoutes = require('./routes/messages');
+const friendshipRoutes = require('./routes/friendships');
 
 //set up password in nodemon.json
 //mongodb atlas
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, './frontend/dist/MyNewFBWebApp')));
 
 app.use('/users', usersRoutes);
 app.use('/messages', messageRoutes);
+app.use('/friendships', friendshipRoutes);
 app.all("*",(req,res,next) => {
     res.sendFile(path.resolve('./frontend/dist/MyNewFBWebApp/index.html'))
 });
