@@ -1,14 +1,9 @@
-<body>
-    <!-- <div>
-      <img width="500" src="../assets/GatorBook.jpg">
-    </div> --> 
-    <div [@fallIn]="">
-      <img style="margin-top: 150px;" width="500" src="../assets/gator.png">
-    </div>
-    <div [@fallIn]="" class="sign-in-button">
-      <button class="button" color="primary" id="signinbtn" routerLink="/signin" mat-raised-button>Sign In</button>   
-    </div>
-    <div [@fallIn]="" class="sign-up-button">
-      <button class="button" color="warn" id="signupbtn" routerLink="/signup" mat-raised-button>Sign Up</button>
-    </div>
-</body>
+<div class="home">
+  <div [@fallIn]="" class="gatorimg">
+    <img width="500" src="../assets/gator.png">
+  </div>
+  <div [@fallIn]="" style="display: inline-block;">
+    <button class="button" color="primary" id="signinbtn" routerLink="/signin" mat-raised-button>Sign In</button>
+    <button style="margin-left: 15px;" class="button" color="warn" id="signupbtn" routerLink="/signup" mat-raised-button>Sign Up</button>
+  </div>
+</div>

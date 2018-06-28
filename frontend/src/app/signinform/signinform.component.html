@@ -1,10 +1,7 @@
-<body>
+<div class="signin">
   <form (submit)="loginUser($event)">
-    <!-- <div>
-      <img width="500" src="../assets/GatorBook.jpg">
-    </div> -->
     <div>
-      <img style="margin-top: 150px; margin-bottom: 80px;" width="500" src="../assets/gator.png">
+      <img [@fallIn]="" class="gatorimg" width="500" src="../assets/gator.png">
     </div>
     <div [@fallIn]="">
       <mat-form-field class="login-input-form">
@@ -22,6 +19,5 @@
         <button class="font" color="primary" id="backbtn" routerLink="/" mat-raised-button>Back</button>
       </div>
     </div>
-
   </form>
-</body>
+</div>

@@ -112,17 +112,6 @@ var routingComponents = [
 
 /***/ }),
 
-/***/ "./src/app/app.component.css":
-/*!***********************************!*\
-  !*** ./src/app/app.component.css ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n    min-height: 100vh;\n    position: relative;\n}\n"
-
-/***/ }),
-
 /***/ "./src/app/app.component.html":
 /*!************************************!*\
   !*** ./src/app/app.component.html ***!
@@ -130,7 +119,18 @@ module.exports = ".fullPage {\n    display: flex;\n    flex-direction: column;\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"fullPage\">\n    <app-header></app-header>\n    <router-outlet></router-outlet>\n    <app-footer></app-footer>\n</div>\n\n\n"
+module.exports = "<div class=\"fullPage\">\n    <app-header></app-header>\n    <div id=\"wrapper\">\n        <router-outlet></router-outlet>  \n    </div>\n    <app-footer></app-footer>\n</div>\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/app.component.scss":
+/*!************************************!*\
+  !*** ./src/app/app.component.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".fullPage {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  position: relative; }\n\n#wrapper {\n  margin-bottom: 10%; }\n"
 
 /***/ }),
 
@@ -160,7 +160,7 @@ var AppComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
-            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
+            styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
         })
     ], AppComponent);
     return AppComponent;
@@ -312,7 +312,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mat-tab-label {\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n}\n.mat-tab-label.mat-tab-label-active {\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 700;\n}"
+module.exports = ".mat-tab-label {\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n}\n.mat-tab-label.mat-tab-label-active {\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 700;\n}\n"
 
 /***/ }),
 
@@ -323,7 +323,7 @@ module.exports = ".mat-tab-label {\n    font-family: 'Montserrat', sans-serif;\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <mat-tab-group>\n    <mat-tab label=\"News Feed\">\n      <!-- <app-home></app-home> -->\n    </mat-tab>\n    <mat-tab label=\"Blog\">\n      <!-- <app-selfpost></app-selfpost> -->\n    </mat-tab>\n    <mat-tab label=\"Friends List\">\n      <app-friendlist></app-friendlist>\n    </mat-tab>\n    <mat-tab label=\"Message\">\n      <app-message></app-message>\n    </mat-tab>\n  </mat-tab-group>\n</div>"
+module.exports = "<div class=\"dashboard\">\n  <mat-tab-group>\n    <mat-tab label=\"News Feed\">\n      <!-- <app-home></app-home> -->\n    </mat-tab>\n    <mat-tab label=\"Blog\">\n      <!-- <app-selfpost></app-selfpost> -->\n    </mat-tab>\n    <mat-tab label=\"Friends List\">\n      <app-friendlist></app-friendlist>\n    </mat-tab>\n    <mat-tab label=\"Message\">\n      <app-message></app-message>\n    </mat-tab>\n  </mat-tab-group>\n</div>"
 
 /***/ }),
 
@@ -387,7 +387,7 @@ module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"footer\">\n    Copyright 2018 &copy; You Zhou\n</p>\n"
+module.exports = "<p class=\"footer font\">\n    Copyright 2018 &copy; You Zhou\n</p>\n"
 
 /***/ }),
 
@@ -722,7 +722,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n    font-family: 'Montserrat', sans-serif;\n}\n"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n    font-family: 'Montserrat', sans-serif;\n}\n.home{\n    margin-top: 10%;\n}    "
 
 /***/ }),
 
@@ -733,7 +733,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direc
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> --> \n    <div [@fallIn]=\"\">\n      <img style=\"margin-top: 150px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\" class=\"sign-in-button\">\n      <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>   \n    </div>\n    <div [@fallIn]=\"\" class=\"sign-up-button\">\n      <button class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n    </div>\n</body>"
+module.exports = "<div class=\"home\">\n  <div [@fallIn]=\"\" class=\"gatorimg\">\n    <img width=\"500\" src=\"../assets/gator.png\">\n  </div>\n  <div [@fallIn]=\"\" style=\"display: inline-block;\">\n    <button class=\"button\" color=\"primary\" id=\"signinbtn\" routerLink=\"/signin\" mat-raised-button>Sign In</button>\n    <button style=\"margin-left: 15px;\" class=\"button\" color=\"warn\" id=\"signupbtn\" routerLink=\"/signup\" mat-raised-button>Sign Up</button>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1372,7 +1372,7 @@ var ValidateService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.font {\n    font-family: 'Montserrat', sans-serif;\n}"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;   \n}\n.login-input-form {\n    display:block;\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.font {\n    font-family: 'Montserrat', sans-serif;\n}\n.signin {\n    margin-top: 10%;\n}\n"
 
 /***/ }),
 
@@ -1383,7 +1383,7 @@ module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n  <form (submit)=\"loginUser($event)\">\n    <!-- <div>\n      <img width=\"500\" src=\"../assets/GatorBook.jpg\">\n    </div> -->\n    <div>\n      <img style=\"margin-top: 150px; margin-bottom: 80px;\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\">\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n      </mat-form-field>\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\"\n          [(ngModel)]=\"signinUser.password\">\n        <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n      </mat-form-field>\n      <div class=\"sign-in-button\">\n        <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>\n      </div>\n      <div class=\"sign-up-button\">\n        <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n      </div>\n    </div>\n\n  </form>\n</body>"
+module.exports = "<div class=\"signin\">\n  <form (submit)=\"loginUser($event)\">\n    <div>\n      <img [@fallIn]=\"\" class=\"gatorimg\" width=\"500\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\">\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n      </mat-form-field>\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\"\n          [(ngModel)]=\"signinUser.password\">\n        <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n      </mat-form-field>\n      <div class=\"sign-in-button\">\n        <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>\n      </div>\n      <div class=\"sign-up-button\">\n        <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n      </div>\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 

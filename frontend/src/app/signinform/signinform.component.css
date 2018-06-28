@@ -2,7 +2,7 @@
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;   
 }
 .login-input-form {
     display:block;
@@ -20,4 +20,8 @@
 }
 .font {
     font-family: 'Montserrat', sans-serif;
+}
+
+.signin {
+    margin-top: 10%;
 }
