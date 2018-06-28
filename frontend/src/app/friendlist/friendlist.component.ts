@@ -18,6 +18,7 @@ export class FriendlistComponent implements OnInit {
   name: string;
   currentUser = new User();
   friendships: Friendship[];
+  filteredFriends: Friendship[];
 
   constructor(public snackBar: MatSnackBar, public dialog: MatDialog, private userService: UserService) { }
 
@@ -32,6 +33,7 @@ export class FriendlistComponent implements OnInit {
               if(res.success) {
                 // console.log(res)
                 this.friendships = res.message;
+                this.filteredFriends = res.message;
               }
             },
             err => console.log(err)
@@ -42,6 +44,11 @@ export class FriendlistComponent implements OnInit {
       },
       err => console.log(err)
     )
+  }
+  filterFriends() {
+    this.filteredFriends = this.friendships.filter(
+      friend => friend.userTwo.toLowerCase().indexOf(this.name.toLowerCase()) > -1
+    );
   }
 
   deleteFriend(friendname, i) {

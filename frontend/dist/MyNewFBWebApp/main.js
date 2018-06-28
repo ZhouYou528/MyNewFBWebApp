@@ -461,7 +461,7 @@ module.exports = ".outer-most-container {\n    margin-top: 10px;\n    margin-lef
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field style=\"width: 400px;\" class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <div style=\"display: inline-block;\">\n    <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n    <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  </div>\n  <mat-list [@listStagger]=\"friendships\">\n    <mat-list-item *ngFor=\"let friend of friendships; let i = index;\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p class=\"font\" mat-line>{{friend.userTwo}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend.userTwo, i)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
+module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field style=\"width: 400px;\" class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <div style=\"display: inline-block;\">\n    <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n    <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  </div>\n  <mat-list [@listStagger]=\"filteredFriends\">\n    <mat-list-item *ngFor=\"let friend of filteredFriends; let i = index;\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p class=\"font\" mat-line>{{friend.userTwo}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend.userTwo, i)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
 
 /***/ }),
 
@@ -518,6 +518,7 @@ var FriendlistComponent = /** @class */ (function () {
                     if (res.success) {
                         // console.log(res)
                         _this.friendships = res.message;
+                        _this.filteredFriends = res.message;
                     }
                 }, function (err) { return console.log(err); });
             }
@@ -525,6 +526,10 @@ var FriendlistComponent = /** @class */ (function () {
                 console.log('Get current user error!');
             }
         }, function (err) { return console.log(err); });
+    };
+    FriendlistComponent.prototype.filterFriends = function () {
+        var _this = this;
+        this.filteredFriends = this.friendships.filter(function (friend) { return friend.userTwo.toLowerCase().indexOf(_this.name.toLowerCase()) > -1; });
     };
     FriendlistComponent.prototype.deleteFriend = function (friendname, i) {
         var _this = this;
