@@ -24,6 +24,7 @@ router.post('/add', verifyToken, (req, res) => {
                 friendship1.save((err, newFriendship) => {
                     if (err) {
                         console.log(err)
+                        res.json({success: false})
                     } else {
                         console.log("Success!")
                     }
@@ -47,6 +48,57 @@ router.post('/add', verifyToken, (req, res) => {
     }
 });
 
+router.get('/get-all-friends', verifyToken, (req, res) => {
+    User.findById(req.userId, (err, user) =>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success: false, msg:'User not found'});
+        } else {
+            let username = user.username;
+            Friendship.find({
+                userOne: username,
+            }, (err, allFriends) => {
+                if(err) {
+                    res.json({success: false, message: err})
+                } else {
+                    
+                    res.json({success: true, message: allFriends})
+                }
+            }).sort({_id: -1});
+        }
+    })
+});
+
+router.delete('/delete-friend/:friendname', verifyToken, (req, res) => {
+    User.findById(req.userId, (err, user) =>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success: false, msg:'User not found'});
+        } else {
+            let username = user.username;
+            Friendship.deleteMany({
+                userOne: username,
+                userTwo: req.params.friendname
+            }, (err) => {
+                if(err) {
+                    // res.json({success: false, message: err})
+                } else {
+                    // res.json({success: true, message: "Friend deleted!"})
+                }
+            });
+            Friendship.deleteMany({
+                userOne: req.params.friendname,
+                userTwo: username
+            }, (err) => {
+                if(err) {
+                    res.json({success: false, message: err})
+                } else {  
+                    res.json({success: true, message: "Friend deleted!"})
+                }
+            });
+        }
+    })
+});
 
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {

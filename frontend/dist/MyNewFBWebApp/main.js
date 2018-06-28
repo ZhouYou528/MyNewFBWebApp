@@ -461,7 +461,7 @@ module.exports = ".outer-most-container {\n    margin-top: 10px;\n    margin-lef
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field style=\"width: 400px;\" class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <div style=\"display: inline-block;\">\n    <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n    <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  </div>\n  <mat-list>\n    <mat-list-item *ngFor=\"let friend of filteredFriends\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p mat-line>{{friend.nickname}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
+module.exports = "<div class=\"outer-most-container\">\n  <mat-form-field style=\"width: 400px;\" class=\"font\">\n    <input matInput [(ngModel)]=\"name\" placeholder=\"Search friend\">\n  </mat-form-field>\n  <div style=\"display: inline-block;\">\n    <button class=\"search-button font\" color=\"primary\" (click)=\"filterFriends()\" mat-raised-button>Search</button>\n    <button class=\"add-button font\" mat-raised-button (click)=\"openDialog()\" color=\"warn\" id=\"addfriend\">Add a new friend</button>\n  </div>\n  <mat-list [@listStagger]=\"friendships\">\n    <mat-list-item *ngFor=\"let friend of friendships; let i = index;\">\n      <mat-icon mat-list-icon>face</mat-icon>\n      <p class=\"font\" mat-line>{{friend.userTwo}}</p>\n      <span class=\"spacer\"></span>\n      <button mat-icon-button (click)=\"deleteFriend(friend.userTwo, i)\">\n        <i class=\"material-icons\">clear</i>\n      </button>\n    </mat-list-item>\n  </mat-list>\n</div>"
 
 /***/ }),
 
@@ -481,6 +481,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _model_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/message */ "./src/app/model/message.ts");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -499,8 +500,10 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 var FriendlistComponent = /** @class */ (function () {
-    function FriendlistComponent(dialog, userService) {
+    function FriendlistComponent(snackBar, dialog, userService) {
+        this.snackBar = snackBar;
         this.dialog = dialog;
         this.userService = userService;
         this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
@@ -511,9 +514,28 @@ var FriendlistComponent = /** @class */ (function () {
             if (res) {
                 console.log(res);
                 _this.currentUser = res;
+                _this.userService.getAllFriends().subscribe(function (res) {
+                    if (res.success) {
+                        // console.log(res)
+                        _this.friendships = res.message;
+                    }
+                }, function (err) { return console.log(err); });
             }
             else {
                 console.log('Get current user error!');
+            }
+        }, function (err) { return console.log(err); });
+    };
+    FriendlistComponent.prototype.deleteFriend = function (friendname, i) {
+        var _this = this;
+        this.userService.deleteFriend(friendname).subscribe(function (res) {
+            if (res.success) {
+                console.log('delete success');
+                _this.friendships.splice(i, 1);
+                _this.snackBar.open('Friend deleted!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'green-snackbar'
+                });
             }
         }, function (err) { return console.log(err); });
     };
@@ -530,9 +552,10 @@ var FriendlistComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-friendlist',
             template: __webpack_require__(/*! ./friendlist.component.html */ "./src/app/friendlist/friendlist.component.html"),
-            styles: [__webpack_require__(/*! ./friendlist.component.css */ "./src/app/friendlist/friendlist.component.css")]
+            styles: [__webpack_require__(/*! ./friendlist.component.css */ "./src/app/friendlist/friendlist.component.css")],
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_5__["listStagger"])()]
         }),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"], _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSnackBar"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"], _service_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
     ], FriendlistComponent);
     return FriendlistComponent;
 }());
@@ -722,7 +745,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n    font-family: 'Montserrat', sans-serif;\n}\n.home{\n    margin-top: 10%;\n}    "
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.button {\n    width: 245px;\n    margin-top: 100px;\n    font-family: 'Montserrat', sans-serif;\n}\n.home{\n    margin-top: 10%;\n    margin-bottom: 5%;\n}    "
 
 /***/ }),
 
@@ -818,6 +841,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 /* harmony import */ var _service_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/message.service */ "./src/app/service/message.service.ts");
 /* harmony import */ var _model_friendship__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/friendship */ "./src/app/model/friendship.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -832,8 +856,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MessageComponent = /** @class */ (function () {
-    function MessageComponent(userService, messageService) {
+    function MessageComponent(snackBar, userService, messageService) {
+        this.snackBar = snackBar;
         this.userService = userService;
         this.messageService = messageService;
     }
@@ -868,6 +894,10 @@ var MessageComponent = /** @class */ (function () {
         this.userService.addFriend(friendship).subscribe(function (res) {
             if (res.success) {
                 console.log('Add friend success!');
+                _this.snackBar.open('Friend added successfully!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'green-snackbar'
+                });
                 message.status = 0;
                 _this.messageService.updateMessage(message).subscribe(function (res) {
                     if (res) {
@@ -879,8 +909,12 @@ var MessageComponent = /** @class */ (function () {
             }
             else {
                 console.log('Add friend failed!');
+                _this.snackBar.open('Friend is already in the list!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'red-snackbar'
+                });
             }
-        });
+        }, function (err) { return console.log(err); });
     };
     MessageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -889,7 +923,7 @@ var MessageComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./message.component.scss */ "./src/app/message/message.component.scss")],
             animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_2__["listStagger"])(), Object(_router_animations__WEBPACK_IMPORTED_MODULE_2__["fallIn"])()]
         }),
-        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _service_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _service_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
     ], MessageComponent);
     return MessageComponent;
 }());
@@ -1050,10 +1084,6 @@ function listStagger() {
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 0, transform: 'translateY(-15px)' }),
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["stagger"])('50ms', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('550ms ease-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: 1, transform: 'translateY(0px)' })))
             ], { optional: true }),
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(':leave', [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '1', transform: 'translateX(0)' }),
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('.3s ease-in-out', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({ opacity: '0', transform: 'translateX(-200px)' }))
-            ], { optional: true })
         ])
     ]);
 }
@@ -1279,6 +1309,12 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.addFriend = function (friendship) {
         return this.http.post('friendships/add', friendship);
+    };
+    UserService.prototype.getAllFriends = function () {
+        return this.http.get('friendships/get-all-friends');
+    };
+    UserService.prototype.deleteFriend = function (friendname) {
+        return this.http.delete('friendships/delete-friend/' + friendname);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1615,7 +1651,7 @@ module.exports = "<div>\n    <div>\n        <h1 class=\"avatar-header\">Change y
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n  \n  .example-full-width {\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n    margin-left: 15px;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
+module.exports = ":host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n  \n  .example-full-width {\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .example-button-color {\n      color: #80CBC4\n  }\n  \n  .example-form {\n    min-width: 150px;\n    max-width: 600px;\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  \n  .post-image {\n    background-size: cover;\n    width: 150px;\n    height: 150px;\n    margin-left: auto;\n    margin-right: auto;\n    margin-top: 80px;\n    margin-bottom: 100px;\n  }\n  \n  .example-card {\n    width: 800px;\n    padding:0 0 50px 0;\n    margin-top: 5%;\n    margin-bottom: 5%;\n  }\n  \n  .card-header {\n    background-size: cover;\n    background-image: url('afternoon.jpg');\n    margin-bottom: 50px;\n  }\n  \n  .back-button {\n    margin-left: 100px;\n    font-family: 'Montserrat', sans-serif;\n  }\n  \n  .uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 300px;\n    padding:0 0 20px 0;\n    margin-left: 15px;\n  }\n  \n  .icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n  }\n  \n  .input{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  \n  .button-spacer{\n    margin-left: 10px;\n  }\n  \n  .avatar-header{\n    align-items: center;\n    justify-content: center;\n    font: bold;\n  }"
 
 /***/ }),
 

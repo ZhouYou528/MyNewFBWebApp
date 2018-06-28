@@ -4,18 +4,22 @@ import { User } from '../model/user';
 import { UserService } from '../service/user.service';
 import { MatSnackBar } from '@angular/material';
 import { Message } from '../model/message';
+import { Friendship } from '../model/friendship';
+import { listStagger } from '../router.animations';
 
 @Component({
   selector: 'app-friendlist',
   templateUrl: './friendlist.component.html',
-  styleUrls: ['./friendlist.component.css']
+  styleUrls: ['./friendlist.component.css'],
+  animations:[listStagger()]
 })
 export class FriendlistComponent implements OnInit {
 
   name: string;
   currentUser = new User();
+  friendships: Friendship[];
 
-  constructor(public dialog: MatDialog, private userService: UserService) { }
+  constructor(public snackBar: MatSnackBar, public dialog: MatDialog, private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(
@@ -23,6 +27,15 @@ export class FriendlistComponent implements OnInit {
         if (res) {
           console.log(res)
           this.currentUser = res
+          this.userService.getAllFriends().subscribe(
+            res => {
+              if(res.success) {
+                // console.log(res)
+                this.friendships = res.message;
+              }
+            },
+            err => console.log(err)
+          );
         } else {
           console.log('Get current user error!')
         }
@@ -30,6 +43,23 @@ export class FriendlistComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  deleteFriend(friendname, i) {
+    this.userService.deleteFriend(friendname).subscribe(
+      res => {
+        if(res.success) {
+          console.log('delete success');
+          this.friendships.splice(i, 1);
+          this.snackBar.open('Friend deleted!', 'Close', {
+            duration: 2000,
+            panelClass: 'green-snackbar'
+          });
+        }
+      },
+      err => console.log(err)
+    );
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(AddFriendComponent, {
       data: { name: this.name, currentUser: this.currentUser }

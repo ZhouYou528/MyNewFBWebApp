@@ -65,4 +65,11 @@ export class UserService {
     return this.http.post<any>('friendships/add', friendship)
   }
 
+  getAllFriends() {
+    return this.http.get<any>('friendships/get-all-friends')
+  }
+
+  deleteFriend(friendname: string) {
+    return this.http.delete<any>('friendships/delete-friend/' + friendname)
+  }
 }

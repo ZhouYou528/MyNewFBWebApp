@@ -4,6 +4,7 @@ import { Message } from '../model/message';
 import { listStagger, fallIn } from '../router.animations';
 import { MessageService } from '../service/message.service';
 import { Friendship } from '../model/friendship';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-message',
@@ -15,7 +16,7 @@ export class MessageComponent implements OnInit {
 
   messages: Message[]
 
-  constructor(private userService: UserService, private messageService: MessageService) { }
+  constructor(public snackBar: MatSnackBar, private userService: UserService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.userService.getAllMessages().subscribe(
@@ -52,6 +53,10 @@ export class MessageComponent implements OnInit {
       res => {
         if(res.success) {
           console.log('Add friend success!')
+          this.snackBar.open('Friend added successfully!', 'Close', {
+            duration: 2000,
+            panelClass: 'green-snackbar'
+          });
           message.status = 0;
           this.messageService.updateMessage(message).subscribe(
             res => {
@@ -65,8 +70,13 @@ export class MessageComponent implements OnInit {
           );
         } else {
           console.log('Add friend failed!')
+          this.snackBar.open('Friend is already in the list!', 'Close', {
+            duration: 2000,
+            panelClass: 'red-snackbar'
+          });
         }
-      }
+      },
+      err => console.log(err)
     );
   }
   

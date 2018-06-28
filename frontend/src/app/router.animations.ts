@@ -52,12 +52,12 @@ export function listStagger() {
                 ],
                 { optional: true }
             ),
-            query(':leave',
-                [
-                    style({opacity:'1', transform:'translateX(0)'}),
-                    animate('.3s ease-in-out', style({opacity:'0', transform:'translateX(-200px)'}))
-                ],
-                { optional: true })
+            // query(':leave',
+            //     [
+            //         style({opacity:'1', transform:'translateX(0)'}),
+            //         animate('.3s ease-in-out', style({opacity:'0', transform:'translateX(-200px)'}))
+            //     ],
+            //     { optional: true })
         ])
     ])
 } 
