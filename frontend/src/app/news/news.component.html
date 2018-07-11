@@ -1,0 +1,25 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header class="font" id="makepost">
+    <mat-panel-title>
+      Make Post
+    </mat-panel-title>
+    <mat-panel-description>
+      What's on your mind?
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-form-field class="textwidth font">
+    <input matInput name="postinput"  [(ngModel)]="post.body" #message maxlength="256">
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+  </mat-form-field>
+  <img *ngIf="url.length > 0" class="uploadImg" src="{{ url }}">
+  <div class="input">
+    <input class="ng-hide font" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
+    <button class="photo-button font" color="primary" id="selectFile" mat-raised-button>
+      <Label for="input-file-id">
+        <i class="material-icons mat-18 icon-align">insert_photo</i>
+        Photo
+      </Label>
+    </button>
+    <button class="post-button font" color="warn" id="sendpost" (click)="sendPost()" mat-raised-button>Post</button>
+  </div>
+</mat-expansion-panel>

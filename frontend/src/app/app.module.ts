@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 //components
@@ -24,7 +25,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AvatarPreviewComponent } from'./user-profile/user-profile.component';
+import { AvatarPreviewComponent } from './user-profile/user-profile.component';
 
 //service
 import { UserService } from './service/user.service';
@@ -33,6 +34,7 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FriendlistComponent, AddFriendComponent } from './friendlist/friendlist.component';
 import { MessageComponent } from './message/message.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +45,13 @@ import { MessageComponent } from './message/message.component';
     AvatarPreviewComponent,
     FriendlistComponent,
     MessageComponent,
-    AddFriendComponent
+    AddFriendComponent,
+    NewsComponent
   ],
   imports: [
     MatIconModule,
     MatButtonModule,
+    MatExpansionModule,
     MatTabsModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
@@ -72,7 +76,7 @@ import { MessageComponent } from './message/message.component';
     AddFriendComponent
   ],
   providers: [
-    UserService, 
+    UserService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

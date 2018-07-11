@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const usersRoutes = require('./routes/users');
 const messageRoutes = require('./routes/messages');
 const friendshipRoutes = require('./routes/friendships');
+const postRoutes = require('./routes/posts');
 
 //set up password in nodemon.json
 //mongodb atlas
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, './frontend/dist/MyNewFBWebApp')));
 app.use('/users', usersRoutes);
 app.use('/messages', messageRoutes);
 app.use('/friendships', friendshipRoutes);
+app.use('/posts', postRoutes);
 app.all("*",(req,res,next) => {
     res.sendFile(path.resolve('./frontend/dist/MyNewFBWebApp/index.html'))
 });
@@ -54,9 +56,5 @@ app.use((error, req, res, next) => {
         }
     });
 });
-
-// app.all("*",(req,res,next) => {
-//     res.sendFile(path.resolve('../frontend/dist/MyNewFBWebApp/index.html'))
-// });
 
 module.exports = app;

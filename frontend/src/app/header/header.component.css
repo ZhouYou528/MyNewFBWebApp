@@ -3,3 +3,9 @@
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
 }
+
+.icon-align{
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 5px;
+  }

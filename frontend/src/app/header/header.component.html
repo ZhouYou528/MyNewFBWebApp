@@ -1,7 +1,13 @@
 <header>
     <mat-toolbar class="mat-elevation-z5" color="primary">
         <span style="text-align:center; font-family: 'Montserrat', sans-serif;">GatorBook</span>
-        <span class="spacer"></span>   
+        <span class="spacer"></span>
+        <button style="margin-right: 20px;" routerLink="/about" class="font" color="accent" id="selectFile" mat-raised-button>
+            <Label for="input-file-id">
+                <i class="material-icons mat-18 icon-align">whatshot</i>
+                About This Site
+            </Label>
+        </button>   
         <button *ngIf="userService.loggedIn()" mat-icon-button [matMenuTriggerFor]="menu" id="menubtn">
             <i class="material-icons">account_circle</i>
         </button>

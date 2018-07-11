@@ -23,6 +23,72 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/about/about.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/about/about.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".container {\n    padding: 50px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/about/about.component.html":
+/*!********************************************!*\
+  !*** ./src/app/about/about.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <h1>About This Site</h1>\n  <div style=\"margin-bottom: 20px;\">\n    <p>This site is completely built by You Zhou for the purpose of practicing coding skills.</p>\n    <p>It is build using Angular, Express, MongoDB and Node.js</p>\n    <p>Deployed on heroku with mlab backend</p>\n      <p></p>\n    <p>Source Code: <a href=\"https://github.com/ZhouYou528/MyNewFBWebApp\">here</a></p>\n  </div>\n  <button *ngIf=\"userService.loggedIn()\" color=\"accent\" routerLink=\"/dashboard\" mat-raised-button>Back</button>\n  <button *ngIf=\"!userService.loggedIn()\" color=\"accent\" routerLink=\"/\" mat-raised-button>Back</button>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/about/about.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/about/about.component.ts ***!
+  \******************************************/
+/*! exports provided: AboutComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutComponent", function() { return AboutComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AboutComponent = /** @class */ (function () {
+    function AboutComponent(userService) {
+        this.userService = userService;
+    }
+    AboutComponent.prototype.ngOnInit = function () {
+    };
+    AboutComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-about',
+            template: __webpack_require__(/*! ./about.component.html */ "./src/app/about/about.component.html"),
+            styles: [__webpack_require__(/*! ./about.component.css */ "./src/app/about/about.component.css")]
+        }),
+        __metadata("design:paramtypes", [_service_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+    ], AboutComponent);
+    return AboutComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -44,12 +110,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _message_message_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./message/message.component */ "./src/app/message/message.component.ts");
+/* harmony import */ var _about_about_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./about/about.component */ "./src/app/about/about.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -86,6 +154,10 @@ var appRoutes = [
         path: 'message',
         component: _message_message_component__WEBPACK_IMPORTED_MODULE_8__["MessageComponent"],
         canActivate: [_service_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
+    },
+    {
+        path: 'about',
+        component: _about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"],
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -106,7 +178,8 @@ var routingComponents = [
     _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"],
     _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_6__["UserProfileComponent"],
     _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-    _message_message_component__WEBPACK_IMPORTED_MODULE_8__["MessageComponent"]
+    _message_message_component__WEBPACK_IMPORTED_MODULE_8__["MessageComponent"],
+    _about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"]
 ];
 
 
@@ -197,17 +270,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
 /* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/tabs */ "./node_modules/@angular/material/esm5/tabs.es5.js");
 /* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
-/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
-/* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
-/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
-/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
-/* harmony import */ var _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./friendlist/friendlist.component */ "./src/app/friendlist/friendlist.component.ts");
-/* harmony import */ var _message_message_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./message/message.component */ "./src/app/message/message.component.ts");
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _service_auth_guard__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./service/auth.guard */ "./src/app/service/auth.guard.ts");
+/* harmony import */ var _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./service/token-interceptor.service */ "./src/app/service/token-interceptor.service.ts");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
+/* harmony import */ var _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./friendlist/friendlist.component */ "./src/app/friendlist/friendlist.component.ts");
+/* harmony import */ var _message_message_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./message/message.component */ "./src/app/message/message.component.ts");
+/* harmony import */ var _news_news_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./news/news.component */ "./src/app/news/news.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -219,6 +294,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //material
+
 
 
 
@@ -245,24 +321,27 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_17__["routingComponents"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_19__["HeaderComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_20__["FooterComponent"],
-                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__["AvatarPreviewComponent"],
-                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__["FriendlistComponent"],
-                _message_message_component__WEBPACK_IMPORTED_MODULE_27__["MessageComponent"],
-                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__["AddFriendComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_18__["routingComponents"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_20__["HeaderComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_21__["FooterComponent"],
+                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_22__["AvatarPreviewComponent"],
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["FriendlistComponent"],
+                _message_message_component__WEBPACK_IMPORTED_MODULE_28__["MessageComponent"],
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["AddFriendComponent"],
+                _news_news_component__WEBPACK_IMPORTED_MODULE_29__["NewsComponent"]
             ],
             imports: [
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
+                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_17__["MatExpansionModule"],
                 _angular_material_tabs__WEBPACK_IMPORTED_MODULE_15__["MatTabsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDatepickerModule"],
@@ -274,28 +353,28 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
                 _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_9__["MatToolbarModule"],
                 _angular_material_radio__WEBPACK_IMPORTED_MODULE_11__["MatRadioModule"],
-                _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_25__["MatSnackBarModule"],
+                _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_26__["MatSnackBarModule"],
                 _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
                 _angular_material_menu__WEBPACK_IMPORTED_MODULE_10__["MatMenuModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_17__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_18__["AppRoutingModule"]
             ],
             entryComponents: [
-                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__["AvatarPreviewComponent"],
-                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_26__["AddFriendComponent"]
+                _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_22__["AvatarPreviewComponent"],
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["AddFriendComponent"]
             ],
             providers: [
-                _service_user_service__WEBPACK_IMPORTED_MODULE_22__["UserService"],
-                _service_auth_guard__WEBPACK_IMPORTED_MODULE_23__["AuthGuard"],
+                _service_user_service__WEBPACK_IMPORTED_MODULE_23__["UserService"],
+                _service_auth_guard__WEBPACK_IMPORTED_MODULE_24__["AuthGuard"],
                 {
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
-                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_24__["TokenInterceptorService"],
+                    useClass: _service_token_interceptor_service__WEBPACK_IMPORTED_MODULE_25__["TokenInterceptorService"],
                     multi: true
                 }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -323,7 +402,7 @@ module.exports = ".mat-tab-label {\n    font-family: 'Montserrat', sans-serif;\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dashboard\">\n  <mat-tab-group>\n    <mat-tab label=\"News Feed\">\n      <!-- <app-home></app-home> -->\n    </mat-tab>\n    <mat-tab label=\"Blog\">\n      <!-- <app-selfpost></app-selfpost> -->\n    </mat-tab>\n    <mat-tab label=\"Friends List\">\n      <app-friendlist></app-friendlist>\n    </mat-tab>\n    <mat-tab label=\"Message\">\n      <app-message></app-message>\n    </mat-tab>\n  </mat-tab-group>\n</div>"
+module.exports = "<div class=\"dashboard\">\n  <mat-tab-group>\n    <mat-tab label=\"News Feed\">\n      <app-news></app-news>\n    </mat-tab>\n    <mat-tab label=\"Blog\">\n      <!-- <app-selfpost></app-selfpost> -->\n    </mat-tab>\n    <mat-tab label=\"Friends List\">\n      <app-friendlist></app-friendlist>\n    </mat-tab>\n    <mat-tab label=\"Message\">\n      <app-message></app-message>\n    </mat-tab>\n  </mat-tab-group>\n</div>"
 
 /***/ }),
 
@@ -661,7 +740,7 @@ var AddFriendComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
+module.exports = ".spacer {\n    flex: 1 1 auto;\n}\n\n.icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n    margin-right: 5px;\n  }"
 
 /***/ }),
 
@@ -672,7 +751,7 @@ module.exports = ".spacer {\n    flex: 1 1 auto;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center; font-family: 'Montserrat', sans-serif;\">GatorBook</span>\n        <span class=\"spacer\"></span>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button class=\"font\" mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button class=\"font\" mat-menu-item routerLink=\"/message\">\n                <mat-icon>notifications</mat-icon>\n                <span>Messages</span>\n            </button>\n            <button class=\"font\" mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
+module.exports = "<header>\n    <mat-toolbar class=\"mat-elevation-z5\" color=\"primary\">\n        <span style=\"text-align:center; font-family: 'Montserrat', sans-serif;\">GatorBook</span>\n        <span class=\"spacer\"></span>\n        <button style=\"margin-right: 20px;\" routerLink=\"/about\" class=\"font\" color=\"accent\" id=\"selectFile\" mat-raised-button>\n            <Label for=\"input-file-id\">\n                <i class=\"material-icons mat-18 icon-align\">whatshot</i>\n                About This Site\n            </Label>\n        </button>   \n        <button *ngIf=\"userService.loggedIn()\" mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n            <i class=\"material-icons\">account_circle</i>\n        </button>\n        <mat-menu #menu=\"matMenu\">\n            <button class=\"font\" mat-menu-item routerLink=\"/dashboard\">\n                <mat-icon>dashboard</mat-icon>\n                <span>Dashboard</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n                <mat-icon>person_outline</mat-icon>\n                <span>Profile</span>\n            </button>\n            <button class=\"font\" mat-menu-item routerLink=\"/message\">\n                <mat-icon>notifications</mat-icon>\n                <span>Messages</span>\n            </button>\n            <button class=\"font\" mat-menu-item routerLink=\"/\">\n                <mat-icon>home</mat-icon>\n                <span>Home</span>\n            </button>\n            <button class=\"font\" mat-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n                <mat-icon>power_settings_new</mat-icon>\n                <span>Log Out</span>\n            </button>\n        </mat-menu>\n    </mat-toolbar>\n</header>"
 
 /***/ }),
 
@@ -997,6 +1076,43 @@ var Message = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/model/post.ts":
+/*!*******************************!*\
+  !*** ./src/app/model/post.ts ***!
+  \*******************************/
+/*! exports provided: Post */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Post", function() { return Post; });
+var Post = /** @class */ (function () {
+    function Post(_id, body, createdBy, createdAt, // need take care initial value
+    likes, likedBy, comments, img) {
+        if (_id === void 0) { _id = ''; }
+        if (body === void 0) { body = ''; }
+        if (createdBy === void 0) { createdBy = ''; }
+        if (createdAt === void 0) { createdAt = null; }
+        if (likes === void 0) { likes = 0; }
+        if (likedBy === void 0) { likedBy = []; }
+        if (comments === void 0) { comments = []; }
+        if (img === void 0) { img = ''; }
+        this._id = _id;
+        this.body = body;
+        this.createdBy = createdBy;
+        this.createdAt = createdAt;
+        this.likes = likes;
+        this.likedBy = likedBy;
+        this.comments = comments;
+        this.img = img;
+    }
+    return Post;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/model/user.ts":
 /*!*******************************!*\
   !*** ./src/app/model/user.ts ***!
@@ -1027,6 +1143,140 @@ var User = /** @class */ (function () {
         this.avatar = avatar;
     }
     return User;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/news/news.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/news/news.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".make-post {\n    width: 648px;\n}\n.textwidth {\n    width: 100%;\n}\n.icon-align{\n    display: inline-flex;\n    vertical-align: middle;\n}\n.post-button {\n    margin-left: 15px; \n    margin-top: 10px;\n    width: 200px;\n}\n.photo-button {\n    margin-top: 10px;\n    width: 200px;\n}\n.uploadImg{\n    width: 100%;\n    height: 100%;\n    max-width: 500px;\n    margin-top: 15px;\n    margin-bottom: 15px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/news/news.component.html":
+/*!******************************************!*\
+  !*** ./src/app/news/news.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-expansion-panel>\n  <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n    <mat-panel-title>\n      Make Post\n    </mat-panel-title>\n    <mat-panel-description>\n      What's on your mind?\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <mat-form-field class=\"textwidth font\">\n    <input matInput name=\"postinput\"  [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n    <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n  </mat-form-field>\n  <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n  <div class=\"input\">\n    <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n    <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n      <Label for=\"input-file-id\">\n        <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n        Photo\n      </Label>\n    </button>\n    <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n  </div>\n</mat-expansion-panel>"
+
+/***/ }),
+
+/***/ "./src/app/news/news.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/news/news.component.ts ***!
+  \****************************************/
+/*! exports provided: NewsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsComponent", function() { return NewsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _model_post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model/post */ "./src/app/model/post.ts");
+/* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
+/* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
+/* harmony import */ var _service_post_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/post.service */ "./src/app/service/post.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var NewsComponent = /** @class */ (function () {
+    function NewsComponent(snackBar, userService, postService) {
+        this.snackBar = snackBar;
+        this.userService = userService;
+        this.postService = postService;
+        this.url = '';
+        this.selectedFile = null;
+        this.post = new _model_post__WEBPACK_IMPORTED_MODULE_1__["Post"]();
+        this.currentUser = new _model_user__WEBPACK_IMPORTED_MODULE_3__["User"]();
+    }
+    NewsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getCurrentUser().subscribe(function (res) {
+            if (res) {
+                // console.log(res)
+                _this.currentUser = res;
+            }
+            else {
+                console.log('Get current user error!');
+            }
+        }, function (err) { return console.log(err); });
+    };
+    NewsComponent.prototype.fileChangeEvent = function (event) {
+        var _this = this;
+        this.selectedFile = event.target.files[0];
+        if (this.selectedFile) {
+            var reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = function (x) {
+                _this.url = x.target.result;
+            };
+        }
+    };
+    NewsComponent.prototype.sendPost = function () {
+        var _this = this;
+        var fd = new FormData();
+        fd.append('body', this.post.body);
+        fd.append('createdBy', this.currentUser.username);
+        // fd.append('createdAt', new Date().toUTCString());
+        if (this.selectedFile != null) {
+            fd.append('img', this.selectedFile, this.selectedFile.name);
+        }
+        this.postService.sendPost(fd).subscribe(function (res) {
+            if (res.success) {
+                console.log(res);
+                _this.snackBar.open('Send post success!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'green-snackbar'
+                });
+                _this.url = "";
+                _this.post = new _model_post__WEBPACK_IMPORTED_MODULE_1__["Post"]();
+            }
+            else {
+                _this.snackBar.open('Please say something!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'red-snackbar'
+                });
+            }
+        }, function (err) {
+            console.log(err);
+            _this.snackBar.open('Send post failed!', 'Close', {
+                duration: 2000,
+                panelClass: 'red-snackbar'
+            });
+        });
+    };
+    NewsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-news',
+            template: __webpack_require__(/*! ./news.component.html */ "./src/app/news/news.component.html"),
+            styles: [__webpack_require__(/*! ./news.component.css */ "./src/app/news/news.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _service_post_service__WEBPACK_IMPORTED_MODULE_4__["PostService"]])
+    ], NewsComponent);
+    return NewsComponent;
 }());
 
 
@@ -1188,6 +1438,49 @@ var MessageService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], MessageService);
     return MessageService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/service/post.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/service/post.service.ts ***!
+  \*****************************************/
+/*! exports provided: PostService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostService", function() { return PostService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PostService = /** @class */ (function () {
+    function PostService(http) {
+        this.http = http;
+    }
+    PostService.prototype.sendPost = function (fd) {
+        return this.http.post('/posts/newPost', fd);
+    };
+    PostService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], PostService);
+    return PostService;
 }());
 
 

@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>About This Site</h1>
+  <div style="margin-bottom: 20px;">
+    <p>This site is completely built by You Zhou for the purpose of practicing coding skills.</p>
+    <p>It is build using Angular, Express, MongoDB and Node.js</p>
+    <p>Deployed on heroku with mlab backend</p>
+      <p></p>
+    <p>Source Code: <a href="https://github.com/ZhouYou528/MyNewFBWebApp">here</a></p>
+  </div>
+  <button *ngIf="userService.loggedIn()" color="accent" routerLink="/dashboard" mat-raised-button>Back</button>
+  <button *ngIf="!userService.loggedIn()" color="accent" routerLink="/" mat-raised-button>Back</button>
+</div>

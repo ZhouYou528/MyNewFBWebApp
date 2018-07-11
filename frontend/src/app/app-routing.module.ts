@@ -7,6 +7,7 @@ import { AuthGuard } from './service/auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
+import { AboutComponent } from './about/about.component';
 
 export const appRoutes: Routes = [
   {
@@ -35,6 +36,10 @@ export const appRoutes: Routes = [
     path: 'message',
     component: MessageComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
   }
 ];
 
@@ -51,5 +56,6 @@ export const routingComponents =
   DashboardComponent,
   UserProfileComponent,
   HomeComponent,
-  MessageComponent
+  MessageComponent,
+  AboutComponent
 ]
