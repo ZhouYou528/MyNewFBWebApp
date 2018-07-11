@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const Post = require('../models/post');
+const User = require('../models/user');
+const Friendship = require('../models/friendship');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads');
@@ -25,26 +27,90 @@ router.post('/newPost', upload.single('img'), verifyToken, (req, res) => {
         if (!req.body.createdBy) {
             res.json({ success: false, message: 'Post creator is required!' });
         } else {
-            const post = new Post({
-                _id: new mongoose.Types.ObjectId(),
-                body: req.body.body,
-                createdBy: req.body.createdBy,
-                createdAt: req.body.createdAt
-            });
-
-            post.save((err) => {
-                if (err) {
-                    if (err.errors) {
-                        res.json({ success: false, message: err });
+            if( typeof req.file !== 'undefined') {
+                const post = new Post({
+                    _id: new mongoose.Types.ObjectId(),
+                    body: req.body.body,
+                    createdBy: req.body.createdBy,
+                    createdAt: req.body.createdAt,
+                    img: req.file.path 
+                });
+    
+                post.save((err) => {
+                    if (err) {
+                        if (err.errors) {
+                            res.json({ success: false, message: err });
+                        } else {
+                            res.json({ success: false, message: err });
+                        }
                     } else {
-                        res.json({ success: false, message: err });
+                        res.json({ success: true, message: 'Post saved successfully!' });
                     }
-                } else {
-                    res.json({ success: true, message: 'Post saved successfully!' });
-                }
-            });
+                });
+            } else {
+                const post = new Post({
+                    _id: new mongoose.Types.ObjectId(),
+                    body: req.body.body,
+                    createdBy: req.body.createdBy,
+                    createdAt: req.body.createdAt
+                });
+    
+                post.save((err) => {
+                    if (err) {
+                        if (err.errors) {
+                            res.json({ success: false, message: err });
+                        } else {
+                            res.json({ success: false, message: err });
+                        }
+                    } else {
+                        res.json({ success: true, message: 'Post saved successfully!' });
+                    }
+                });
+            }
+           
         }
     }
+});
+
+router.get('/getAllPosts/:username', verifyToken, (req, res) => {
+    User.find({ username: req.params.username }, (err, curUser) => {
+        if (err) {
+            res.json({ success: false, message: err });
+        } else {
+            if (curUser.length === 0) {
+                res.json({ success: false, message: 'username:' + req.params.username + 'does not exist' });
+            } else if (curUser.length !== 1) {
+                res.json({ success: false, message: 'multiple users are called(username): ' + req.params.username });
+            } else { 
+                let query = [{createdBy: req.params.username}];
+                Friendship.find({
+                    userOne: req.params.username,
+                }, (err, allFriends) => {
+                    if(err) {
+                        res.json({success: false, message: err})
+                    } else {
+                        allFriends.forEach(element => {
+                            // console.log(element)
+                            query.push({createdBy: element.userTwo});
+                        });
+                        let finalQuery = { $or: query };
+                        Post.find( finalQuery, (err, posts) => {
+                            if (err) {
+                                res.json({success: false, message: err});
+                            } else {
+                                if (!posts) {
+                                    res.json({success: false, message: 'No posts found.'});
+                                } else {
+                                    res.json({success: true, posts: posts});
+                                }
+                            }
+                        }).sort({'_id': -1});
+                    }
+                });
+               
+            }
+        }
+    })
 });
 
 function verifyToken(req, res, next) {

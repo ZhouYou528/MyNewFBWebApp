@@ -1,25 +1,64 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header class="font" id="makepost">
-    <mat-panel-title>
-      Make Post
-    </mat-panel-title>
-    <mat-panel-description>
-      What's on your mind?
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <mat-form-field class="textwidth font">
-    <input matInput name="postinput"  [(ngModel)]="post.body" #message maxlength="256">
-    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-  </mat-form-field>
-  <img *ngIf="url.length > 0" class="uploadImg" src="{{ url }}">
-  <div class="input">
-    <input class="ng-hide font" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
-    <button class="photo-button font" color="primary" id="selectFile" mat-raised-button>
-      <Label for="input-file-id">
-        <i class="material-icons mat-18 icon-align">insert_photo</i>
-        Photo
-      </Label>
-    </button>
-    <button class="post-button font" color="warn" id="sendpost" (click)="sendPost()" mat-raised-button>Post</button>
-  </div>
-</mat-expansion-panel>
+<div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="font" id="makepost">
+      <mat-panel-title>
+        Make Post
+      </mat-panel-title>
+      <mat-panel-description>
+        What's on your mind?
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field class="textwidth font">
+      <input matInput name="postinput" [(ngModel)]="post.body" #message maxlength="256">
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+    <img *ngIf="url.length > 0" class="uploadImg" src="{{ url }}">
+    <div class="input">
+      <input class="ng-hide font" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
+      <button class="photo-button font" color="primary" id="selectFile" mat-raised-button>
+        <Label for="input-file-id">
+          <i class="material-icons mat-18 icon-align">insert_photo</i>
+          Photo
+        </Label>
+      </button>
+      <button class="post-button font" color="warn" id="sendpost" (click)="sendPost()" mat-raised-button>Post</button>
+    </div>
+  </mat-expansion-panel>
+</div>
+<div id="container">
+    <div id="content">
+        <!-- <h1>Posts</h1> -->
+        <ul [@listStagger]="posts">
+            <li *ngFor="let post of posts; let i = index;">
+                <mat-card id="card" class="mat-elevation-z5 font">
+                  <mat-card-header>
+                      <img mat-card-avatar class="post-image" src="{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
+                      <mat-card-title id="postauthor" class="post-author">{{post.createdBy}}</mat-card-title>
+                      <mat-card-subtitle>{{post.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <img class="uploadImg" *ngIf="post.img" src="{{ post.img }}"> 
+                        <p id="postcontent" style="font-size: 15px">{{post.body}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button id="likebtn" (click)="likeCancelLikePost(i)">
+                          <span><i class="material-icons mat-18 icon-align" [class.red-color]="post.likedBy.indexOf(curUsername) >= 0">favorite</i></span>
+                          <span class="fill-space"></span>
+                          <span *ngIf="post.likes>0" id="likenum">{{post.likes}}</span>
+                        </button>
+                        <button mat-button id="commentbtn">
+                          <i class="material-icons mat-18">insert_comment</i>
+                        </button>
+                        <button mat-button>
+                          <i class="material-icons mat-18">share</i>
+                        </button>
+                        <mat-card-content>
+                          <p *ngIf="post.likes>0" class="like-font" id="likeby">Liked by: {{post.likedBy}}</p>
+                        </mat-card-content>
+                      </mat-card-actions>
+                </mat-card>
+
+            </li>
+        </ul>
+    </div>
+</div>

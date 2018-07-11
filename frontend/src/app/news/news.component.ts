@@ -4,11 +4,13 @@ import { UserService } from '../service/user.service';
 import { User } from '../model/user';
 import { PostService } from '../service/post.service';
 import { MatSnackBar } from '@angular/material';
+import { listStagger } from '../router.animations';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.scss'],
+  animations:[listStagger()]
 })
 export class NewsComponent implements OnInit {
 
@@ -16,6 +18,7 @@ export class NewsComponent implements OnInit {
   selectedFile: File = null;
   post: Post = new Post();
   currentUser = new User();
+  posts: Array<Post> = [];
 
   constructor(public snackBar: MatSnackBar, private userService: UserService, private postService: PostService) { }
 
@@ -25,6 +28,15 @@ export class NewsComponent implements OnInit {
         if (res) {
           // console.log(res)
           this.currentUser = res
+          this.postService.getAllPosts(this.currentUser.username).subscribe(
+            res => {
+              if(res.success) {
+                console.log(res.posts)
+                this.posts = res.posts;
+              }
+            },
+            err => console.log(err)
+          )
         } else {
           console.log('Get current user error!')
         }
@@ -76,7 +88,7 @@ export class NewsComponent implements OnInit {
         });
       }
     );
-
+  this.ngOnInit()
   }
 
 }
