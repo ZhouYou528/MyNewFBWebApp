@@ -30,6 +30,7 @@
         <!-- <h1>Posts</h1> -->
         <ul [@listStagger]="posts">
             <li *ngFor="let post of posts; let i = index;">
+              <!-- post content -->
                 <mat-card id="card" class="mat-elevation-z5 font">
                   <mat-card-header>
                       <img mat-card-avatar class="post-image" src="{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
@@ -53,6 +54,29 @@
                     <mat-card-content>
                         <img class="uploadImg" *ngIf="post.img" src="{{ post.img }}"> 
                         <p id="postcontent" style="font-size: 15px">{{post.body}}</p>
+                        <!-- comment section -->
+                        <div id="commentssection" *ngIf="post.comments.length > 0">
+                          <span>
+                            <i class="material-icons">chat_bubble_outline</i>
+                          </span>
+                          <hr>
+                          <span>
+                            <mat-list class="comment-section">
+                              <mat-list-item class="font" id="commentsfor" *ngFor="let comment of post.comments">
+                                <div id="commentator" style="font-size: 12px; font-weight: bold">
+                                  {{comment.commentator}}: &nbsp;
+                                </div>
+                                <div style="font-size: 12px">{{comment.comment}}</div>
+                                <span class="spacer"></span>
+                                <div *ngIf="comment.commentator == currentUser.username">
+                                  <button mat-icon-button (click)="deleteComment(comment,i)">
+                                    <i class="material-icons">clear</i>
+                                  </button>
+                                </div>
+                              </mat-list-item>
+                            </mat-list>
+                          </span>
+                        </div>
                     </mat-card-content>
                     <mat-card-actions>
                         <button mat-button id="likebtn" (click)="likeCancelLikePost(i)">
@@ -60,7 +84,7 @@
                           <span class="fill-space"></span>
                           <span *ngIf="post.likes > 0" style="margin-left: 2px;"id="likenum">{{post.likes}}</span>
                         </button>
-                        <button mat-button id="commentbtn">
+                        <button mat-button id="commentbtn" (click)="openDialog(i)">
                           <i class="material-icons mat-18">insert_comment</i>
                         </button>
                         <button mat-button>

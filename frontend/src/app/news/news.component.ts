@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Post } from '../model/post';
 import { UserService } from '../service/user.service';
 import { User } from '../model/user';
+import { Comment } from '../model/comment';
 import { PostService } from '../service/post.service';
 import { MatSnackBar } from '@angular/material';
 import { listStagger } from '../router.animations';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-news',
@@ -19,8 +21,9 @@ export class NewsComponent implements OnInit {
   post: Post = new Post();
   currentUser = new User();
   posts: Array<Post> = [];
+  commentContent: string;
 
-  constructor(public snackBar: MatSnackBar, private userService: UserService, private postService: PostService) { }
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar, private userService: UserService, private postService: PostService) { }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(
@@ -133,5 +136,45 @@ export class NewsComponent implements OnInit {
       err => console.log(err)
     )
   }
+  deleteComment(comment, i) {
+    let commentedpost: Post = this.posts[i];
+    const index = commentedpost.comments.indexOf(comment);
+    commentedpost.comments.splice(index,1);
+    this.postService.updateComment(commentedpost).subscribe();
+  }
+  openDialog(i): void {
+    let dialogRef = this.dialog.open(AddCommentComponent, {
+      width: '300px',
+      data: { commentContent: this.commentContent }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (typeof result !== 'undefined') {
+        let commentedpost: Post = this.posts[i];
+        this.commentContent = result.commentContent;
+        if(this.commentContent !== '') {
+          const newComment = new Comment;
+          newComment.comment = this.commentContent;
+          newComment.commentator = this.currentUser.username;
+          commentedpost.comments.push(newComment);
+          this.postService.updateComment(commentedpost).subscribe();
+        }
+      }
+    });
+  }
+
+}
+@Component({
+  selector: 'app-addcomment',
+  templateUrl: './addComment.html',
+})
+export class AddCommentComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<AddCommentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

@@ -25,4 +25,8 @@ export class PostService {
     return this.http.put<any>('/posts/likePostOrCancelLike/' + username , post);
   }
 
+  updateComment(post: Post) {
+    return this.http.put<any>('/posts/updateComment/' + post._id, post)
+  }
+
 }

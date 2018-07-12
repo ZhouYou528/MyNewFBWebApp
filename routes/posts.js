@@ -178,6 +178,20 @@ router.put('/likePostOrCancelLike/:username', verifyToken, (req,res) => {
     }
 })
 
+router.put('/updateComment/:id', (req, res, next) => {
+    Post.findByIdAndUpdate(req.params.id,
+        {
+            $set: { comments: req.body.comments }
+        },
+        function (err, updatedPost) {
+            if (err) {
+                res.send("Failed updating the comment")
+            } else {
+                res.json(updatedPost);
+            }
+        });
+});
+
 function verifyToken(req, res, next) {
     if (!req.headers.authorization) {
         return res.status(401).send('Unauthorized request!')

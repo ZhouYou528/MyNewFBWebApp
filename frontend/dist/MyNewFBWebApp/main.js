@@ -336,7 +336,8 @@ var AppModule = /** @class */ (function () {
                 _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["FriendlistComponent"],
                 _message_message_component__WEBPACK_IMPORTED_MODULE_28__["MessageComponent"],
                 _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["AddFriendComponent"],
-                _news_news_component__WEBPACK_IMPORTED_MODULE_29__["NewsComponent"]
+                _news_news_component__WEBPACK_IMPORTED_MODULE_29__["NewsComponent"],
+                _news_news_component__WEBPACK_IMPORTED_MODULE_29__["AddCommentComponent"]
             ],
             imports: [
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIconModule"],
@@ -363,7 +364,8 @@ var AppModule = /** @class */ (function () {
             ],
             entryComponents: [
                 _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_22__["AvatarPreviewComponent"],
-                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["AddFriendComponent"]
+                _friendlist_friendlist_component__WEBPACK_IMPORTED_MODULE_27__["AddFriendComponent"],
+                _news_news_component__WEBPACK_IMPORTED_MODULE_29__["AddCommentComponent"]
             ],
             providers: [
                 _service_user_service__WEBPACK_IMPORTED_MODULE_23__["UserService"],
@@ -1016,6 +1018,30 @@ var MessageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/model/comment.ts":
+/*!**********************************!*\
+  !*** ./src/app/model/comment.ts ***!
+  \**********************************/
+/*! exports provided: Comment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Comment", function() { return Comment; });
+var Comment = /** @class */ (function () {
+    function Comment(comment, commentator) {
+        if (comment === void 0) { comment = ''; }
+        if (commentator === void 0) { commentator = ''; }
+        this.comment = comment;
+        this.commentator = commentator;
+    }
+    return Comment;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/model/friendship.ts":
 /*!*************************************!*\
   !*** ./src/app/model/friendship.ts ***!
@@ -1149,6 +1175,17 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/news/addComment.html":
+/*!**************************************!*\
+  !*** ./src/app/news/addComment.html ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <h1 mat-dialog-title class=\"font\">Comment Something..</h1>\n    <div mat-dialog-content>\n        <mat-form-field class=\"font\">\n            <input name=\"commentinput\" matInput [(ngModel)]=\"data.commentContent\" #message maxlength=\"200\">\n            <mat-hint align=\"end\">{{message.value.length}} / 200</mat-hint>\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button id=\"commentsendbtn\" [mat-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n    </div>\n</div>"
+
+/***/ }),
+
 /***/ "./src/app/news/news.component.html":
 /*!******************************************!*\
   !*** ./src/app/news/news.component.html ***!
@@ -1156,7 +1193,7 @@ var User = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n      <mat-panel-title>\n        Make Post\n      </mat-panel-title>\n      <mat-panel-description>\n        What's on your mind?\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <mat-form-field class=\"textwidth font\">\n      <input matInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n      <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n    </mat-form-field>\n    <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n    <div class=\"input\">\n      <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n      <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n    </div>\n  </mat-expansion-panel>\n</div>\n<div id=\"container\">\n    <div id=\"content\">\n        <!-- <h1>Posts</h1> -->\n        <ul [@listStagger]=\"posts\">\n            <li *ngFor=\"let post of posts; let i = index;\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                  <mat-card-header>\n                      <img mat-card-avatar class=\"post-image\" src=\"{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n                      <mat-card-title id=\"postauthor\" class=\"post-author\">{{post.createdBy}}</mat-card-title>\n                      <mat-card-subtitle>{{post.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</mat-card-subtitle>\n                      <span class=\"spacer\"></span>\n                      <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n                          <i class=\"material-icons\">more_vert</i>\n                      </button>\n                      <mat-menu #menu=\"matMenu\">\n                          <button *ngIf=\"currentUser.username !== post.createdBy\" disabled class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon style=\"color: #ccced1\">delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                          <button *ngIf=\"currentUser.username === post.createdBy\" class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon>delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                      </mat-menu>\n                    </mat-card-header>\n                    <mat-card-content>\n                        <img class=\"uploadImg\" *ngIf=\"post.img\" src=\"{{ post.img }}\"> \n                        <p id=\"postcontent\" style=\"font-size: 15px\">{{post.body}}</p>\n                    </mat-card-content>\n                    <mat-card-actions>\n                        <button mat-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n                          <span><i class=\"material-icons mat-18 icon-align\" [class.red-color]=\"post.likedBy.indexOf(currentUser.username) >= 0\">favorite</i></span>\n                          <span class=\"fill-space\"></span>\n                          <span *ngIf=\"post.likes > 0\" style=\"margin-left: 2px;\"id=\"likenum\">{{post.likes}}</span>\n                        </button>\n                        <button mat-button id=\"commentbtn\">\n                          <i class=\"material-icons mat-18\">insert_comment</i>\n                        </button>\n                        <button mat-button>\n                          <i class=\"material-icons mat-18\">share</i>\n                        </button>\n                        <mat-card-content>\n                          <p *ngIf=\"post.likes > 0\" class=\"like-font\" id=\"likeby\">Liked by: {{post.likedBy}}</p>\n                        </mat-card-content>\n                      </mat-card-actions>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
+module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n      <mat-panel-title>\n        Make Post\n      </mat-panel-title>\n      <mat-panel-description>\n        What's on your mind?\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <mat-form-field class=\"textwidth font\">\n      <input matInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n      <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n    </mat-form-field>\n    <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n    <div class=\"input\">\n      <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n      <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n    </div>\n  </mat-expansion-panel>\n</div>\n<div id=\"container\">\n    <div id=\"content\">\n        <!-- <h1>Posts</h1> -->\n        <ul [@listStagger]=\"posts\">\n            <li *ngFor=\"let post of posts; let i = index;\">\n              <!-- post content -->\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                  <mat-card-header>\n                      <img mat-card-avatar class=\"post-image\" src=\"{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n                      <mat-card-title id=\"postauthor\" class=\"post-author\">{{post.createdBy}}</mat-card-title>\n                      <mat-card-subtitle>{{post.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</mat-card-subtitle>\n                      <span class=\"spacer\"></span>\n                      <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n                          <i class=\"material-icons\">more_vert</i>\n                      </button>\n                      <mat-menu #menu=\"matMenu\">\n                          <button *ngIf=\"currentUser.username !== post.createdBy\" disabled class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon style=\"color: #ccced1\">delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                          <button *ngIf=\"currentUser.username === post.createdBy\" class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon>delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                      </mat-menu>\n                    </mat-card-header>\n                    <mat-card-content>\n                        <img class=\"uploadImg\" *ngIf=\"post.img\" src=\"{{ post.img }}\"> \n                        <p id=\"postcontent\" style=\"font-size: 15px\">{{post.body}}</p>\n                        <!-- comment section -->\n                        <div id=\"commentssection\" *ngIf=\"post.comments.length > 0\">\n                          <span>\n                            <i class=\"material-icons\">chat_bubble_outline</i>\n                          </span>\n                          <hr>\n                          <span>\n                            <mat-list class=\"comment-section\">\n                              <mat-list-item class=\"font\" id=\"commentsfor\" *ngFor=\"let comment of post.comments\">\n                                <div id=\"commentator\" style=\"font-size: 12px; font-weight: bold\">\n                                  {{comment.commentator}}: &nbsp;\n                                </div>\n                                <div style=\"font-size: 12px\">{{comment.comment}}</div>\n                                <span class=\"spacer\"></span>\n                                <div *ngIf=\"comment.commentator == currentUser.username\">\n                                  <button mat-icon-button (click)=\"deleteComment(comment,i)\">\n                                    <i class=\"material-icons\">clear</i>\n                                  </button>\n                                </div>\n                              </mat-list-item>\n                            </mat-list>\n                          </span>\n                        </div>\n                    </mat-card-content>\n                    <mat-card-actions>\n                        <button mat-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n                          <span><i class=\"material-icons mat-18 icon-align\" [class.red-color]=\"post.likedBy.indexOf(currentUser.username) >= 0\">favorite</i></span>\n                          <span class=\"fill-space\"></span>\n                          <span *ngIf=\"post.likes > 0\" style=\"margin-left: 2px;\"id=\"likenum\">{{post.likes}}</span>\n                        </button>\n                        <button mat-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n                          <i class=\"material-icons mat-18\">insert_comment</i>\n                        </button>\n                        <button mat-button>\n                          <i class=\"material-icons mat-18\">share</i>\n                        </button>\n                        <mat-card-content>\n                          <p *ngIf=\"post.likes > 0\" class=\"like-font\" id=\"likeby\">Liked by: {{post.likedBy}}</p>\n                        </mat-card-content>\n                      </mat-card-actions>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1167,7 +1204,7 @@ module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-heade
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".make-post {\n  width: 648px; }\n\n.post-image {\n  background-size: cover;\n  width: 50px;\n  height: 50px;\n  margin-top: 5px;\n  margin-right: 5px; }\n\n.post-author {\n  color: #00897B; }\n\n.textwidth {\n  width: 100%; }\n\n.like-font {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 12px;\n  color: #9E9E9E; }\n\n.icon-align {\n  display: inline-flex;\n  vertical-align: middle; }\n\n.post-button {\n  margin-left: 15px;\n  margin-top: 10px;\n  width: 200px; }\n\n.photo-button {\n  margin-top: 10px;\n  width: 200px; }\n\n.uploadImg {\n  width: 100%;\n  height: 100%;\n  max-width: 500px;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid; }\n\n#container #content {\n    padding: 20px 50px; }\n\n#container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n\n#container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n\n#container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 20px; }\n\n#container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n\n#container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n\n.spacer {\n  flex: 1 1 auto; }\n"
+module.exports = ".make-post {\n  width: 648px; }\n\n.post-image {\n  background-size: cover;\n  width: 50px;\n  height: 50px;\n  margin-top: 5px;\n  margin-right: 5px; }\n\n.comment-section {\n  width: 100%;\n  background-color: #E0F2F1; }\n\n.post-author {\n  color: #00897B; }\n\n.textwidth {\n  width: 100%; }\n\n.like-font {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 12px;\n  color: #9E9E9E; }\n\n.icon-align {\n  display: inline-flex;\n  vertical-align: middle; }\n\n.post-button {\n  margin-left: 15px;\n  margin-top: 10px;\n  width: 200px; }\n\n.photo-button {\n  margin-top: 10px;\n  width: 200px; }\n\n.uploadImg {\n  width: 100%;\n  height: 100%;\n  max-width: 500px;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid; }\n\n#container #content {\n    padding: 20px 50px; }\n\n#container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n\n#container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n\n#container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 20px; }\n\n#container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n\n#container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n\n.spacer {\n  flex: 1 1 auto; }\n"
 
 /***/ }),
 
@@ -1175,19 +1212,21 @@ module.exports = ".make-post {\n  width: 648px; }\n\n.post-image {\n  background
 /*!****************************************!*\
   !*** ./src/app/news/news.component.ts ***!
   \****************************************/
-/*! exports provided: NewsComponent */
+/*! exports provided: NewsComponent, AddCommentComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsComponent", function() { return NewsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddCommentComponent", function() { return AddCommentComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _model_post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model/post */ "./src/app/model/post.ts");
 /* harmony import */ var _service_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/user.service */ "./src/app/service/user.service.ts");
 /* harmony import */ var _model_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/user */ "./src/app/model/user.ts");
-/* harmony import */ var _service_post_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../service/post.service */ "./src/app/service/post.service.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
+/* harmony import */ var _model_comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../model/comment */ "./src/app/model/comment.ts");
+/* harmony import */ var _service_post_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../service/post.service */ "./src/app/service/post.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1197,6 +1236,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
 
 
 
@@ -1205,7 +1249,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var NewsComponent = /** @class */ (function () {
-    function NewsComponent(snackBar, userService, postService) {
+    function NewsComponent(dialog, snackBar, userService, postService) {
+        this.dialog = dialog;
         this.snackBar = snackBar;
         this.userService = userService;
         this.postService = postService;
@@ -1316,16 +1361,61 @@ var NewsComponent = /** @class */ (function () {
             }
         }, function (err) { return console.log(err); });
     };
+    NewsComponent.prototype.deleteComment = function (comment, i) {
+        var commentedpost = this.posts[i];
+        var index = commentedpost.comments.indexOf(comment);
+        commentedpost.comments.splice(index, 1);
+        this.postService.updateComment(commentedpost).subscribe();
+    };
+    NewsComponent.prototype.openDialog = function (i) {
+        var _this = this;
+        var dialogRef = this.dialog.open(AddCommentComponent, {
+            width: '300px',
+            data: { commentContent: this.commentContent }
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (typeof result !== 'undefined') {
+                var commentedpost = _this.posts[i];
+                _this.commentContent = result.commentContent;
+                if (_this.commentContent !== '') {
+                    var newComment = new _model_comment__WEBPACK_IMPORTED_MODULE_4__["Comment"];
+                    newComment.comment = _this.commentContent;
+                    newComment.commentator = _this.currentUser.username;
+                    commentedpost.comments.push(newComment);
+                    _this.postService.updateComment(commentedpost).subscribe();
+                }
+            }
+        });
+    };
     NewsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-news',
             template: __webpack_require__(/*! ./news.component.html */ "./src/app/news/news.component.html"),
             styles: [__webpack_require__(/*! ./news.component.scss */ "./src/app/news/news.component.scss")],
-            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_6__["listStagger"])()]
+            animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_7__["listStagger"])()]
         }),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"], _service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _service_post_service__WEBPACK_IMPORTED_MODULE_4__["PostService"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialog"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"], _service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _service_post_service__WEBPACK_IMPORTED_MODULE_5__["PostService"]])
     ], NewsComponent);
     return NewsComponent;
+}());
+
+var AddCommentComponent = /** @class */ (function () {
+    function AddCommentComponent(dialogRef, data) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+    }
+    AddCommentComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    AddCommentComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-addcomment',
+            template: __webpack_require__(/*! ./addComment.html */ "./src/app/news/addComment.html"),
+        }),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_6__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogRef"], Object])
+    ], AddCommentComponent);
+    return AddCommentComponent;
 }());
 
 
@@ -1531,6 +1621,9 @@ var PostService = /** @class */ (function () {
     };
     PostService.prototype.addOrCancelLikePosts = function (post, username) {
         return this.http.put('/posts/likePostOrCancelLike/' + username, post);
+    };
+    PostService.prototype.updateComment = function (post) {
+        return this.http.put('/posts/updateComment/' + post._id, post);
     };
     PostService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

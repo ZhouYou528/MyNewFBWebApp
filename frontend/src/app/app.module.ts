@@ -34,7 +34,7 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FriendlistComponent, AddFriendComponent } from './friendlist/friendlist.component';
 import { MessageComponent } from './message/message.component';
-import { NewsComponent } from './news/news.component';
+import { NewsComponent, AddCommentComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import { NewsComponent } from './news/news.component';
     FriendlistComponent,
     MessageComponent,
     AddFriendComponent,
-    NewsComponent
+    NewsComponent,
+    AddCommentComponent
   ],
   imports: [
     MatIconModule,
@@ -73,7 +74,8 @@ import { NewsComponent } from './news/news.component';
   ],
   entryComponents: [
     AvatarPreviewComponent,
-    AddFriendComponent
+    AddFriendComponent,
+    AddCommentComponent
   ],
   providers: [
     UserService,
