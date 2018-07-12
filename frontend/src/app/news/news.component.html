@@ -35,6 +35,20 @@
                       <img mat-card-avatar class="post-image" src="{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
                       <mat-card-title id="postauthor" class="post-author">{{post.createdBy}}</mat-card-title>
                       <mat-card-subtitle>{{post.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</mat-card-subtitle>
+                      <span class="spacer"></span>
+                      <button mat-icon-button [matMenuTriggerFor]="menu" id="menubtn">
+                          <i class="material-icons">more_vert</i>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                          <button *ngIf="currentUser.username !== post.createdBy" disabled class="font" mat-menu-item (click)="deletePost(i)">
+                              <mat-icon style="color: #ccced1">delete</mat-icon>
+                              <span>Delete Post</span>
+                          </button>
+                          <button *ngIf="currentUser.username === post.createdBy" class="font" mat-menu-item (click)="deletePost(i)">
+                              <mat-icon>delete</mat-icon>
+                              <span>Delete Post</span>
+                          </button>
+                      </mat-menu>
                     </mat-card-header>
                     <mat-card-content>
                         <img class="uploadImg" *ngIf="post.img" src="{{ post.img }}"> 

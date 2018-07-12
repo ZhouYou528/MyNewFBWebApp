@@ -1156,7 +1156,7 @@ var User = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n      <mat-panel-title>\n        Make Post\n      </mat-panel-title>\n      <mat-panel-description>\n        What's on your mind?\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <mat-form-field class=\"textwidth font\">\n      <input matInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n      <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n    </mat-form-field>\n    <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n    <div class=\"input\">\n      <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n      <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n    </div>\n  </mat-expansion-panel>\n</div>\n<div id=\"container\">\n    <div id=\"content\">\n        <!-- <h1>Posts</h1> -->\n        <ul [@listStagger]=\"posts\">\n            <li *ngFor=\"let post of posts; let i = index;\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                  <mat-card-header>\n                      <img mat-card-avatar class=\"post-image\" src=\"{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n                      <mat-card-title id=\"postauthor\" class=\"post-author\">{{post.createdBy}}</mat-card-title>\n                      <mat-card-subtitle>{{post.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</mat-card-subtitle>\n                    </mat-card-header>\n                    <mat-card-content>\n                        <img class=\"uploadImg\" *ngIf=\"post.img\" src=\"{{ post.img }}\"> \n                        <p id=\"postcontent\" style=\"font-size: 15px\">{{post.body}}</p>\n                    </mat-card-content>\n                    <mat-card-actions>\n                        <button mat-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n                          <span><i class=\"material-icons mat-18 icon-align\" [class.red-color]=\"post.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n                          <span class=\"fill-space\"></span>\n                          <span *ngIf=\"post.likes>0\" id=\"likenum\">{{post.likes}}</span>\n                        </button>\n                        <button mat-button id=\"commentbtn\">\n                          <i class=\"material-icons mat-18\">insert_comment</i>\n                        </button>\n                        <button mat-button>\n                          <i class=\"material-icons mat-18\">share</i>\n                        </button>\n                        <mat-card-content>\n                          <p *ngIf=\"post.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{post.likedBy}}</p>\n                        </mat-card-content>\n                      </mat-card-actions>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
+module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n      <mat-panel-title>\n        Make Post\n      </mat-panel-title>\n      <mat-panel-description>\n        What's on your mind?\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <mat-form-field class=\"textwidth font\">\n      <input matInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n      <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n    </mat-form-field>\n    <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n    <div class=\"input\">\n      <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n      <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n    </div>\n  </mat-expansion-panel>\n</div>\n<div id=\"container\">\n    <div id=\"content\">\n        <!-- <h1>Posts</h1> -->\n        <ul [@listStagger]=\"posts\">\n            <li *ngFor=\"let post of posts; let i = index;\">\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                  <mat-card-header>\n                      <img mat-card-avatar class=\"post-image\" src=\"{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n                      <mat-card-title id=\"postauthor\" class=\"post-author\">{{post.createdBy}}</mat-card-title>\n                      <mat-card-subtitle>{{post.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</mat-card-subtitle>\n                      <span class=\"spacer\"></span>\n                      <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n                          <i class=\"material-icons\">more_vert</i>\n                      </button>\n                      <mat-menu #menu=\"matMenu\">\n                          <button *ngIf=\"currentUser.username !== post.createdBy\" disabled class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon style=\"color: #ccced1\">delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                          <button *ngIf=\"currentUser.username === post.createdBy\" class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon>delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                      </mat-menu>\n                    </mat-card-header>\n                    <mat-card-content>\n                        <img class=\"uploadImg\" *ngIf=\"post.img\" src=\"{{ post.img }}\"> \n                        <p id=\"postcontent\" style=\"font-size: 15px\">{{post.body}}</p>\n                    </mat-card-content>\n                    <mat-card-actions>\n                        <button mat-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n                          <span><i class=\"material-icons mat-18 icon-align\" [class.red-color]=\"post.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n                          <span class=\"fill-space\"></span>\n                          <span *ngIf=\"post.likes>0\" id=\"likenum\">{{post.likes}}</span>\n                        </button>\n                        <button mat-button id=\"commentbtn\">\n                          <i class=\"material-icons mat-18\">insert_comment</i>\n                        </button>\n                        <button mat-button>\n                          <i class=\"material-icons mat-18\">share</i>\n                        </button>\n                        <mat-card-content>\n                          <p *ngIf=\"post.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{post.likedBy}}</p>\n                        </mat-card-content>\n                      </mat-card-actions>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1167,7 +1167,7 @@ module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-heade
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".make-post {\n  width: 648px; }\n\n.post-image {\n  background-size: cover;\n  width: 50px;\n  height: 50px;\n  margin-top: 5px;\n  margin-right: 5px; }\n\n.post-author {\n  color: #00897B; }\n\n.textwidth {\n  width: 100%; }\n\n.icon-align {\n  display: inline-flex;\n  vertical-align: middle; }\n\n.post-button {\n  margin-left: 15px;\n  margin-top: 10px;\n  width: 200px; }\n\n.photo-button {\n  margin-top: 10px;\n  width: 200px; }\n\n.uploadImg {\n  width: 100%;\n  height: 100%;\n  max-width: 500px;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid; }\n\n#container #content {\n    padding: 20px 50px; }\n\n#container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n\n#container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n\n#container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n\n#container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n\n#container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n"
+module.exports = ".make-post {\n  width: 648px; }\n\n.post-image {\n  background-size: cover;\n  width: 50px;\n  height: 50px;\n  margin-top: 5px;\n  margin-right: 5px; }\n\n.post-author {\n  color: #00897B; }\n\n.textwidth {\n  width: 100%; }\n\n.icon-align {\n  display: inline-flex;\n  vertical-align: middle; }\n\n.post-button {\n  margin-left: 15px;\n  margin-top: 10px;\n  width: 200px; }\n\n.photo-button {\n  margin-top: 10px;\n  width: 200px; }\n\n.uploadImg {\n  width: 100%;\n  height: 100%;\n  max-width: 500px;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n#container {\n  font-family: 'Montserrat', sans-serif;\n  display: -ms-grid;\n  display: grid; }\n\n#container #content {\n    padding: 20px 50px; }\n\n#container #content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0; }\n\n#container #content ul li {\n        border-radius: 10px;\n        padding: 5px;\n        margin-bottom: 8px; }\n\n#container #content ul mat-card {\n        border-radius: 10px;\n        padding-left: 25px;\n        padding-bottom: 10px; }\n\n#container #content ul mat-card mat-card-title {\n          font-size: 1.5em;\n          text-decoration: none;\n          font-weight: bold; }\n\n#container #content ul mat-card mat-card-content {\n          margin-top: 20px; }\n\n.spacer {\n  flex: 1 1 auto; }\n"
 
 /***/ }),
 
@@ -1223,7 +1223,7 @@ var NewsComponent = /** @class */ (function () {
                 _this.currentUser = res;
                 _this.postService.getAllPosts(_this.currentUser.username).subscribe(function (res) {
                     if (res.success) {
-                        console.log(res.posts);
+                        // console.log(res.posts)
                         _this.posts = res.posts;
                     }
                 }, function (err) { return console.log(err); });
@@ -1277,6 +1277,26 @@ var NewsComponent = /** @class */ (function () {
             });
         });
         this.ngOnInit();
+    };
+    NewsComponent.prototype.deletePost = function (i) {
+        var _this = this;
+        var postId = this.posts[i]._id;
+        this.postService.deletePost(postId).subscribe(function (res) {
+            if (res.success) {
+                _this.snackBar.open('Post Deleted!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'green-snackbar'
+                });
+                // this.posts.splice(i, 1);
+                _this.ngOnInit();
+            }
+            else {
+                _this.snackBar.open('Post Not Deleted!', 'Close', {
+                    duration: 2000,
+                    panelClass: 'red-snackbar'
+                });
+            }
+        }, function (err) { return console.log(err); });
     };
     NewsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1487,6 +1507,9 @@ var PostService = /** @class */ (function () {
     };
     PostService.prototype.getAllPosts = function (username) {
         return this.http.get('/posts/getAllPosts/' + username);
+    };
+    PostService.prototype.deletePost = function (id) {
+        return this.http.delete('/posts/deletePost/' + id);
     };
     PostService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

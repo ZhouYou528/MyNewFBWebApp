@@ -31,7 +31,7 @@ export class NewsComponent implements OnInit {
           this.postService.getAllPosts(this.currentUser.username).subscribe(
             res => {
               if(res.success) {
-                console.log(res.posts)
+                // console.log(res.posts)
                 this.posts = res.posts;
               }
             },
@@ -89,6 +89,28 @@ export class NewsComponent implements OnInit {
       }
     );
   this.ngOnInit()
+  }
+
+  deletePost(i) {
+    let postId: String = this.posts[i]._id;
+    this.postService.deletePost(postId).subscribe(
+      res => {
+        if(res.success) {
+          this.snackBar.open('Post Deleted!', 'Close', {
+            duration: 2000,
+            panelClass: 'green-snackbar'
+          });
+          // this.posts.splice(i, 1);
+          this.ngOnInit();
+        } else {
+          this.snackBar.open('Post Not Deleted!', 'Close', {
+            duration: 2000,
+            panelClass: 'red-snackbar'
+          });
+        }
+      },
+      err => console.log(err)
+    )
   }
 
 }

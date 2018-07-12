@@ -16,4 +16,8 @@ export class PostService {
   getAllPosts(username: string) {
     return this.http.get<any>('/posts/getAllPosts/' + username);
   }
+
+  deletePost(id: String) {
+    return this.http.delete<any>('/posts/deletePost/' + id);
+  }
 }
