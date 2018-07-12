@@ -960,16 +960,18 @@ var MessageComponent = /** @class */ (function () {
         }, function (err) { return console.log(err); });
     };
     MessageComponent.prototype.decline = function (message, i) {
-        var _this = this;
-        message.status = 2;
-        this.messageService.updateMessage(message).subscribe(function (res) {
-            if (res) {
-                _this.messages.splice(i, 1);
-            }
-            else {
-                console.log(res);
-            }
-        }, function (err) { return console.log(err); });
+        // message.status = 2;
+        // this.messageService.updateMessage(message).subscribe(
+        //   res => {
+        //     if(res) {
+        this.messages.splice(i, 1);
+        //      } else {
+        //        console.log(res)
+        //      }
+        //   },
+        //   err => console.log(err)
+        // );
+        this.messageService.deleteMessage(message).subscribe();
     };
     MessageComponent.prototype.accept = function (message, i) {
         var _this = this;
@@ -1113,11 +1115,12 @@ var Message = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Post", function() { return Post; });
 var Post = /** @class */ (function () {
-    function Post(_id, body, createdBy, createdAt, // need take care initial value
+    function Post(_id, body, createdBy, createdByAvatar, createdAt, // need take care initial value
     likes, likedBy, comments, img) {
         if (_id === void 0) { _id = ''; }
         if (body === void 0) { body = ''; }
         if (createdBy === void 0) { createdBy = ''; }
+        if (createdByAvatar === void 0) { createdByAvatar = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'; }
         if (createdAt === void 0) { createdAt = null; }
         if (likes === void 0) { likes = 0; }
         if (likedBy === void 0) { likedBy = []; }
@@ -1126,6 +1129,7 @@ var Post = /** @class */ (function () {
         this._id = _id;
         this.body = body;
         this.createdBy = createdBy;
+        this.createdByAvatar = createdByAvatar;
         this.createdAt = createdAt;
         this.likes = likes;
         this.likedBy = likedBy;
@@ -1193,7 +1197,7 @@ module.exports = "<div>\n    <h1 mat-dialog-title class=\"font\">Comment Somethi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n      <mat-panel-title>\n        Make Post\n      </mat-panel-title>\n      <mat-panel-description>\n        What's on your mind?\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <mat-form-field class=\"textwidth font\">\n      <input matInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n      <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n    </mat-form-field>\n    <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n    <div class=\"input\">\n      <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n      <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n    </div>\n  </mat-expansion-panel>\n</div>\n<div id=\"container\">\n    <div id=\"content\">\n        <!-- <h1>Posts</h1> -->\n        <ul [@listStagger]=\"posts\">\n            <li *ngFor=\"let post of posts; let i = index;\">\n              <!-- post content -->\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                  <mat-card-header>\n                      <img mat-card-avatar class=\"post-image\" src=\"{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n                      <mat-card-title id=\"postauthor\" class=\"post-author\">{{post.createdBy}}</mat-card-title>\n                      <mat-card-subtitle>{{post.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</mat-card-subtitle>\n                      <span class=\"spacer\"></span>\n                      <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n                          <i class=\"material-icons\">more_vert</i>\n                      </button>\n                      <mat-menu #menu=\"matMenu\">\n                          <button *ngIf=\"currentUser.username !== post.createdBy\" disabled class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon style=\"color: #ccced1\">delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                          <button *ngIf=\"currentUser.username === post.createdBy\" class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon>delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                      </mat-menu>\n                    </mat-card-header>\n                    <mat-card-content>\n                        <img class=\"uploadImg\" *ngIf=\"post.img\" src=\"{{ post.img }}\"> \n                        <p id=\"postcontent\" style=\"font-size: 15px\">{{post.body}}</p>\n                        <!-- comment section -->\n                        <div id=\"commentssection\" *ngIf=\"post.comments.length > 0\">\n                          <span>\n                            <i class=\"material-icons\">chat_bubble_outline</i>\n                          </span>\n                          <hr>\n                          <span>\n                            <mat-list class=\"comment-section\">\n                              <mat-list-item class=\"font\" id=\"commentsfor\" *ngFor=\"let comment of post.comments\">\n                                <div id=\"commentator\" style=\"font-size: 12px; font-weight: bold\">\n                                  {{comment.commentator}}: &nbsp;\n                                </div>\n                                <div style=\"font-size: 12px\">{{comment.comment}}</div>\n                                <span class=\"spacer\"></span>\n                                <div *ngIf=\"comment.commentator == currentUser.username\">\n                                  <button mat-icon-button (click)=\"deleteComment(comment,i)\">\n                                    <i class=\"material-icons\">clear</i>\n                                  </button>\n                                </div>\n                              </mat-list-item>\n                            </mat-list>\n                          </span>\n                        </div>\n                    </mat-card-content>\n                    <mat-card-actions>\n                        <button mat-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n                          <span><i class=\"material-icons mat-18 icon-align\" [class.red-color]=\"post.likedBy.indexOf(currentUser.username) >= 0\">favorite</i></span>\n                          <span class=\"fill-space\"></span>\n                          <span *ngIf=\"post.likes > 0\" style=\"margin-left: 2px;\"id=\"likenum\">{{post.likes}}</span>\n                        </button>\n                        <button mat-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n                          <i class=\"material-icons mat-18\">insert_comment</i>\n                        </button>\n                        <button mat-button>\n                          <i class=\"material-icons mat-18\">share</i>\n                        </button>\n                        <mat-card-content>\n                          <p *ngIf=\"post.likes > 0\" class=\"like-font\" id=\"likeby\">Liked by: {{post.likedBy}}</p>\n                        </mat-card-content>\n                      </mat-card-actions>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
+module.exports = "<div>\n  <mat-expansion-panel>\n    <mat-expansion-panel-header class=\"font\" id=\"makepost\">\n      <mat-panel-title>\n        Make Post\n      </mat-panel-title>\n      <mat-panel-description>\n        What's on your mind?\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <mat-form-field class=\"textwidth font\">\n      <input matInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n      <mat-hint align=\"end\">{{message.value.length}} / 256</mat-hint>\n    </mat-form-field>\n    <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n    <div class=\"input\">\n      <input class=\"ng-hide font\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n      <button class=\"photo-button font\" color=\"primary\" id=\"selectFile\" mat-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons mat-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button class=\"post-button font\" color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" mat-raised-button>Post</button>\n    </div>\n  </mat-expansion-panel>\n</div>\n<div id=\"container\">\n    <div id=\"content\">\n        <!-- <h1>Posts</h1> -->\n        <ul [@listStagger]=\"posts\">\n            <li *ngFor=\"let post of posts; let i = index;\">\n              <!-- post content -->\n                <mat-card id=\"card\" class=\"mat-elevation-z5 font\">\n                  <mat-card-header>\n                      <img mat-card-avatar class=\"post-image\" src=\"{{ post.createdByAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n                      <mat-card-title id=\"postauthor\" class=\"post-author\">{{post.createdBy}}</mat-card-title>\n                      <mat-card-subtitle>{{post.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</mat-card-subtitle>\n                      <span class=\"spacer\"></span>\n                      <button mat-icon-button [matMenuTriggerFor]=\"menu\" id=\"menubtn\">\n                          <i class=\"material-icons\">more_vert</i>\n                      </button>\n                      <mat-menu #menu=\"matMenu\">\n                          <button *ngIf=\"currentUser.username !== post.createdBy\" disabled class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon style=\"color: #ccced1\">delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                          <button *ngIf=\"currentUser.username === post.createdBy\" class=\"font\" mat-menu-item (click)=\"deletePost(i)\">\n                              <mat-icon>delete</mat-icon>\n                              <span>Delete Post</span>\n                          </button>\n                      </mat-menu>\n                    </mat-card-header>\n                    <mat-card-content>\n                        <img class=\"uploadImg\" *ngIf=\"post.img\" src=\"{{ post.img }}\"> \n                        <p id=\"postcontent\" style=\"font-size: 15px\">{{post.body}}</p>\n                        <!-- comment section -->\n                        <div id=\"commentssection\" *ngIf=\"post.comments.length > 0\">\n                          <span>\n                            <i class=\"material-icons\">chat_bubble_outline</i>\n                          </span>\n                          <hr>\n                          <span>\n                            <mat-list class=\"comment-section\">\n                              <mat-list-item class=\"font\" id=\"commentsfor\" *ngFor=\"let comment of post.comments\">\n                                <div id=\"commentator\" style=\"font-size: 12px; font-weight: bold\">\n                                  {{comment.commentator}}: &nbsp;\n                                </div>\n                                <div style=\"font-size: 12px\">{{comment.comment}}</div>\n                                <span class=\"spacer\"></span>\n                                <div *ngIf=\"comment.commentator == currentUser.username\">\n                                  <button mat-icon-button (click)=\"deleteComment(comment,i)\">\n                                    <i class=\"material-icons\">clear</i>\n                                  </button>\n                                </div>\n                              </mat-list-item>\n                            </mat-list>\n                          </span>\n                        </div>\n                    </mat-card-content>\n                    <mat-card-actions>\n                        <button mat-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n                          <span><i class=\"material-icons mat-18 icon-align\" [class.red-color]=\"post.likedBy.indexOf(currentUser.username) >= 0\">favorite</i></span>\n                          <span class=\"fill-space\"></span>\n                          <span *ngIf=\"post.likes > 0\" style=\"margin-left: 2px;\"id=\"likenum\">{{post.likes}}</span>\n                        </button>\n                        <button mat-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n                          <i class=\"material-icons mat-18\">insert_comment</i>\n                        </button>\n                        <button mat-button>\n                          <i class=\"material-icons mat-18\">share</i>\n                        </button>\n                        <mat-card-content>\n                          <p *ngIf=\"post.likes > 0\" class=\"like-font\" id=\"likeby\">Liked by: {{post.likedBy}}</p>\n                        </mat-card-content>\n                      </mat-card-actions>\n                </mat-card>\n\n            </li>\n        </ul>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1294,7 +1298,7 @@ var NewsComponent = /** @class */ (function () {
         var fd = new FormData();
         fd.append('body', this.post.body);
         fd.append('createdBy', this.currentUser.username);
-        // fd.append('createdAt', new Date().toUTCString());
+        fd.append('createdByAvatar', this.currentUser.avatar);
         if (this.selectedFile != null) {
             fd.append('img', this.selectedFile, this.selectedFile.name);
         }
@@ -1366,6 +1370,13 @@ var NewsComponent = /** @class */ (function () {
         var index = commentedpost.comments.indexOf(comment);
         commentedpost.comments.splice(index, 1);
         this.postService.updateComment(commentedpost).subscribe();
+    };
+    NewsComponent.prototype.getAvatar = function (username) {
+        var _this = this;
+        this.userService.getAvatar(username).subscribe(function (res) {
+            _this.avatar = res.avatar;
+            return _this.avatar;
+        });
     };
     NewsComponent.prototype.openDialog = function (i) {
         var _this = this;
@@ -1571,6 +1582,9 @@ var MessageService = /** @class */ (function () {
     MessageService.prototype.updateMessage = function (message) {
         return this.http.put('/messages/update-message/' + message._id, message);
     };
+    MessageService.prototype.deleteMessage = function (message) {
+        return this.http.delete('messages/delete-message/' + message._id);
+    };
     MessageService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1765,6 +1779,9 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.deleteFriend = function (friendname) {
         return this.http.delete('friendships/delete-friend/' + friendname);
+    };
+    UserService.prototype.getAvatar = function (username) {
+        return this.http.get('users/getAvatar/' + username);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

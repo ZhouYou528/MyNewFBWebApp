@@ -13,4 +13,8 @@ export class MessageService {
   updateMessage(message: Message) {
     return this.http.put<any>('/messages/update-message/' + message._id, message)
   }
+
+  deleteMessage(message: Message) {
+    return this.http.delete<any>('messages/delete-message/' + message._id)
+  }
 }

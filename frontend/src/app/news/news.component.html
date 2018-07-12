@@ -33,7 +33,7 @@
               <!-- post content -->
                 <mat-card id="card" class="mat-elevation-z5 font">
                   <mat-card-header>
-                      <img mat-card-avatar class="post-image" src="{{ 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
+                      <img mat-card-avatar class="post-image" src="{{ post.createdByAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
                       <mat-card-title id="postauthor" class="post-author">{{post.createdBy}}</mat-card-title>
                       <mat-card-subtitle>{{post.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</mat-card-subtitle>
                       <span class="spacer"></span>

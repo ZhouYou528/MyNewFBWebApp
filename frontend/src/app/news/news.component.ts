@@ -22,6 +22,7 @@ export class NewsComponent implements OnInit {
   currentUser = new User();
   posts: Array<Post> = [];
   commentContent: string;
+  avatar: string;
 
   constructor(public dialog: MatDialog, public snackBar: MatSnackBar, private userService: UserService, private postService: PostService) { }
 
@@ -62,7 +63,7 @@ export class NewsComponent implements OnInit {
     const fd = new FormData();
     fd.append('body', this.post.body);
     fd.append('createdBy', this.currentUser.username);
-    // fd.append('createdAt', new Date().toUTCString());
+    fd.append('createdByAvatar', this.currentUser.avatar);
     if (this.selectedFile != null) {
       fd.append('img', this.selectedFile, this.selectedFile.name);
     }
@@ -142,6 +143,17 @@ export class NewsComponent implements OnInit {
     commentedpost.comments.splice(index,1);
     this.postService.updateComment(commentedpost).subscribe();
   }
+
+  getAvatar(username: string) {
+    this.userService.getAvatar(username).subscribe(
+      res => {
+        this.avatar = res.avatar
+        return this.avatar
+      }
+    );
+
+  }
+
   openDialog(i): void {
     let dialogRef = this.dialog.open(AddCommentComponent, {
       width: '300px',

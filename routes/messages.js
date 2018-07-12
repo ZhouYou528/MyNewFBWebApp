@@ -60,6 +60,16 @@ router.put('/update-message/:id', verifyToken, (req, res, next) => {
     })
 });
 
+router.delete('/delete-message/:id', verifyToken, (req, res, next) => {
+    Message.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            return res.json({ success: false, msg: 'Failed to update status!' });
+        } else {
+            res.json({ success: true });
+        }
+    })
+});
+
 
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {

@@ -72,4 +72,8 @@ export class UserService {
   deleteFriend(friendname: string) {
     return this.http.delete<any>('friendships/delete-friend/' + friendname)
   }
+
+  getAvatar(username: string) {
+    return this.http.get<any>('users/getAvatar/' + username)
+  }
 }

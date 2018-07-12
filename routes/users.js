@@ -165,6 +165,16 @@ router.get('/get-user-by-username/:username', verifyToken, (req, res) => {
     }
 });
 
+router.get('/getAvatar/:username', verifyToken, (req, res, next) => {
+    User.findOne({ username: req.params.username }, (err, userFound) => {
+        if (err) {
+            res.json({ err });
+        } else {
+            res.json({ avatar: userFound.avatar });
+        }
+    });
+});
+
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {
         return res.status(401).send('Unauthorized request!')

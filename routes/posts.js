@@ -32,6 +32,7 @@ router.post('/newPost', upload.single('img'), verifyToken, (req, res) => {
                     _id: new mongoose.Types.ObjectId(),
                     body: req.body.body,
                     createdBy: req.body.createdBy,
+                    createdByAvatar: req.body.createdByAvatar,
                     createdAt: req.body.createdAt,
                     img: req.file.path 
                 });
@@ -52,6 +53,7 @@ router.post('/newPost', upload.single('img'), verifyToken, (req, res) => {
                     _id: new mongoose.Types.ObjectId(),
                     body: req.body.body,
                     createdBy: req.body.createdBy,
+                    createdByAvatar: req.body.createdByAvatar,
                     createdAt: req.body.createdAt
                 });
     

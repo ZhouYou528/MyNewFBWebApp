@@ -31,17 +31,18 @@ export class MessageComponent implements OnInit {
   }
 
   decline(message, i) {
-    message.status = 2;
-    this.messageService.updateMessage(message).subscribe(
-      res => {
-        if(res) {
+    // message.status = 2;
+    // this.messageService.updateMessage(message).subscribe(
+    //   res => {
+    //     if(res) {
           this.messages.splice(i, 1);
-         } else {
-           console.log(res)
-         }
-      },
-      err => console.log(err)
-    );
+    //      } else {
+    //        console.log(res)
+    //      }
+    //   },
+    //   err => console.log(err)
+    // );
+    this.messageService.deleteMessage(message).subscribe();
   }
 
   accept(message, i) {
