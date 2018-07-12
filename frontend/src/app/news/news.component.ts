@@ -160,6 +160,7 @@ export class NewsComponent implements OnInit {
           this.postService.updateComment(commentedpost).subscribe();
         }
       }
+      this.commentContent = '';
     });
   }
 

@@ -1385,6 +1385,7 @@ var NewsComponent = /** @class */ (function () {
                     _this.postService.updateComment(commentedpost).subscribe();
                 }
             }
+            _this.commentContent = '';
         });
     };
     NewsComponent = __decorate([
