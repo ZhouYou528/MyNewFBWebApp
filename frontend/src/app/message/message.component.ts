@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
-  animations:[listStagger(),fallIn()]
+  animations: [listStagger(), fallIn()]
 })
 export class MessageComponent implements OnInit {
 
@@ -21,7 +21,7 @@ export class MessageComponent implements OnInit {
   ngOnInit() {
     this.userService.getAllMessages().subscribe(
       res => {
-        if(res) this.messages = res.message;
+        if (res) this.messages = res.message;
         else {
           console.log('error!')
         }
@@ -34,14 +34,15 @@ export class MessageComponent implements OnInit {
     // message.status = 2;
     // this.messageService.updateMessage(message).subscribe(
     //   res => {
-    //     if(res) {
-          this.messages.splice(i, 1);
-    //      } else {
-    //        console.log(res)
-    //      }
+    //     if (res) {
+    //       this.messages.splice(i, 1);
+    //     } else {
+    //       console.log(res)
+    //     }
     //   },
     //   err => console.log(err)
     // );
+    this.messages.splice(i, 1);
     this.messageService.deleteMessage(message).subscribe();
   }
 
@@ -52,7 +53,7 @@ export class MessageComponent implements OnInit {
     console.log(friendship)
     this.userService.addFriend(friendship).subscribe(
       res => {
-        if(res.success) {
+        if (res.success) {
           console.log('Add friend success!')
           this.snackBar.open('Friend added successfully!', 'Close', {
             duration: 2000,
@@ -61,11 +62,11 @@ export class MessageComponent implements OnInit {
           message.status = 0;
           this.messageService.updateMessage(message).subscribe(
             res => {
-              if(res) {
-                
-               } else {
-                 console.log(res)
-               }
+              if (res) {
+
+              } else {
+                console.log(res)
+              }
             },
             err => console.log(err)
           );
@@ -80,5 +81,5 @@ export class MessageComponent implements OnInit {
       err => console.log(err)
     );
   }
-  
+
 }

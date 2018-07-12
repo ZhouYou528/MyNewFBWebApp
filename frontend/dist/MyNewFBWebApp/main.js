@@ -41,7 +41,7 @@ module.exports = ".container {\n    padding: 50px;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>About This Site</h1>\n  <div style=\"margin-bottom: 20px;\">\n    <p>This site is completely built by You Zhou for the purpose of practicing coding skills.</p>\n    <p>It is build using Angular, Express, MongoDB and Node.js</p>\n    <p>Deployed on heroku with mlab backend</p>\n      <p></p>\n    <p>Source Code: <a href=\"https://github.com/ZhouYou528/MyNewFBWebApp\">here</a></p>\n  </div>\n  <button *ngIf=\"userService.loggedIn()\" color=\"accent\" routerLink=\"/dashboard\" mat-raised-button>Back</button>\n  <button *ngIf=\"!userService.loggedIn()\" color=\"accent\" routerLink=\"/\" mat-raised-button>Back</button>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <h1>About This Site</h1>\n  <div style=\"margin-bottom: 20px;\">\n    <p>This site is completely built by You Zhou for the purpose of practicing coding skills.</p>\n    <p>It is build using Angular, Express, MongoDB and Node.js</p>\n    <p>Deployed on heroku with mlab backend</p>\n    <p>Source Code: <a href=\"https://github.com/ZhouYou528/MyNewFBWebApp\">here</a></p>\n    <p>Feel free to play around with it.</p>\n  </div>\n  <button *ngIf=\"userService.loggedIn()\" color=\"accent\" routerLink=\"/dashboard\" mat-raised-button>Back</button>\n  <button *ngIf=\"!userService.loggedIn()\" color=\"accent\" routerLink=\"/\" mat-raised-button>Back</button>\n</div>\n"
 
 /***/ }),
 
@@ -963,14 +963,15 @@ var MessageComponent = /** @class */ (function () {
         // message.status = 2;
         // this.messageService.updateMessage(message).subscribe(
         //   res => {
-        //     if(res) {
-        this.messages.splice(i, 1);
-        //      } else {
-        //        console.log(res)
-        //      }
+        //     if (res) {
+        //       this.messages.splice(i, 1);
+        //     } else {
+        //       console.log(res)
+        //     }
         //   },
         //   err => console.log(err)
         // );
+        this.messages.splice(i, 1);
         this.messageService.deleteMessage(message).subscribe();
     };
     MessageComponent.prototype.accept = function (message, i) {
