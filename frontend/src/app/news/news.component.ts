@@ -112,5 +112,26 @@ export class NewsComponent implements OnInit {
       err => console.log(err)
     )
   }
+  likeCancelLikePost(i) {
+
+    let likedPost: Post = this.posts[i];
+    let index = this.posts[i].likedBy.indexOf(this.currentUser.username);
+    if(index >= 0) {
+      this.posts[i].likedBy.splice(index, 1);
+      this.posts[i].likes--;
+    } else {
+      this.posts[i].likedBy.push(this.currentUser.username);
+      this.posts[i].likes++;
+    }
+    let likingUser: string = this.currentUser.username;
+    this.postService.addOrCancelLikePosts(likedPost, likingUser).subscribe(
+      res => {
+        if(res.success) {
+          // this.ngOnInit();
+        }
+      },
+      err => console.log(err)
+    )
+  }
 
 }

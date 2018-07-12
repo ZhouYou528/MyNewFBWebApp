@@ -113,7 +113,7 @@ router.get('/getAllPosts/:username', verifyToken, (req, res) => {
     })
 });
 
-router.delete('/deletePost/:id', (req, res) => { 
+router.delete('/deletePost/:id', verifyToken, (req, res) => { 
     if (!req.params.id) {
         res.json({success: false, message: 'No id provided'});
     } else {
@@ -136,6 +136,47 @@ router.delete('/deletePost/:id', (req, res) => {
         });
     };
 });
+
+router.put('/likePostOrCancelLike/:username', verifyToken, (req,res) => {
+    if (!req.body._id) {
+        res.json({success: false, message: 'No id for post was provided'});
+    } else {
+        Post.findOne({_id: req.body._id}, (err, post) => { // check if post exists according to postid and get that post from db
+            if (err) {
+                res.json({success: false, message: 'Cannot find post using postid provided'});
+            } else {
+                User.findOne({username: req.params.username}, (err, user) => { // check if username is valid (exists in db)
+                    if (err) {
+                        res.json({success: false, message: 'Cannot find username using username provided'});
+                    } else { 
+                        if(post.likedBy.includes(req.params.username)){ // cancel like
+                            var idx = post.likedBy.indexOf(req.params.username);
+                            post.likedBy.splice(idx,1);
+                            post.likes--;
+                            post.save((err) => {
+                                if (err) {
+                                    res.json({success: false, message: err});
+                                } else {
+                                    res.json({success: true, message: 'cancel liked post'});
+                                }
+                            });
+                        } else { // add like
+                            post.likedBy.push(req.params.username);
+                            post.likes++;
+                            post.save((err) => {
+                                if (err) {
+                                    res.json({success: false, message: err});
+                                } else {
+                                    res.json({success: true, message: 'add liked post'});
+                                }
+                            });
+                        }
+                    }
+                })
+            }
+        })
+    }
+})
 
 function verifyToken(req, res, next) {
     if (!req.headers.authorization) {

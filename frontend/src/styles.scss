@@ -18,6 +18,9 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 .red-snackbar {
     background: #b71c1c;
 }
+.red-color {
+    color: red;
+}
 
 html, body {
     margin: 0;

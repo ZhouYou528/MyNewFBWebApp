@@ -20,4 +20,9 @@ export class PostService {
   deletePost(id: String) {
     return this.http.delete<any>('/posts/deletePost/' + id);
   }
+
+  addOrCancelLikePosts(post:Post, username:string) {
+    return this.http.put<any>('/posts/likePostOrCancelLike/' + username , post);
+  }
+
 }
