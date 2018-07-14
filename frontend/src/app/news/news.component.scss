@@ -81,6 +81,10 @@
             }    
         }
     }
+    .more {
+        width: 100%;
+        border-radius: 10px;
+    }
 }
 .spacer {
     -webkit-box-flex: 1;
@@ -88,11 +92,6 @@
     flex: 1 1 auto;
 }
 
-.more {
-    width: 100%;
-    border-radius: 10px;
-}
 .spinner {
     margin: auto;
-    
 }
