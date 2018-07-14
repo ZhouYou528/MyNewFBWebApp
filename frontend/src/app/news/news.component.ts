@@ -23,6 +23,8 @@ export class NewsComponent implements OnInit {
   posts: Array<Post> = [];
   commentContent: string;
   avatar: string;
+  skip: number = 0;
+  moreButton: boolean = true;
 
   constructor(public dialog: MatDialog, public snackBar: MatSnackBar, private userService: UserService, private postService: PostService) { }
 
@@ -32,7 +34,7 @@ export class NewsComponent implements OnInit {
         if (res) {
           // console.log(res)
           this.currentUser = res
-          this.postService.getAllPosts(this.currentUser.username).subscribe(
+          this.postService.getAllPosts(this.currentUser.username, 0).subscribe(
             res => {
               if(res.success) {
                 // console.log(res.posts)
@@ -152,6 +154,19 @@ export class NewsComponent implements OnInit {
       }
     );
 
+  }
+
+  loadMore() {
+    this.skip += 10;
+    this.postService.getAllPosts(this.currentUser.username, this.skip).subscribe(
+      res => {
+        if(res.success) {
+          if(res.posts.length === 0) this.moreButton = false;
+          this.posts = this.posts.concat(res.posts);
+        }
+      },
+      err => console.log(err)
+    )
   }
 
   openDialog(i): void {

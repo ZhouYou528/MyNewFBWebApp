@@ -33,6 +33,9 @@ export class FriendlistComponent implements OnInit {
               if(res.success) {
                 // console.log(res)
                 this.friendships = res.message;
+                if(this.friendships.length == 0) {
+                  this
+                }
                 this.filteredFriends = res.message;
               }
             },

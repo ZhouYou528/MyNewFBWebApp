@@ -98,5 +98,8 @@
 
             </li>
         </ul>
+        <mat-spinner class="spinner" *ngIf="posts.length === 0"></mat-spinner>
+        <button *ngIf="posts.length !== 0 && moreButton" class="more font mat-elevation-z5" mat-raised-button color="primary" (click)="loadMore()">Give Me More</button>
+        <p *ngIf="!moreButton" style="text-align: center;" class="font">No More!</p>
     </div>
 </div>

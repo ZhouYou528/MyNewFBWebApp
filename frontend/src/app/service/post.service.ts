@@ -13,8 +13,8 @@ export class PostService {
     return this.http.post<any>('/posts/newPost', fd);
   }
 
-  getAllPosts(username: string) {
-    return this.http.get<any>('/posts/getAllPosts/' + username);
+  getAllPosts(username: string, skip: number) {
+    return this.http.get<any>('/posts/getAllPosts/' + username + '/' + skip);
   }
 
   deletePost(id: String) {

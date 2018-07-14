@@ -74,7 +74,7 @@ router.post('/newPost', upload.single('img'), verifyToken, (req, res) => {
     }
 });
 
-router.get('/getAllPosts/:username', verifyToken, (req, res) => {
+router.get('/getAllPosts/:username/:skip', verifyToken, (req, res) => {
     User.find({ username: req.params.username }, (err, curUser) => {
         if (err) {
             res.json({ success: false, message: err });
@@ -106,7 +106,7 @@ router.get('/getAllPosts/:username', verifyToken, (req, res) => {
                                     res.json({success: true, posts: posts});
                                 }
                             }
-                        }).sort({'_id': -1});
+                        }).sort({'_id': -1}).skip(Number(req.params.skip)).limit(10);
                     }
                 });
                
