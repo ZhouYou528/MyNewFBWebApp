@@ -17,4 +17,8 @@ export class MessageService {
   deleteMessage(message: Message) {
     return this.http.delete<any>('messages/delete-message/' + message._id)
   }
+
+  getNewMessagesNum(username: string) {
+    return this.http.get<any>('messages/new-message-number/' + username)
+  }
 }

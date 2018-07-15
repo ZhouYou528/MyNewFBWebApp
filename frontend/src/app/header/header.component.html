@@ -9,7 +9,7 @@
             </Label>
         </button>   
         <button *ngIf="userService.loggedIn()" mat-icon-button [matMenuTriggerFor]="menu" id="menubtn">
-            <i class="material-icons">account_circle</i>
+            <i [matBadgeHidden]="messageNum === 0" matBadge={{messageNum}} matBadgeColor="warn" class="material-icons">account_circle</i>
         </button>
         <mat-menu #menu="matMenu">
             <button class="font" mat-menu-item routerLink="/dashboard">
@@ -22,7 +22,7 @@
             </button>
             <button class="font" mat-menu-item routerLink="/message">
                 <mat-icon>notifications</mat-icon>
-                <span>Messages</span>
+                <span [matBadgeHidden]="messageNum === 0" matBadge={{messageNum}}  matBadgeOverlap="false" matBadgeColor="warn">Messages</span>
             </button>
             <button class="font" mat-menu-item routerLink="/">
                 <mat-icon>home</mat-icon>

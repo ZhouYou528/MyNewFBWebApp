@@ -70,6 +70,20 @@ router.delete('/delete-message/:id', verifyToken, (req, res, next) => {
     })
 });
 
+router.get('/new-message-number/:username', verifyToken, (req, res, next) => {
+    let query = {
+        status: 1,
+        toUser: req.params.username
+    }
+    Message.find(query, function (err, messages) {
+        if (err) {
+            console.log(err)
+            return res.json({ success: false, msg: 'Failed to get new message number!' });
+        } else {
+            res.json({ success: true, number: messages.length });
+        }
+    })
+});
 
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {

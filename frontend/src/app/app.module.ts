@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatBadgeModule } from '@angular/material/badge';
 
 //components
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -29,6 +29,7 @@ import { AvatarPreviewComponent } from './user-profile/user-profile.component';
 
 //service
 import { UserService } from './service/user.service';
+import { DataService } from './service/data.service';
 import { AuthGuard } from './service/auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -54,6 +55,7 @@ import { NewsComponent, AddCommentComponent } from './news/news.component';
     MatButtonModule,
     MatExpansionModule,
     MatTabsModule,
+    MatBadgeModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatDialogModule,
@@ -79,6 +81,7 @@ import { NewsComponent, AddCommentComponent } from './news/news.component';
   ],
   providers: [
     UserService,
+    DataService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

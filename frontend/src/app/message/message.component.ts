@@ -5,6 +5,7 @@ import { listStagger, fallIn } from '../router.animations';
 import { MessageService } from '../service/message.service';
 import { Friendship } from '../model/friendship';
 import { MatSnackBar } from '@angular/material';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-message',
@@ -15,10 +16,12 @@ import { MatSnackBar } from '@angular/material';
 export class MessageComponent implements OnInit {
 
   messages: Message[]
+  messageNum: number;
 
-  constructor(public snackBar: MatSnackBar, private userService: UserService, private messageService: MessageService) { }
+  constructor(private data: DataService, public snackBar: MatSnackBar, private userService: UserService, private messageService: MessageService) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.messageNum = message)
     this.userService.getAllMessages().subscribe(
       res => {
         if (res) this.messages = res.message;
@@ -43,7 +46,11 @@ export class MessageComponent implements OnInit {
     //   err => console.log(err)
     // );
     this.messages.splice(i, 1);
-    this.messageService.deleteMessage(message).subscribe();
+    this.messageService.deleteMessage(message).subscribe(
+      res => {
+        if(res.success) this.data.changeMessage(this.messageNum - 1)
+      }
+    );
   }
 
   accept(message, i) {
