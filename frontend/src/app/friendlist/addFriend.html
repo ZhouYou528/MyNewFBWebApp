@@ -14,10 +14,10 @@
 <div *ngIf="user._id !== '';">
     <div mat-dialog-content>
         <div id="left">
-            <img style="width: 400px;height: 400px;" mat-card-avatar src="{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
+            <img style="width: 100%; height: 100%;" mat-card-avatar src="{{ user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
         </div>
         <div id="right">
-            <p>User name: {{user.username}}</p>
+            <p>Username: {{user.username}}</p>
             <p>Email: {{user.email}}</p>
         </div>
     </div>

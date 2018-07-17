@@ -51,8 +51,9 @@
     width: 100%;
     height: 100%;
     max-width: 300px;
-    padding:0 0 20px 0;
-    margin-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
   }
   .icon-align{
     display: inline-flex;
@@ -67,10 +68,12 @@
   .button-spacer{
     margin-left: 10px;
   }
-  .avatar-header{
-    align-items: center;
-    justify-content: center;
+  h1{
+    text-align: center;
+    width:90%;
     font: bold;
+    margin-left: auto;
+    margin-right: auto;
   }
   .profile {
     width:80%;
@@ -78,3 +81,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+  /* .avatar-preview{
+    width:100%;
+    max-width: 600px;
+  } */

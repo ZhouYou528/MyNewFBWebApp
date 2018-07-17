@@ -1,9 +1,9 @@
-<div>
-    <div>
-        <h1 class="avatar-header">Change your Avatar</h1>
+<div class="avatar-preview">
+    <div class="avatar-header">
+        <h1>Change your Avatar</h1>
     </div>
-    <div>
-        <img class="uploadImg" src="{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}">
+    <div class="uploadImg">
+        <img style="width:100%;" src="{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}">
     </div>
 
     <div class="input">
@@ -14,6 +14,6 @@
                 Photo
             </Label>
         </button>
-        <button class="button-spacer font" color="warn" id="sendpost" (click)="updateAvatar()" mat-raised-button>Confirm</button>
+        <button class="button-spacer font" color="warn" id="update" (click)="updateAvatar()" mat-raised-button>Confirm</button>
     </div>
 </div>
