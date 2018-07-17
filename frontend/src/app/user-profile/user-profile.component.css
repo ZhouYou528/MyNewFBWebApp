@@ -1,8 +1,8 @@
 :host {
-    flex-grow: 1;
+    /* flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
   }
   
   .example-full-width {
@@ -15,9 +15,8 @@
   }
   
   .example-form {
-    min-width: 150px;
-    max-width: 600px;
-    width: 100%;
+    /* max-width: 600px; */
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -27,22 +26,25 @@
     height: 150px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
-    margin-bottom: 100px;
+    margin-top: 10%;
+    margin-bottom: 10%;
   }
   .example-card {
-    width: 800px;
+    border-radius: 10px;
+    width: 100%;
     padding:0 0 50px 0;
     margin-top: 5%;
     margin-bottom: 5%;
   }
   .card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     background-size: cover;
     background-image: url('../../assets/afternoon.jpg');
     margin-bottom: 50px;
   }
   .back-button {
-    margin-left: 100px;
+    margin-left: 10%;
     font-family: 'Montserrat', sans-serif;
   }
   .uploadImg{
@@ -69,4 +71,10 @@
     align-items: center;
     justify-content: center;
     font: bold;
+  }
+  .profile {
+    width:80%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }

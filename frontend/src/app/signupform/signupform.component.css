@@ -1,8 +1,8 @@
 :host {
-    flex-grow: 1;
+    /* flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
   
 .example-full-width {
@@ -36,4 +36,15 @@
     display: inline-block;
     padding-left: 10px;
     margin-top: 15px;
+}
+.signup {
+    /* margin-top: 10%;
+    margin-bottom: 5%; */
+    width:80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+form {
+    margin-bottom: 20px;
 }

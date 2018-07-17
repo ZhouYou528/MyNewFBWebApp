@@ -1,12 +1,12 @@
 <div class="outer-most-container">
-  <mat-form-field style="width: 400px;" class="font">
+  <mat-form-field style="width: 50%; min-width: 250px; margin-right: 15px;" class="font">
     <input matInput [(ngModel)]="name" placeholder="Search friend">
   </mat-form-field>
   <div style="display: inline-block;">
-    <button class="search-button font" color="primary" (click)="filterFriends()" mat-raised-button>Search</button>
-    <button class="add-button font" mat-raised-button (click)="openDialog()" color="warn" id="addfriend">Add a new friend</button>
+    <button class="search-button font mat-elevation-z5" color="primary" (click)="filterFriends()" mat-raised-button>Search</button>
+    <button class="add-button font mat-elevation-z5" mat-raised-button (click)="openDialog()" color="warn" id="addfriend">Add a new friend</button>
   </div>
-  <mat-list [@listStagger]="filteredFriends">
+  <mat-list class="my-list" [@listStagger]="filteredFriends">
     <mat-list-item *ngFor="let friend of filteredFriends; let i = index;">
       <mat-icon mat-list-icon>face</mat-icon>
       <p class="font" mat-line>{{friend.userTwo}}</p>

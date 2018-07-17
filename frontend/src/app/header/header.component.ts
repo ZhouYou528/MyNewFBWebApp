@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.data.currentMessage.subscribe(message => this.messageNum = message)
-    if(this.userService.loggedIn) {
+    if(this.userService.loggedIn()) {
       this.userService.getCurrentUser().subscribe(
         res => {
           if(res) {
