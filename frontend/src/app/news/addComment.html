@@ -1,7 +1,7 @@
 <div>
     <h1 mat-dialog-title class="font">Comment Something..</h1>
     <div mat-dialog-content>
-        <mat-form-field class="font">
+        <mat-form-field style="width: 90%;" class="font">
             <input name="commentinput" matInput [(ngModel)]="data.commentContent" #message maxlength="200">
             <mat-hint align="end">{{message.value.length}} / 200</mat-hint>
         </mat-form-field>

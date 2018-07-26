@@ -1249,7 +1249,7 @@ var User = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h1 mat-dialog-title class=\"font\">Comment Something..</h1>\n    <div mat-dialog-content>\n        <mat-form-field class=\"font\">\n            <input name=\"commentinput\" matInput [(ngModel)]=\"data.commentContent\" #message maxlength=\"200\">\n            <mat-hint align=\"end\">{{message.value.length}} / 200</mat-hint>\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button id=\"commentsendbtn\" [mat-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n    </div>\n</div>"
+module.exports = "<div>\n    <h1 mat-dialog-title class=\"font\">Comment Something..</h1>\n    <div mat-dialog-content>\n        <mat-form-field style=\"width: 90%;\" class=\"font\">\n            <input name=\"commentinput\" matInput [(ngModel)]=\"data.commentContent\" #message maxlength=\"200\">\n            <mat-hint align=\"end\">{{message.value.length}} / 200</mat-hint>\n        </mat-form-field>\n    </div>\n    <div mat-dialog-actions>\n        <button class=\"font\" mat-button id=\"commentsendbtn\" [mat-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n        <button class=\"font\" mat-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n    </div>\n</div>"
 
 /***/ }),
 
