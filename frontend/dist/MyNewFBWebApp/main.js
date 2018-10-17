@@ -203,7 +203,7 @@ module.exports = "<div class=\"fullPage\">\n    <app-header></app-header>\n    <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".fullPage {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  position: relative; }\n\n#wrapper {\n  margin-bottom: 10%; }\n"
+module.exports = ".fullPage {\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  min-height: 100%;\n  width: 100%; }\n\n#wrapper {\n  margin: 64px 0px 80px 0px; }\n\napp-header {\n  position: fixed;\n  width: 100%;\n  z-index: 10; }\n\napp-footer {\n  position: absolute;\n  left: 0px;\n  bottom: 0px;\n  width: 100%;\n  height: 50px;\n  text-align: center; }\n"
 
 /***/ }),
 
@@ -486,7 +486,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".footer {\n    position: absolute;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 1rem;\n    background-color: #F2F2F2;\n    text-align: center;\n    margin-bottom: 0;\n}"
+module.exports = ""
 
 /***/ }),
 
@@ -885,7 +885,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    /* flex-grow: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center; */\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n}\n.button {\n    border-radius: 20px;\n    width: 100%;\n    margin-top: 20px;\n    font-family: 'Montserrat', sans-serif;\n}\n.home {\n    margin-top: 10%;\n    margin-bottom: 5%;\n    width:80%;\n    max-width: 520px;\n    margin-left: auto;\n    margin-right: auto;\n}\n.gatorimg {\n    margin-bottom: 50px;\n}"
+module.exports = ".login-input-form {\n    display:block;\n    width: 100%;\n}\n\n.button {\n    border-radius: 20px;\n    width: 100%;\n    margin-top: 20px;\n    font-family: 'Montserrat', sans-serif;\n}\n\n.home {\n    margin: 100px auto;\n    padding-left: 30px;\n    padding-right: 30px;\n    max-width: 520px;\n}\n\n.gatorimg {\n    margin-bottom: 50px;\n}"
 
 /***/ }),
 
@@ -1996,7 +1996,7 @@ var ValidateService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n    /* flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;    */\n}\n.login-input-form {\n    display:block;\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.sign-up-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.font {\n    font-family: 'Montserrat', sans-serif;\n}\n.signin {\n    margin-top: 10%;\n    margin-bottom: 5%;\n    width:80%;\n    max-width: 520px;\n    margin-left: auto;\n    margin-right: auto;\n}\n"
+module.exports = ".login-input-form {\n    display:block;\n    width: 100%;\n    font-family: 'Montserrat', sans-serif;\n}\n.sign-in-button {\n    display: inline-block; \n    margin-top: 10px;\n}\n.back-button {\n    display: inline-block;\n    padding-left: 10px;\n    margin-top: 10px;\n}\n.font {\n    font-family: 'Montserrat', sans-serif;\n}\n.signin {\n    margin: 90px auto;\n    padding-left: 30px;\n    padding-right: 30px;\n    max-width: 520px;\n}\n"
 
 /***/ }),
 
@@ -2007,7 +2007,7 @@ module.exports = ":host {\n    /* flex-grow: 1;\n    display: flex;\n    justify
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"signin\">\n  <form (submit)=\"loginUser($event)\">\n    <div>\n      <img [@fallIn]=\"\" style=\"width:100%;\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\">\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n      </mat-form-field>\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\"\n          [(ngModel)]=\"signinUser.password\">\n        <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n      </mat-form-field>\n      <div class=\"sign-in-button\">\n        <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>\n      </div>\n      <div class=\"sign-up-button\">\n        <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n      </div>\n    </div>\n  </form>\n</div>"
+module.exports = "<div class=\"signin\">\n  <form (submit)=\"loginUser($event)\">\n    <div>\n      <img [@fallIn]=\"\" style=\"width:100%;\" src=\"../assets/gator.png\">\n    </div>\n    <div [@fallIn]=\"\">\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" matInput placeholder=\"Enter your username\" name=\"username\" [(ngModel)]=\"signinUser.username\">\n      </mat-form-field>\n      <mat-form-field class=\"login-input-form\">\n        <input class=\"font\" type=\"password\" matInput placeholder=\"Enter your password\" name=\"password\" [type]=\"hide ? 'password' : 'text'\"\n          [(ngModel)]=\"signinUser.password\">\n        <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n      </mat-form-field>\n      <div class=\"sign-in-button\">\n        <button class=\"font\" color=\"primary\" id=\"signinbtn\" type=\"submit\" mat-raised-button>Sign In</button>\n      </div>\n      <div class=\"back-button\">\n        <button class=\"font\" color=\"primary\" id=\"backbtn\" routerLink=\"/\" mat-raised-button>Back</button>\n      </div>\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 
