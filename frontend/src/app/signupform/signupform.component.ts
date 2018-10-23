@@ -17,6 +17,7 @@ export class SignupformComponent implements OnInit {
   newUser = new User();
   confirmedpassword: string;
   msg: string;
+  startDate = new Date();
 
   constructor(public snackBar: MatSnackBar, private validateService: ValidateService, private router: Router, private userService: UserService) { }
 

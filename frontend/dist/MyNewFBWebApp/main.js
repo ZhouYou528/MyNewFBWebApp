@@ -2172,6 +2172,7 @@ var SignupformComponent = /** @class */ (function () {
         this.router = router;
         this.userService = userService;
         this.newUser = new _model_user__WEBPACK_IMPORTED_MODULE_1__["User"]();
+        this.startDate = new Date();
     }
     SignupformComponent.prototype.ngOnInit = function () {
     };
