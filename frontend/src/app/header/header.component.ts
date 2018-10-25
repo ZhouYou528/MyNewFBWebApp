@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   messageNum: number;
   currentUser: User = null;
 
-  constructor(private messageService: MessageService, private data: DataService, private userService: UserService, private router: Router) { }
+  constructor(private messageService: MessageService, private data: DataService, public userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.data.currentMessage.subscribe(message => this.messageNum = message)

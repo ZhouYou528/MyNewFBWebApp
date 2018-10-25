@@ -8,7 +8,7 @@ import { UserService } from '../service/user.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
   }
