@@ -31,10 +31,10 @@ export class FriendlistComponent implements OnInit {
           this.userService.getAllFriends().subscribe(
             res => {
               if(res.success) {
-                // console.log(res)
                 this.friendships = res.message;
                 if(this.friendships.length == 0) {
-                  this
+                  //TO DO
+                  console.log("Unhandled situation!")
                 }
                 this.filteredFriends = res.message;
               }

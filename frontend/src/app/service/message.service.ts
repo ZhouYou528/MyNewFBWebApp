@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Message } from '../model/message';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   updateMessage(message: Message) {
     return this.http.put<any>('/messages/update-message/' + message._id, message)
