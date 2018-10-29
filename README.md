@@ -1,9 +1,11 @@
+[![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/linnovate/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![view on npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.org/package/jsdoc-to-markdown)
+[![node](https://img.shields.io/node/v/passport.svg)](https://nodejs.org/en/)
+[![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)](https://github.com/ZhouYou528/MyNewFBWebApp/blob/master/LICENCE)
+
 # Gatorbook
 
 Demo: [here](https://gatorbook.herokuapp.com/)
-[![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/linnovate/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Coverage Status](https://coveralls.io/repos/github/jsdoc2md/jsdoc-to-markdown/badge.svg?branch=master)](https://coveralls.io/github/jsdoc2md/jsdoc-to-markdown?branch=master)
-[![view on npm](http://img.shields.io/npm/v/jsdoc-to-markdown.svg)](https://www.npmjs.org/package/jsdoc-to-markdown)
 
 Gatorbook is a Facebook-like social network web application built using MEAN stack (MongoDB, Express, Angular 4, Node.js), with nearly ALL features you have on a facebook!
 
@@ -119,11 +121,3 @@ If you have any doubts, questions or ideas for improvement, feel free to give us
 
 #### License
 
-
-#### Authors
-| Name | GitHub ID | Contact Information |
-|------|-----------|---------------------|
-|You Zhou|ZhouYou528| |
-|Junhao Zhang|zjunhao| |
-|Zhuoru Li|wobusimanong| |
-|Zhenqian Guo|GrandStar & smallGrandstar| |
