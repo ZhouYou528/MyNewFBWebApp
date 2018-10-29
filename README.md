@@ -5,13 +5,12 @@
 
 # Gatorbook
 
-Demo: [here](https://gatorbook.herokuapp.com/)
+*Demo: [here](https://gatorbook.herokuapp.com/)*
 
-Gatorbook is a Facebook-like social network web application built using MEAN stack (MongoDB, Express, Angular 4, Node.js), with nearly ALL features you have on a facebook!
-
-- For users, user guide can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/Front-End-Documentation) (You can see what our interface looks like there :) )
-
-- For developers, RESTful API can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/REST-API-Documentation)
+- Gatorbook is a web based social media application using Angular 6, Node.js and Express and MongoDB database(MEAN stack). It was originally a [project](https://github.com/yummycoding/weLoveFaceBook) of four people. In mid 2018, I decided to expand and update the project using the updated frameworks, add a lot of new functionalities and redesign the user interface, which makes it my personal project. So the current project is built completely on my own and successfully deployed on heroku. It is still being maintained and new functionalities will be added. Please check out using the Demo link above.
+- Designed interactive UI using Angular Material. Designed database services using REST API. 
+- Realized user sign in/up authentication using JSON Web Token. Realized making/deleting, checking, updating, liking, commenting posts, searching and adding/deleting friends, modifying personal profile etc.
+- Applied test driven development. Implemented unit tests and e2e tests using Karma and Protractor. Deployed on Heroku with MLAB.
 
 - To get started and mount Gatorbook on your own computer, please read the following
 
